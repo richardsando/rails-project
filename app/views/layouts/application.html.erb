@@ -13,10 +13,42 @@
     <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
-    <ul class="hmenu">
-      <%= render 'devise/menu/registration_items' %>
-      <%= render 'devise/menu/login_items' %>
-    </ul>
+<div class="nav-wrapper">
+       <nav class="main-nav">
+       
+        <div class="logo">
+             culturePop
+        </div>
+        <div class ="search-wrapper">
+        search
+        </div>
+        
+          <div class="user-info">
+            <%= link_to 'profile', '/' %>|
+            <%= link_to 'cart', '/' %>|
+            <%= render 'devise/menu/registration_items' %>|
+            <%= render 'devise/menu/login_items' %>
+          </div>
+       </nav>
+       <div class="categories-nav">
+          <div class="link">
+            <%= link_to 'tshirts', '/' %>
+          </div>
+          <div class="link">
+            <%= link_to 'prints', '/' %>
+          </div>
+          <div class="link">
+            <%= link_to 'collectibles', '/' %>
+            </div>
+          <div class="link">
+            <%= link_to 'stickers', '/' %></div>
+          <div class="link">
+            <%= link_to 'fandom', '/' %>
+          </div>
+        </div>
+  </div>
+
+    
       
     <%= yield %>
   </body>
