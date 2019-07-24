@@ -8,7 +8,7 @@ Link to live web app:
 heroku.com
 
 Github repository:
-github.com
+https://github.com/richardsando/rails-project
 
 Description of your project, including,
 - Problem definition / purpose
