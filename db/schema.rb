@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_054147) do
+ActiveRecord::Schema.define(version: 2019_07_24_060748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cart_products", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_products_on_cart_id"
+    t.index ["product_id"], name: "index_cart_products_on_product_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active_status"
+    t.index ["profile_id"], name: "index_carts_on_profile_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "price"
+    t.string "size"
+    t.integer "stock"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_products_on_profile_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "username"
@@ -49,6 +78,10 @@ ActiveRecord::Schema.define(version: 2019_07_24_054147) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "cart_products", "carts"
+  add_foreign_key "cart_products", "products"
+  add_foreign_key "carts", "profiles"
+  add_foreign_key "products", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "profiles"
   add_foreign_key "users", "roles"
