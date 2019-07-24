@@ -25,9 +25,13 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
-
+    @profile.user = current_user
+    # raise
+# raise
     respond_to do |format|
       if @profile.save
+        # raise
+        
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
       else
@@ -61,12 +65,13 @@ class ProfilesController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.find(params[:id])
     end
-
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:username, :about, :location, :joindate)

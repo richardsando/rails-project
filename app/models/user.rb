@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
 belongs_to :role
 after_initialize :set_default_role, :if => :new_record?
+has_one :profile
 
   private
   def set_default_role
