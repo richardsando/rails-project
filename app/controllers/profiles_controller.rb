@@ -3,7 +3,14 @@ class ProfilesController < ApplicationController
 
 
   def cart
-    @current_cart = Cart.last
+    @current_cart = Cart.first
+  end
+
+  def previous_orders
+    @previous_orders = Cart.all-Cart.last
+  end
+
+  def wishlist
   end
   # GET /profiles
   # GET /profiles.json

@@ -1,5 +1,5 @@
 * {
-    margin: 0px;
+    margin: 0px; 
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
 }
@@ -8,8 +8,14 @@ a {
     color: rgb(194, 175, 146);
 }
 .nav-wrapper {
+    width: 100%;
+    position: fixed;
     height: 80px;
     background-color: blanchedalmond;
+    
+}
+.main-content {
+
 }
  .main-nav {
     padding-left: 15px;

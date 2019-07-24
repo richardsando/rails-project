@@ -28,7 +28,12 @@
 # end
 
 carts = []
-products = []
+products = [
+    {
+        name: "Wooden Aeroplane",
+        
+    }
+]
 wishlists = []
 profiles = []
 
