@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_054147) do
+ActiveRecord::Schema.define(version: 2019_07_24_055614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active_status"
+    t.index ["profile_id"], name: "index_carts_on_profile_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "username"
@@ -49,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_07_24_054147) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "carts", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "profiles"
   add_foreign_key "users", "roles"
