@@ -5,7 +5,7 @@
 By Richard, Mel and Jov
 
 Link to live web app:
-heroku.com
+https://gentle-atoll-70711.herokuapp.com/
 
 Github repository:
 https://github.com/richardsando/rails-project
