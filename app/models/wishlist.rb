@@ -1,4 +1,5 @@
 class Wishlist < ApplicationRecord
   belongs_to :profile
-  has_many :products
+  has_many :wishlist_products
+  has_many :products, through: :wishlist_products
 end

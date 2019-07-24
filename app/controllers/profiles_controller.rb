@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
 
   def cart
-    Car
+    @current_cart = Cart.last
   end
   # GET /profiles
   # GET /profiles.json

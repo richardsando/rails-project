@@ -7,22 +7,28 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-roles = [    
-    {
-        privilege: "user",
-        description: "Users are allowed to browse pages, create a profile page and purchase items. They can become an artist by paying a registration fee"
+# roles = [    
+#     {
+#         privilege: "user",
+#         description: "Users are allowed to browse pages, create a profile page and purchase items. They can become an artist by paying a registration fee"
         
-    },
-    {
-        privilege: "artist",
-        description: "Artists have all the same privileges as a user except they can sell products that they have created"
-    },
-    {
-        privilege: "admin",
-        description: "Admins have the ability to change thing such as featured items"
-    }
-]
+#     },
+#     {
+#         privilege: "artist",
+#         description: "Artists have all the same privileges as a user except they can sell products that they have created"
+#     },
+#     {
+#         privilege: "admin",
+#         description: "Admins have the ability to change thing such as featured items"
+#     }
+# ]
 
-roles.each do |role|
-    Role.create(privilege: role[:privilege], description: role[:description])
-end
+# roles.each do |role|
+#     Role.create(privilege: role[:privilege], description: role[:description])
+# end
+
+carts = []
+products = []
+wishlists = []
+profiles = []
+
