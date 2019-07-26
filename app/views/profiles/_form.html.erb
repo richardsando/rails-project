@@ -31,9 +31,10 @@
     <%= form.date_select :joindate %>
   </div>
 
-   
-
-
+  <div class="field">
+    <%= form.hidden_field :user_id, value: (current_user.id)%>
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
