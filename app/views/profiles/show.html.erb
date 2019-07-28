@@ -19,6 +19,12 @@
   <strong>Joindate:</strong>
   <%= @profile.joindate %>
 </p>
+<br>
 
+<% @profile.products.each do |product| %>
+  <p> <%= link_to product.name, "/products/#{product.id}" %> </p>
+<% end %>
+
+<br><br>
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>

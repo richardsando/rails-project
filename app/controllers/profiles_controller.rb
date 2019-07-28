@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  # before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
 
   def cart
@@ -21,6 +21,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @profile = Profile.find(params[:id])
   end
 
   # GET /profiles/new
@@ -35,14 +36,11 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
+
     @profile = Profile.new(profile_params)
-    @profile.user = current_user
-    # raise
-# raise
+    # @profile.user = current_user
     respond_to do |format|
-      if @profile.save
-        # raise
-        
+      if @profile.save        
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
       else
@@ -85,6 +83,6 @@ class ProfilesController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:username, :about, :location, :joindate)
+      params.require(:profile).permit(:username, :about, :location, :joindate, :user_id)
     end
 end
