@@ -40,7 +40,7 @@
     <%= form.hidden_field :profile_id, value: (current_user.profile.id) %>
   </div>
 
-  <div class="field">
+  <div class="field" >
     <%= form.label :category %>
     <%= form.collection_select :category_id, Category.all, :id, :category %>
   </div>
@@ -50,8 +50,10 @@
     <%= form.collection_select :fandom_id, Fandom.all, :id, :fandom %>
   </div>
 
-
-
+  <div class="field">
+    <%= form.label :uploaded_image %>
+    <%= form.file_field :uploaded_image %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
