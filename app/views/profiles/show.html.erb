@@ -25,6 +25,8 @@
   <p> <%= link_to product.name, "/products/#{product.id}" %> </p>
 <% end %>
 
+<p>My current privilege is <%= current_user.role.privilege %> </p>
+
 
 <% if current_user.role.id == 2 %>
     <p>Click Here to add an item to your store</p>
