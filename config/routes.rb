@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'profiles/:id/cart' => 'profiles#cart'
 
+
   get '/tshirts' => 'pages#tshirts'
 
   get '/iphonecases' => 'pages#iphonecases'
@@ -14,5 +15,8 @@ Rails.application.routes.draw do
   get '/prints' => 'pages#prints'
 
   get '/fandoms' => 'pages#fandoms'
+
+  resources :charges
+  get 'profiles/:id/become_artist' => 'profiles#become_an_artist'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
