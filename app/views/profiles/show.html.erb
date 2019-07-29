@@ -28,15 +28,17 @@
 
 <% if current_user.role.id == 2  %>
      <% @profile.products.each do |product| %>
-        <p><%= link_to product.name, "/products/#{product.id}" %></p>
-        <br>
-       <% if current_user.profile == @profile %>
-            <p><%= link_to "Edit this product", {:controller => "products", :action => "edit", :id => product.id } %></p>
-            <p><%= link_to 'Remove this product',  "/products/#{product.id}", method: :delete %></p>
-      <% end %>
+      <p>
+        <%= link_to product.name, "/products/#{product.id}" %>
+        <% if current_user.profile == @profile %>
+              | <%= link_to "Edit", {:controller => "products", :action => "edit", :id => product.id } %>
+              | <%= link_to 'Remove',  "/products/#{product.id}", method: :delete %>
+        <% end %>
+      </p>
     <% end %>
+    <br>
     <% if current_user.profile == @profile %>
-        <%= link_to 'Click Here to add an item to your store', new_product_path %></p>
+      <p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
     <% end %>
     <% else %>
     <%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>

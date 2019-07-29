@@ -30,9 +30,11 @@
   <%= link_to @product.profile.username, @product.profile  %>
 </p>
 
+
 <% if user_signed_in? %>
   <% if current_user.profile != @product.profile %>
-      <%= link_to 'add to cart', '/' %>
+      <%= link_to 'add to cart', '#' %>
+      <%= link_to 'add to wishlist', '#' %>
       <%= link_to 'Back', products_path %>
   <% end %>
 
@@ -41,5 +43,9 @@
         <%= link_to 'Edit', edit_product_path(@product) %> |
         <%= link_to 'back to profile', "/profiles/#{@product.profile.id}" %>
   <% end %>
+<% else %>
+  <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
+  <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
 <% end %>
+
 
