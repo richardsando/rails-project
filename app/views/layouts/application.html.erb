@@ -28,7 +28,7 @@
               <% else %>
                   <%= link_to "My Profile", {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>|
               <% end %>
-              <%= link_to "cart", "#{current_user.id}/cart" %>|
+              <%= link_to "cart", "/profiles/#{current_user.id}/cart" %>|
             <% end %>
             <%= render 'devise/menu/login_items' %>
           </div>

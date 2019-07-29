@@ -6,6 +6,7 @@ ruby '2.5.5'
 gem 'hirb'  #hirb gem lets you use see data in active record more clearly
             #to use, enter the command 'Hirb.enable' every time you enter the console
             #from there you can just call normal commands like 'Profile.all' or 'Role.all' to list everything nicely
+gem 'stripe'
 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
