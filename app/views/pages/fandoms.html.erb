@@ -1,0 +1,19 @@
+<h1> Fandoms </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @fandoms.each do |fandom| %>
+            <tr>
+                <td><%= fandom.id %></td>
+                <td><%= fandom.fandom %></td>
+            </tr>
+        <%end%>
+    </tbody>
+</table>

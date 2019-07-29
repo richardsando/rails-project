@@ -1,0 +1,22 @@
+<h1>iPhone Cases</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @iphonecases.each do |product| %>
+            <tr>
+                <td><%= product.name %></td>
+                <td><%= product.description %></td>
+                <td><%= product.price %></td>
+            </tr>
+        <%end%>
+    </tbody>
+</table>
