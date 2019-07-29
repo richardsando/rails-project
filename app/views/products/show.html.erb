@@ -30,7 +30,16 @@
   <%= link_to @product.profile.username, @product.profile  %>
 </p>
 
+<% if user_signed_in? %>
+  <% if current_user.profile != @product.profile %>
+      <%= link_to 'add to cart', '/' %>
+      <%= link_to 'Back', products_path %>
+  <% end %>
 
-<%= link_to 'add to cart', '/' %>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+  <% if current_user.profile == @product.profile %>
+        <%= link_to 'Delete', "/products/#{@product.id}", method: :delete %> |
+        <%= link_to 'Edit', edit_product_path(@product) %> |
+        <%= link_to 'back to profile', "/profiles/#{@product.profile.id}" %>
+  <% end %>
+<% end %>
+
