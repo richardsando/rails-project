@@ -10,8 +10,23 @@ class ProfilesController < ApplicationController
     current_user.update(role_id: 2)
   end
 
-  def cart
-    @current_cart = Cart.first
+  def createcart
+    # raise
+    if current_user.profile.carts.empty? 
+      @cart = Cart.create(profile_id: params[:id])
+      product = Product.find(params[:product_id])
+      @cart.products << product
+    end
+
+    redirect_to "/profiles/#{params[:id]}/showcart"
+    # @cart
+    # @current_cart = Cart.first
+  end
+
+  def showcart
+
+      @cart = current_user.profile.carts.where("active_status = ?", true)
+
   end
 
   def previous_orders
