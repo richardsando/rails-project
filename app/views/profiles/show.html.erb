@@ -28,9 +28,20 @@
 <p>My current privilege is <%= current_user.role.privilege %> </p>
 
 
-<% if current_user.role.id == 2 %>
-    <p>Click Here to add an item to your store</p>
-<% else %>
+<% if current_user.role.id == 2  %>
+     <% @profile.products.each do |product| %>
+        <p><%= product.name %></p>
+        <p><%= product.description %></p>
+        <p><%= product.fandom.fandom %></p>
+       <% if current_user.profile == @profile %>
+            <p><%= link_to "Edit this product", {:controller => "products", :action => "edit", :id => product.id } %></p>
+            <p><%= link_to 'Remove this product',  "/products/#{product.id}", method: :delete %></p>
+    <% end %>
+    <br>
+    <p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
+    
+    <% end %>
+    <% else %>
     <%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
 <% end %>
   

@@ -1,1 +1,7 @@
-<h1>Homepage</h1>
+<h2>Welcome to culturePop, the place for artists to share art they have created for their favourite franchises</h2>
+
+<% Product.all.each do |product| %>
+    <p><%= link_to product.name, product %></p>
+    <p><%= product.price %></p>
+    <p><%= link_to product.profile.username, product.profile %></p>
+<% end %>

@@ -16,15 +16,14 @@
   <tbody>
     <% @profiles.each do |profile| %>
       <tr>
-        <td><%= profile.username %></td>
+        <td><%= link_to profile.username, "/profiles/#{profile.id}" %></td>
         <td><%= profile.about %></td>
         <td><%= profile.location %></td>
         <td><%= profile.joindate %></td>
-        <td><%= "profile", profile %></td>
+        
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Profile', new_profile_path %>
