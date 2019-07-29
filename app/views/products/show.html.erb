@@ -26,9 +26,11 @@
 </p>
 
 <p>
-  <strong>Profile:</strong>
-  <%= @product.profile %>
+  <strong>Artist:</strong>
+  <%= link_to @product.profile.username, @product.profile  %>
 </p>
 
+
+<%= link_to 'add to cart', '/' %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

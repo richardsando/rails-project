@@ -1,10 +1,15 @@
 class ProfilesController < ApplicationController
   # before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
+  def add_to_wishlist
+    
+  
+  end
 
   def become_an_artist
     current_user.update(role_id: 2)
   end
+
   def cart
     @current_cart = Cart.first
   end
