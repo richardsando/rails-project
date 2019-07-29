@@ -29,7 +29,7 @@
                   <p>You are currently signed in as <%= current_user.profile.username %></p>
                   <%= link_to "My Profile", {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>|
               <% end %>
-              <%= link_to "cart", "/profiles/#{current_user.id}/cart" %>|
+              <%= link_to "cart", "/profiles/#{current_user.id}/showcart" %>|
             <% end %>
             <%= render 'devise/menu/login_items' %>
           </div>

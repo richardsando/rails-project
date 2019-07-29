@@ -1,6 +1,6 @@
 
 <h1>My Cart</h1>
-<% if @cart  %>
+<% if current_user.profile.carts.any?  %>
    <% @cart.products.each do |product| %>
        <%= product.name  %>
    <% end %>
