@@ -1,0 +1,11 @@
+<h1>This is my wishlist</h1>
+
+<% @wishlist.products.each do |product| %>
+    <p>
+        <%= link_to product.name, product_path %> |
+        <%= product.price %> |
+        Remove from wishlist 
+    </p>
+<% end %>
+
+<%= link_to 'Back to my Profile', "/profiles/#{params[:id]}/" %>

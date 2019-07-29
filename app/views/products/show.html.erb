@@ -33,8 +33,8 @@
 
 <% if user_signed_in? %>
   <% if current_user.profile != @product.profile %>
-      <%= link_to 'add to cart', "/profiles/#{current_user.profile.id}/createcart?product_id=#{@product.id}" %>
-      <%= link_to 'add to wishlist', '#' %>
+      <%= link_to 'add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}" %>
+      <%= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %>
       <%= link_to 'Back', products_path %>
   <% end %>
 

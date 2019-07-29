@@ -2,8 +2,15 @@
 <h1>My Cart</h1>
 <% if current_user.profile.carts.any?  %>
    <% @cart.products.each do |product| %>
-       <%= product.name  %>
+       <p>
+            <%= link_to product.name, product_path %>  |
+            <%= product.price %> |
+            Remove Item
+       </p>
    <% end %>
 <% else %>
    <p>Your cart has zero items!</p>
 <% end %>
+
+
+<p>Checkout</p>

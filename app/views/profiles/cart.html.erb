@@ -1,9 +1,0 @@
-
-<h1>My Cart</h1>
-<% if @cart  %>
-   <% @cart.products.each do |product| %>
-       <%= product.name  %>
-   <% end %>
-<% else %>
-   <p>Your cart has zero items!</p>
-<% end %>

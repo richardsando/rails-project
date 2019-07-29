@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   resources :profiles
   devise_for :users
   root to: 'pages#home'
-  get '/profiles/:id/createcart' => 'profiles#createcart'
+  get '/profiles/:id/addtocart' => 'profiles#add_to_cart'
   get '/profiles/:id/showcart' => 'profiles#showcart'
-
+  get '/profiles/:id/addtowishlist' => 'profiles#add_to_wishlist'
+  get '/profiles/:id/showwishlist' => 'profiles#show_wishlist'
 
   get '/tshirts' => 'pages#tshirts'
 
