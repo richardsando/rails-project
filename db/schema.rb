@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_25_111551) do
+ActiveRecord::Schema.define(version: 2019_07_29_003642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 2019_07_25_111551) do
     t.index ["profile_id"], name: "index_carts_on_profile_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fandoms", force: :cascade do |t|
+    t.string "fandom"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -41,6 +53,10 @@ ActiveRecord::Schema.define(version: 2019_07_25_111551) do
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.bigint "fandom_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["fandom_id"], name: "index_products_on_fandom_id"
     t.index ["profile_id"], name: "index_products_on_profile_id"
   end
 
@@ -96,6 +112,8 @@ ActiveRecord::Schema.define(version: 2019_07_25_111551) do
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "profiles"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "fandoms"
   add_foreign_key "products", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "roles"

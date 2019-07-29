@@ -1,4 +1,9 @@
+
 <h1>My Cart</h1>
-<% @current_cart.products.each do |product| %>
-    <%= product.name  %>
+<% if @current_cart  %>
+   <% @current_cart.products.each do |product| %>
+       <%= product.name  %>
+   <% end %>
+   <% else %>
+   <p>Your cart has zero items!</p>
 <% end %>
