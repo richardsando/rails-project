@@ -21,9 +21,9 @@
 #     Role.create(role)
 # end
 
-# -----------------------------------------
-# SEED REGULAR USERS (one for each member), note: standard "user" roles are already assigned to these users on creation
-# SEED PROFILES and assign them to the users
+# # -----------------------------------------
+# # SEED REGULAR USERS (one for each member), note: standard "user" roles are already assigned to these users on creation
+# # SEED PROFILES and assign them to the users
 
 # users = [
 #     {
@@ -48,7 +48,9 @@
 # end
 
 
+
 # note: when seeding profiles, we must put in the user_id foreign key, otherwise profiles wont be made because of the dependency on users
+
 # profiles = [
 #     {
 #         username: "coolRick",
@@ -77,8 +79,12 @@
 #     Profile.create!(profile)
 # end
     
+
 # -----------------------------------------
 # CREATE A FEW MORE USERS WHO ARE ARTISTS and going to sell stuff on the site (that have the role of an artist [role_id = 2])
+=======
+# # -----------------------------------------
+
 # artist_users = [
 #     {
 #         email: "bob@gmail.com",
@@ -101,17 +107,21 @@
 #     User.create!(artist)
 # end
 
-# Now we have to change the role of our 'artist' users to have a role_id of 2.
-# We cannot directly assign them a role_id of 2 when seeding the artist_users because we have set it up so they automatically
-# get a role_id of 1 upon creation of the user
+# # Now we have to change the role of our 'artist' users to have a role_id of 2.
+# # We cannot directly assign them a role_id of 2 when seeding the artist_users because we have set it up so they automatically
+# # get a role_id of 1 upon creation of the user
 
-# So we have to find our users bob, tom and amy (because we want them to be our artists) and then change their role 
+
+=======
+# # So we have to find our users bob, tom and amy (because we want them to be our artists) and then change their ro
 # artists_to_change = ["bob", "tom", "amy"]
 # artists_to_change.each do |name|
 #     User.find_by(email: "#{name}@gmail.com").update_attribute(:role_id, 2)
 # end
 
+
 ## NOW WE MAKE PROFILES FOR OUR ARTISTS
+
 # artist_profiles = [
 #     {
 #         username: "BlueBob",
@@ -204,11 +214,11 @@
 # end
 
 
-# -------------------------------------------------------------
-# site inventory//
-# bob owns the avengers t-shirt and jon snow artpiece
-# tom own the daenerys artpiece and the marvel logo hoodie
-# amy owns the minecraft creeper helmet and the rick and morty on canvas
+# # -------------------------------------------------------------
+# # site inventory//
+# # bob owns the avengers t-shirt and jon snow artpiece
+# # tom own the daenerys artpiece and the marvel logo hoodie
+# # amy owns the minecraft creeper helmet and the rick and morty on canvas
 
 # products = [
 #     {
@@ -280,6 +290,10 @@
 
 
 
-# NOTE: need to add fandom and category FK in product when seeding
+# # NOTE: need to add fandom and category FK in product when seeding
 
 
+# uploading images
+
+image = File.open("/Users/richardsando/rails-project/railsApp/app/assets/images/cat.jpg")
+Product.first.uploaded_image.attach(io:image, filename: 'cat.jpg')
