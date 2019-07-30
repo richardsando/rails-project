@@ -31,14 +31,18 @@
         
               <% if current_user %>
                   <% if current_user.profile.nil? %>
-                      <%= link_to "Create Profile", new_profile_path %>|
+                      <%= link_to "Create Profile", new_profile_path %>
                   <% else %>
                     <div class="profile-icon"> 
-                          <%= link_to image_tag  'user.svg' , {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
-                    </div>|
-
+                          <%= link_to image_tag('user.svg') , {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
+                    </div>
+                    
+                    <div class="cart-icon">
+                        <%= link_to image_tag('shopping-cart.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id } %>
+                    </div>
+                    
                   <% end %>
-                  <%= link_to image_tag 'shopping-cart.svg', "/profiles/#{current_user.id}/showcart" %>|
+                  
                 <% end %>
                 <%= render 'devise/menu/login_items' %>
               </div>
