@@ -283,11 +283,7 @@
 # # NOTE: need to add fandom and category FK in product when seeding
 
 
-# uploaded_image = Product.first.uploaded_image.attach(io: File.open("app/assets/images/cat.jpg"), filename: "cat.jpg", content_type: "image/png")
-
-
-
-# Product.first.uploaded_image.attach(io: File.open("/Users/richardsando/rails-project/railsApp/app/assets/images/cat.jpg"), filename: "cat.jpg", content_type: 'image/png’)
+# uploading images
 
 image = File.open("/Users/richardsando/rails-project/railsApp/app/assets/images/cat.jpg")
 Product.first.uploaded_image.attach(io:image, filename: 'cat.jpg')
