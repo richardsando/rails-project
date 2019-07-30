@@ -48,7 +48,9 @@
 # end
 
 
-# # note: when seeding profiles, we must put in the user_id foreign key, otherwise profiles wont be made because of the dependency on users
+
+# note: when seeding profiles, we must put in the user_id foreign key, otherwise profiles wont be made because of the dependency on users
+
 # profiles = [
 #     {
 #         username: "coolRick",
@@ -77,8 +79,12 @@
 #     Profile.create!(profile)
 # end
     
+
+# -----------------------------------------
+# CREATE A FEW MORE USERS WHO ARE ARTISTS and going to sell stuff on the site (that have the role of an artist [role_id = 2])
+=======
 # # -----------------------------------------
-# # CREATE A FEW MORE USERS WHO ARE ARTISTS and going to sell stuff on the site (that have the role of an artist [role_id = 2])
+
 # artist_users = [
 #     {
 #         email: "bob@gmail.com",
@@ -105,13 +111,17 @@
 # # We cannot directly assign them a role_id of 2 when seeding the artist_users because we have set it up so they automatically
 # # get a role_id of 1 upon creation of the user
 
-# # So we have to find our users bob, tom and amy (because we want them to be our artists) and then change their role 
+
+=======
+# # So we have to find our users bob, tom and amy (because we want them to be our artists) and then change their ro
 # artists_to_change = ["bob", "tom", "amy"]
 # artists_to_change.each do |name|
 #     User.find_by(email: "#{name}@gmail.com").update_attribute(:role_id, 2)
 # end
 
-# ## NOW WE MAKE PROFILES FOR OUR ARTISTS
+
+## NOW WE MAKE PROFILES FOR OUR ARTISTS
+
 # artist_profiles = [
 #     {
 #         username: "BlueBob",

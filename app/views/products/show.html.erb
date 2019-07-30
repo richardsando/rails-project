@@ -30,6 +30,26 @@
   <%= link_to @product.profile.username, @product.profile  %>
 </p>
 
+<p>
+<strong>Category:</strong>
+<%= 
+if @product.category.category == "T-shirts"
+  link_to @product.category.category, '/tshirts'
+elsif @product.category.category == "Stickers"
+  link_to @product.category.category, '/stickers'
+elsif @product.category.category == "iPhone cases"
+  link_to @product.category.category, '/iphonecases'
+else @product.category.category == "Prints"
+  link_to @product.category.category, '/prints'
+end
+%>
+</p>
+
+<p>
+<strong>Fandom:</strong>
+<%= @product.fandom.fandom%>
+</p>
+
 
 <% if user_signed_in? %>
   <% if current_user.profile != @product.profile %>
