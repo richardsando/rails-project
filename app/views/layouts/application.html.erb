@@ -4,66 +4,53 @@
     <title>RailsApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+       @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+    </style>
   </head>
-<div class="nav-wrapper">
-
-       <nav class="main-nav">
-       
-        <div class="logo">
-           <%= link_to 'CulturePop', '/' %>  
-        </div>
-        <div class ="search-wrapper">
-        search
-        </div>
-        
-          <div class="user-info">
-            
-           <% if current_user %>
-              <% if current_user.profile.nil? %>
-                  <%= link_to "Create Profile", new_profile_path %>|
-              <% else %>
-                  <p>You are currently signed in as <%= current_user.profile.username %></p>
-                  <%= link_to "My Profile", {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>|
-              <% end %>
-              <%= link_to "cart", "/profiles/#{current_user.id}/showcart" %>|
-            <% end %>
-            <%= render 'devise/menu/login_items' %>
-          </div>
-       </nav>
-       <div class="categories-nav">
-          <div class="link">
-            <%= link_to 'T-Shirts', '/tshirts' %>
-          </div>
-          <div class="link">
-            <%= link_to 'Prints', '/prints' %>
-          </div>
-          <div class="link">
-            <%= link_to 'iPhone Cases', '/iphonecases' %>
-            </div>
-          <div class="link">
-            <%= link_to 'Stickers', '/stickers' %></div>
-          <div class="link">
-            <%= link_to 'Fandoms', '/fandoms' %>
-          </div>
-          
-        </div>
-        <%= yield %>
-  </div>
-
-
   <body>
-   <div class="main-content">
+  
+    <div class="nav-wrapper">
 
+        <nav class="main-nav">
 
-   
-       
+            <div class="logo">
+              <%= link_to 'CulturePop', '/' %>  
+            </div>
 
-    
-      
-      
+            <div class ="search-wrapper">
+                <%= form_tag(products_path) do %>
+                Search all products <%= text_field_tag :store %>
+                <%= submit_tag 'Go!' %>
+                <% end %>
+            </div>
+
+            <div class="user-info">
+        
+              <% if current_user %>
+                  <% if current_user.profile.nil? %>
+                      <%= link_to "Create Profile", new_profile_path %>|
+                  <% else %>
+                    <div class="profile-icon"> 
+                          <%= link_to image_tag  'user.svg' , {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
+                    </div>|
+
+                  <% end %>
+                  <%= link_to image_tag 'shopping-cart.svg', "/profiles/#{current_user.id}/showcart" %>|
+                <% end %>
+                <%= render 'devise/menu/login_items' %>
+              </div>
+        </nav>
+          <div class="categories-nav">
+              <%= link_to 'T-Shirts', '/tshirts' %>
+              <%= link_to 'Prints', '/prints' %>
+              <%= link_to 'iPhone Cases', '/iphonecases' %>
+              <%= link_to 'Stickers', '/stickers' %>
+              <%= link_to 'Fandoms', '/fandoms' %>
+          </div>
     </div>
   </body>
+  <%= yield %>
 </html>
