@@ -49,7 +49,12 @@
 <% end %>
 
 <% if @product.uploaded_image.attached? %>
-  <%= image_tag @product.uploaded_image.service_url, class: 'image-size' %>
+  <% @product.uploaded_image.each do |image| %>
+      <div id="artist-product-img">
+          <%= image_tag image.service_url, class: 'image-size' %>
+      </div>
+  <% end %>
+  
 <% else %>
   <p>No image for this product</p>
 <% end %>
