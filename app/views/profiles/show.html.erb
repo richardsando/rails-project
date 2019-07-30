@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+
+<div class="banner-img">  
+<% if @profile.uploaded_image.attached? %>
+  <%= image_tag @profile.uploaded_image, class: 'image-size' %>
+<% else %>
+  
+<% end %>
+
+</div>
+
 <p>
   <strong>Username:</strong>
   <%= @profile.username %>
