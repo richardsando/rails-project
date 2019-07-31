@@ -1,11 +1,21 @@
-<h1>Fandoms</h1>
+
+ <div class="fandom-banner-wrapper">
+    <%= image_tag 'banners/fandom-banner.jpg', class: "fandom-banner" %>
+        <h1 class="fandom-banner-text">
+            Creations from your favourite franchises
+        </h1>
+    </div>
+
 <div class="page-wrapper">
     <div class="fandom-page">
         <ul class="fandom-list">
-            <% @fandoms.each do |product| %>
-                <% if product.uploaded_image.attached? %>
+            <% @fandoms.each do |fandom| %>
+                <% if fandom.uploaded_image.attached? %>
                     <li class="image-link">
-                        <%= link_to (image_tag product.uploaded_image.service_url , class: "fandom-img"), "/" %> 
+                        <%= link_to (image_tag fandom.uploaded_image.service_url , class: "fandom-img"), "/" %> 
+                        <p class="image-word">
+                            <%= fandom.fandom %>
+                        </p>
                     </li>
                 <% else %>
                     <li>

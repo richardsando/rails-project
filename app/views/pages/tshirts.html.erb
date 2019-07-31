@@ -2,20 +2,19 @@
  <div class="page-wrapper">
     <div class="page">
         <% @tshirts.each do |product| %>
-            <div class="product-wrapper">
+            <% if product.uploaded_image.attached? %>
                 <div class="product-img-wrapper">
-                    
-                    <% if product.uploaded_image.attached? %>
-                        <%= image_tag product.uploaded_image.first , class: "product-img" %>
-                    <% else %>
-                        <%= image_tag 'placeholder_image.svg' %>
-                    <% end %>
-                
+                <%= link_to (image_tag product.uploaded_image.first, class: "product-img"), {:controller => "products", :action => "show", :id => product.id} %>
                 </div>
-                <p><%= link_to product.name, product %></p>
-                <p><%= product.price %></p>
-                <p><%= link_to product.profile.username, product.profile %></p>
-            </div> 
+            <% else %>
+                <div class="product-img-wrapper">
+                    <%= link_to (image_tag ("placeholder_image.svg") , class: "product-img"), {:controller => "products", :action => "show", :id => product.id} %>
+                </div>
+            <% end %>
+            <p><%= link_to product.name, product %></p>
+            <p><%= product.price %></p>
+            <p><%= link_to product.profile.username, product.profile %></p>
+        </div> 
     <% end %>
     </div>
  </div>

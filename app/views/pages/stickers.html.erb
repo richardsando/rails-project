@@ -4,15 +4,17 @@
     <div class="page">
         <% @stickers.each do |product| %>
             <div class="product-wrapper">
-                <div class="product-img-wrapper">
+                
                     
                     <% if product.uploaded_image.attached? %>
-                        <%= image_tag product.uploaded_image.first , class: "product-img" %>
+                    <div class="product-img-wrapper">
+                        <%= link_to (image_tag (product.uploaded_image.first),class: "product-img"), ("/products/#{product.id}") %>
+                        </div>
                     <% else %>
                         <%= image_tag 'placeholder_image.svg' %>
                     <% end %>
                 
-                </div>
+                
                 <p><%= link_to product.name, product %></p>
                 <p><%= product.price %></p>
                 <p><%= link_to product.profile.username, product.profile %></p>

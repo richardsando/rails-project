@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     width: 100vw;
+    // background-color: red;
 }
 
 .page {
@@ -20,7 +21,7 @@
 }
 
 .product-wrapper {
-    background-color: orangered; 
+    background-color: white; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,6 +34,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .product-img {
     display: flex;
     justify-self: center;
@@ -41,15 +43,39 @@
     align-items: center;
     justify-self: center;
 }
+.product-img-wrapper  > a{
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
 
-// .fandom-page {
-//     margin-left: 42px;
-//     margin-right: 42px;
-//     display: grid;
-//     width: 100%;
-//     grid-gap: 20px;
-//     // justify-content: center
-// }
+.fandom-banner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fandom-banner {
+    height: 370px;
+    filter: grayscale(50%);
+    opacity: 0.9;
+}
+.fandom-banner-text {
+    position: absolute;
+    // top: 10em;
+    color: white;
+    font-size: 6em;
+
+}
+.fandom-page {
+    margin-left: 42px;
+    margin-right: 42px;
+    display: grid;
+    width: 100%;
+    grid-gap: 20px;
+    // justify-content: center
+}
 
 ul {
     columns: 250px;
@@ -68,6 +94,7 @@ ul {
 
   .fandom-page {
       width: 80%;
+      background-color: white; 
   }
   .image-link {
     padding-top: 5px;
@@ -77,10 +104,15 @@ ul {
     width: 20em;
     max-width: 100%;
     z-index: 0;
+    display: flex;
+    font-size: 1.5em;
+    justify-content: center;
+    align-items: center;
+    color: white;
 
   }
   .fandom-img {
-      z-index: 0;
+    z-index: 0;
     width: 100%;
     display: block;
     object-fit: cover;
@@ -90,8 +122,8 @@ ul {
     box-shadow: 1px 3px 8px rgba(0,0,0,0.5);
     filter: grayscale(100%);
     transform: scale(1);
-    transition: transform 1.5s, filter 0.5s, box-shadow 0.5s, scale 0.5s;
-    -webkit-transition: transform 1.5s, filter 0.5s, -webkit-filter 0.5s, box-shadow 0.5s, scale 0.5s;
+    transition: transform 1.25s, filter 0.5s, box-shadow 0.5s, scale 0.5s;
+    -webkit-transition: transform 1.25s, filter 0.5s, -webkit-filter 0.5s, box-shadow 0.5s, scale 0.5s;
   }
   .image-link:hover .fandom-img,
   .image-link:focus .fandom-img { 
@@ -100,8 +132,13 @@ ul {
     -webkit-filter: none;
     filter: none;
     box-shadow: #224 0.2em 0.2em 0.6em 0.1em;
-    
-    
+  }
+
+  .image-word {
+      display: flex;
+    position: absolute;
+    align-self: center;
+
   }
   
 
