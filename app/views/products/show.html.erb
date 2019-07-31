@@ -64,6 +64,8 @@ end
 <% if user_signed_in? %>
   <% if current_user.profile != @product.profile %>
       <%= link_to 'add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}" %> |
+      qty = form. select
+      size = form. select
       <%= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %> |
       <%= link_to 'Back', products_path %>
   <% end %>
@@ -73,9 +75,9 @@ end
         <%= link_to 'Edit', edit_product_path(@product) %> |
         <%= link_to 'back to profile', "/profiles/#{@product.profile.id}" %>
   <% end %>
-<% else %>
-  <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
-  <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
+  <% else %>
+    <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
+    <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
 <% end %>
 
 

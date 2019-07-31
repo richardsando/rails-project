@@ -1,34 +1,18 @@
-<h1> Fandoms </h1>
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @fandoms.each do |fandom| %>
-            <tr>
-                <td><%= fandom.id %></td>
-                <td><%= fandom.fandom %></td>
-            </tr>
-        <%end%>
-    </tbody>
-</table>
-
-
-<div class="home-wrapper">
-    <div class="fandoms-page">
-        <% @fandoms.all.each do |fandom| %>
-            <div class="fandom-wrapper">
-                <div class="fandom-img-wrapper">
-                    <div class="fandom-img">
-                        <%= image_tag 'placeholder_image.svg' %>
-                    </div>
-                </div>
-            </div> 
-    <% end %>
+<h1>Fandoms</h1>
+<div class="page-wrapper">
+    <div class="fandom-page">
+        <ul class="fandom-list">
+            <% @fandoms.each do |product| %>
+                <% if product.uploaded_image.attached? %>
+                    <li class="image-link">
+                        <%= link_to (image_tag product.uploaded_image.service_url , class: "fandom-img"), "/" %> 
+                    </li>
+                <% else %>
+                    <li>
+                        <%= image_tag "placeholder_image.svg", class:"fandom-img" %>
+                    </li>
+                <% end %>
+            <% end %>
+        </ul>
     </div>
- </div>
+</div>
