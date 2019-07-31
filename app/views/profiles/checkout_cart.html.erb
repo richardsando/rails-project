@@ -1,3 +1,14 @@
 <h1> Thank you for your purchase! </h1>
 
+<br>
+
+<h2>
+    Item<% if @checked_out_cart.products.length > 1%>s<% end %> ordered:
+</h2>
+
+<% @checked_out_cart.products.each do |product| %>
+    <h3> <%= "#{product.name} | #{product.price} | qty: " %> </h3>
+<% end %>
+<br>
+
 <%= link_to 'Return to profile', "/profiles/#{current_user.profile.id}"%>

@@ -10,6 +10,8 @@ gem 'hirb'  #hirb gem lets you use see data in active record more clearly
 gem 'stripe' 
 #activestorage
 gem "aws-sdk-s3", require: false
+#Need this in order to inline svg
+gem 'inline_svg'
 #devise
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
