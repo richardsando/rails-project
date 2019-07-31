@@ -1,17 +1,20 @@
 
 <h1>My Cart</h1>
-<% if current_user.profile.carts.any?  %>
 
-   <% @cart.products.each do |product| %>
-       <p>
+<% if @cart.products.empty? %>
+     <p>Your cart has zero items!</p>
+<% else %>
+     <% @cart.products.each do |product| %>
+          <p>
             <%= link_to product.name, "/products/#{product.id}" %>
             <%= product.price %> |
-            Remove Item
-       </p>
-   <% end %>
-<% else %>
-   <p>Your cart has zero items!</p>
+            <%= link_to 'Remove Item', "/profiles/#{params[:id]}/showcart/remove-item?product_id=#{product.id}" %>
+          </p>
+     <% end %>
 <% end %>
 
-
-<p>Checkout</p>
+<% if @cart.products.empty? %>
+     <%= link_to 'Checkout', "" %>      <%# dead link - cant checkout if you have no items in the cart %>
+<% else %>
+     <%= link_to 'Checkout', "/profiles/#{params[:id]}/checkout_cart?cart_id=#{@cart.id}" %>
+<% end %>

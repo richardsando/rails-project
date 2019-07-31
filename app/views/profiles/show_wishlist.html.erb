@@ -1,11 +1,15 @@
-<h1>This is my wishlist</h1>
+<h1>My wishlist</h1>
 
-<% @wishlist.products.each do |product| %>
-    <p>
-        <%= link_to product.name, product_path %> |
-        <%= product.price %> |
-        Remove from wishlist 
-    </p>
+<% if @wishlist.products.empty? %>
+    <p>Your wishlist is empty :( </p>
+<% else %>
+    <% @wishlist.products.each do |product| %>
+        <p>
+            <%= link_to product.name, product_path %> |
+            <%= product.price %> |
+            <%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item?product_id=#{product.id}" %>
+        </p>
+    <% end %>
 <% end %>
 
 <%= link_to 'Back to my Profile', "/profiles/#{params[:id]}/" %>

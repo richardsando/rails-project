@@ -54,18 +54,17 @@
     <%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
 <% end %>
   
-  wishlist
-  cart
-  checkout
 
-  <% if @profile.uploaded_image.attached? %>
+
+<% if @profile.uploaded_image.attached? %>
   <%= image_tag @profile.uploaded_image, class: 'image-size' %>
 <% else %>
   <p>No image for this profile</p>
 <% end %>
 
-
+<%= link_to 'View Order History', "/profiles/#{@profile.id}/previous_orders" %> | 
+<%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%>
 
 <br><br>
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<%= link_to 'Edit', edit_profile_path(@profile) %> |    <%# not sure why this isnt working %>
+<%= link_to 'Home', '/' %>

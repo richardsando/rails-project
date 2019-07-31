@@ -1,52 +1,57 @@
 class ProfilesController < ApplicationController
   # before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
-  def add_to_wishlist
-    @wishlist = current_user.profile.wishlist
-    if @wishlist == nil
-      @wishlist = Wishlist.create(profile_id: params[:id])
-      product = Product.find(params[:product_id])
-      @wishlist.products << product
-    end
-    redirect_to "/profiles/#{params[:id]}/showwishlist"
-  end
 
   def show_wishlist
     @wishlist = current_user.profile.wishlist
   end
 
-  def become_an_artist
-    current_user.update(role_id: 2)
+  def add_to_wishlist
+    @wishlist = current_user.profile.wishlist
+    product = Product.find(params[:product_id])
+    @wishlist.products << product
+    redirect_to "/profiles/#{params[:id]}/show-wishlist"
   end
 
-  def add_to_cart
-      @cart = current_user.profile.carts.where("active_status = ?", true).first
-      if @cart == nil
-        @cart = Cart.create(profile_id: params[:id])
-        product = Product.find(params[:product_id])
-        @cart.products << product  
-      else
-        product = Product.find(params[:product_id])
-        @cart.products << product
-      end
-      redirect_to "/profiles/#{params[:id]}/showcart"
+  def remove_wishlist_item
+    wishlist_id = Profile.find(params[:id]).wishlist.id
+    @wishlistproduct = WishlistProduct.where("wishlist_id = ? AND product_id = ?", wishlist_id, params[:product_id]).first
+    @wishlistproduct.destroy
+    redirect_to "/profiles/#{params[:id]}/show-wishlist"
   end
 
   def showcart
-      @cart = current_user.profile.carts.where("active_status = ?", true).first
+    @cart = current_user.profile.carts.where("active_status = ?", true).first   #gets the current active cart
   end
 
-  def checkout_cart
+  def add_to_cart
+    @cart = current_user.profile.carts.where("active_status = ?", true).first   #get the active cart
+    product = Product.find(params[:product_id])
+    @cart.products << product
+    redirect_to "/profiles/#{params[:id]}/showcart"
+  end
 
+  def remove_cart_item
+    cart_id = Profile.find(params[:id]).carts.where("active_status = ?", true).first.id
+    @cartproduct = CartProduct.where("cart_id = ? AND product_id = ?", cart_id, params[:product_id]).first
+    @cartproduct.destroy
+    redirect_to "/profiles/#{params[:id]}/showcart"
+  end
+
+  def become_an_artist
+    current_user.update(role_id: 2)
+  end
+  
+  def checkout_cart
+    Cart.find(params[:cart_id]).update_attribute(:active_status, false)   #make the old cart inactive
+    Cart.create(profile_id: params[:id])  #and then give a new cart to that profile
   end
 
   def previous_orders
-    @previous_orders = @cart = current_user.profile.carts.where("active_status = ?", false)
+    @previous_orders = current_user.profile.carts.where("active_status = ?", false)
   end
 
-  def wishlist
 
-  end
   # GET /profiles
   # GET /profiles.json
   def index
@@ -71,11 +76,12 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
-
+    
     @profile = Profile.new(profile_params)
-    # @profile.user = current_user
     respond_to do |format|
-      if @profile.save        
+      if @profile.save 
+        @cart = Cart.create(profile_id: @profile.id)       #create an active cart with the creation of the profile - check
+        @wishlist = Wishlist.create(profile_id: @profile.id) #create the one wishlist that the user always has 
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
       else
