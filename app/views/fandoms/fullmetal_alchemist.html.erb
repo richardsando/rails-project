@@ -1,0 +1,19 @@
+<h1> Fullmetal Alchemist </h1>
+
+<% @products.all.each do |product| %>
+    <div class="product-wrapper">
+        <div class="product-img-wrapper">
+            <div class="product-img">
+            <% if product.uploaded_image.attached? %>
+            <%= image_tag 'placeholder_image.svg' %>
+
+            <% else %>
+            <%= image_tag 'placeholder_image.svg' %>
+            <% end %>
+            </div>
+        </div>
+        <p><%= link_to product.name, product %></p>
+        <p><%= product.price %></p>
+        <p><%= link_to product.profile.username, product.profile %></p>
+    </div> 
+<%end%>

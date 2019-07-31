@@ -1,6 +1,39 @@
 <h1>T-shirts</h1>
+
+
+<div class="filter">
+    <%= link_to "Marvel", marvel_path %><br>
+    <%= link_to "DC", dc_path %><br>
+    <%= link_to "Star Wars", star_wars_path %><br>
+    <%= link_to "Dr Who", dr_who_path %><br>
+    <%= link_to "The Walking Dead", the_walking_dead_path %><br>
+    <%= link_to "Supernatural", supernatural_path %><br>
+    <%= link_to "Pokemon", pokemon_path %><br>
+    <%= link_to "Dragonball Z", dragonball_z_path %><br>
+    <%= link_to "Fullmetal Alchemist", fullmetal_alchemist_path %><br>
+    <%= link_to "Sherlock", sherlock_path %><br>
+    <%= link_to "Adventure Time", adventure_time_path %><br>
+    <%= link_to "Game Of Thrones", game_of_thrones_path %><br>
+</div>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Artist</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
  <div class="page-wrapper">
     <div class="page">
+
         <% @tshirts.each do |product| %>
             <% if product.uploaded_image.attached? %>
                 <div class="product-img-wrapper">
