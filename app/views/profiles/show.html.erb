@@ -1,66 +1,80 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="profile-wrapper">
+
+    <div class="profile">
+
+      <p id="notice"><%= notice %></p>
+
+      <div class="banner-wrapper">
+
+          <% if @profile.uploaded_image.attached? %>
+              <div class="banner-img">  
+                <%= image_tag @profile.uploaded_image, class: 'image-size' %>
+              </div>     
+          <% end %>
+          <h1 class="username"><%= @profile.username %></h1>
+           <% if @profile.uploaded_image.attached? %>
+              <div class="profile-img">  
+                <%= image_tag @profile.uploaded_image, class: 'image-size' %>
+              </div>
+          <% else %>
+              <%= image_tag "user.svg", class: "placeholder-profile" %>
+          <% end %>
+      </div>
+    <div class="profile-info">
+        <p>
+          <strong>About:</strong>
+          <%= @profile.about %>
+        </p>
+        <p>
+           <strong>Location:</strong>
+          <%= @profile.location %>
+       </p>
+
+        <p>
+          <strong>Joindate:</strong>
+          <%= @profile.joindate %>
+        </p>
+        <br>
+        <p>
+          <%= @profile.username %> is a <%= @profile.user.role.privilege %> 
+        </p>
 
 
-<div class="banner-img">  
-<% if @profile.uploaded_image.attached? %>
-  <%= image_tag @profile.uploaded_image, class: 'image-size' %>
-<% else %>
-  
-<% end %>
-
-</div>
-
-<p>
-  <strong>Username:</strong>
-  <%= @profile.username %>
-</p>
-
-<p>
-  <strong>About:</strong>
-  <%= @profile.about %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @profile.location %>
-</p>
-
-<p>
-  <strong>Joindate:</strong>
-  <%= @profile.joindate %>
-</p>
-<br>
-
-
-<p>My current privilege is <%= current_user.role.privilege %> </p>
-
-<br>
-
-<% if current_user.role.id == 2  %>
-     <% @profile.products.each do |product| %>
-      <p>
-        <%= link_to product.name, "/products/#{product.id}" %>
-        <% if current_user.profile == @profile %>
-              | <%= link_to "Edit", {:controller => "products", :action => "edit", :id => product.id } %>
-              | <%= link_to 'Remove',  "/products/#{product.id}", method: :delete %>
+  <br>
+        <% if current_user %>
+          <% if current_user.role.id == 2  %>
+              <% @profile.products.each do |product| %>
+                <p>
+                  <%= link_to product.name, "/products/#{product.id}" %>
+                  <% if current_user.profile == @profile %>
+                        | <%= link_to "Edit", {:controller => "products", :action => "edit", :id => product.id } %>
+                        | <%= link_to 'Remove',  "/products/#{product.id}", method: :delete %>
+                  <% end %>
+                </p>
+              <% end %>
+              <br>
+              <% if current_user.profile == @profile %>
+                <p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
+              <% end %>
+              <% else %>
+                 <%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
+          <% end %>
+        <% end %> 
+        <% if @profile.uploaded_image.attached? %>
+            <%= image_tag @profile.uploaded_image, class: 'image-size' %>
+        <% else %>
+          <p>No image for this profile</p>
         <% end %>
-      </p>
-    <% end %>
-    <br>
-    <% if current_user.profile == @profile %>
-      <p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
-    <% end %>
-    <% else %>
-    <%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
-<% end %>
-  
-
-
-<% if @profile.uploaded_image.attached? %>
-  <%= image_tag @profile.uploaded_image, class: 'image-size' %>
-<% else %>
-  <p>No image for this profile</p>
-<% end %>
 
 <%= link_to 'View Order History', "/profiles/#{@profile.id}/previous_orders" %> | 
 <%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%>
@@ -68,3 +82,14 @@
 <br><br>
 <%= link_to 'Edit', edit_profile_path(@profile) %> |    <%# not sure why this isnt working %>
 <%= link_to 'Home', '/' %>
+
+        <br>
+        <%= link_to 'Edit', edit_profile_path(@profile) %> |
+        <%= link_to 'Back', profiles_path %>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+r
