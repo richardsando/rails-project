@@ -368,12 +368,74 @@
 #     Product.create(sticker)
 # end
 
-# image_names = ["pikachu-sticker.jpg", "goku-young-sticker.jpg", "finn_and_jake.jpg", "deadpool.jpg", "negan.jpg", "r2d2.jpg", "chewie.png"]
-# product_names = ["Pikachu sticker", "Young goku sticker", "Finn and Jake sticker", "Deadpool sticker", "Negan sticker", "R2D2 sticker", "Chewbacca sticker"]
+image_names = ["pikachu-sticker.jpg", "goku-young-sticker.jpg", "finn_and_jake.jpg", "deadpool.jpg", "negan.jpg", "r2d2.jpg", "chewie.png"]
+product_names = ["Pikachu sticker", "Young goku sticker", "Finn and Jake sticker", "Deadpool sticker", "Negan sticker", "R2D2 sticker", "Chewbacca sticker"]
 
-# zip = image_names.zip(product_names)
+zip = image_names.zip(product_names)
 
-# zip.each do |img_name, product_name|
-#     path = Rails.root.join("app", "assets", "images", img_name)
-#     Product.find_by(name: product_name).uploaded_image.attach(io: File.open(path), filename: img_name)
+zip.each do |img_name, product_name|
+    path = Rails.root.join("app", "assets", "images", img_name)
+    Product.find_by(name: product_name).uploaded_image.attach(io: File.open(path), filename: img_name)
+end
+
+
+fandoms = [
+    {
+        fandom: "Marvel",
+        image_name: "marvel-fandom.jpg"
+    },
+    {
+        fandom: "DC",
+        image_name: "dc-fandom.jpg"
+    },
+    {
+        fandom: "Star Wars",
+        image_name: "star-wars-fandom.jpg"
+    },
+    {
+        fandom: "Dr Who",
+        image_name: "dr-who-fandom.jpg"
+    },
+    {
+        fandom: "The Walking Dead",
+        image_name: "walking-dead-fandom.jpg"
+    },
+    {
+        fandom: "Supernatural",
+        image_name: "supernatural-fandom.jpg"
+    },
+    {
+        fandom: "Pokemon",
+        image_name: "pokemon-fandom.jpg"
+    },
+    {
+        fandom: "Dragonball Z",
+        image_name: "dragonball-z-fandom.jpg"
+    },
+    {
+        fandom: "Fullmetal Alchemist",
+        image_name: "fullmetal-alchemist-fandom.jpg"
+    },
+    {
+        fandom: "Sherlock",
+        image_name: "sherlock-fandom.jpg"
+    },
+    {
+        fandom: "Adventure Time",
+        image_name: "adventure-time-fandom.jpg"
+    },
+    {
+        fandom: "Game of Thrones",
+        image_name: "game-of-thrones-fandom.jpg"
+    }
+]
+
+fandoms.each do |fandom|
+    path = Rails.root.join("app", "assets", "images","fandoms", fandom[:image_name])
+    Fandom.find_by(fandom: fandom[:fandom]).uploaded_image.attach(io: File.open(path), filename: fandom[:image_name])
+end
+
+
+# fandoms.each do |fandom|
+#     Fandom.find_by(fandom: fandom[:fandom]).uploaded_image.purge
 # end

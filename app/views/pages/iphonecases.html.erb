@@ -1,5 +1,20 @@
 <h1>iPhone Cases</h1>
 
+<div class="filter">
+    <%= link_to "Marvel", marvel_path %><br>
+    <%= link_to "DC", dc_path %><br>
+    <%= link_to "Star Wars", star_wars_path %><br>
+    <%= link_to "Dr Who", dr_who_path %><br>
+    <%= link_to "The Walking Dead", the_walking_dead_path %><br>
+    <%= link_to "Supernatural", supernatural_path %><br>
+    <%= link_to "Pokemon", pokemon_path %><br>
+    <%= link_to "Dragonball Z", dragonball_z_path %><br>
+    <%= link_to "Fullmetal Alchemist", fullmetal_alchemist_path %><br>
+    <%= link_to "Sherlock", sherlock_path %><br>
+    <%= link_to "Adventure Time", adventure_time_path %><br>
+    <%= link_to "Game Of Thrones", game_of_thrones_path %><br>
+</div>
+
 
 <table>
     <thead>
@@ -13,13 +28,25 @@
     </thead>
 
     <tbody>
+
+ <div class="page-wrapper">
+    <div class="page">
+
         <% @iphonecases.each do |product| %>
-            <tr>
-                <td><%= link_to product.name, product %>  </td>
-                <td><%= product.description %></td>
-                <td><%= product.price %></td>
-                <td><%= link_to product.profile.username, product.profile %></td>
-            </tr>
-        <%end%>
-    </tbody>
-</table>
+            <div class="product-wrapper">
+                <div class="product-img-wrapper">
+                    
+                    <% if product.uploaded_image.attached? %>
+                        <%= image_tag product.uploaded_image.first , class: "product-img" %>
+                    <% else %>
+                        <%= image_tag 'placeholder_image.svg' %>
+                    <% end %>
+                
+                </div>
+                <p><%= link_to product.name, product %></p>
+                <p><%= product.price %></p>
+                <p><%= link_to product.profile.username, product.profile %></p>
+            </div> 
+    <% end %>
+    </div>
+ </div>

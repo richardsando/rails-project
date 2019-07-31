@@ -1,34 +1,28 @@
-<h1> Fandoms </h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @fandoms.each do |fandom| %>
-            <tr>
-                <td><%= fandom.id %></td>
-                <td><%= fandom.fandom %></td>
-            </tr>
-        <%end%>
-    </tbody>
-</table>
-
-
-<div class="home-wrapper">
-    <div class="fandoms-page">
-        <% @fandoms.all.each do |fandom| %>
-            <div class="fandom-wrapper">
-                <div class="fandom-img-wrapper">
-                    <div class="fandom-img">
-                        <%= image_tag 'placeholder_image.svg' %>
-                    </div>
-                </div>
-            </div> 
-    <% end %>
+ <div class="fandom-banner-wrapper">
+    <%= image_tag 'banners/fandom-banner.jpg', class: "fandom-banner" %>
+        <h1 class="fandom-banner-text">
+            Creations from your favourite franchises
+        </h1>
     </div>
- </div>
+
+<div class="page-wrapper">
+    <div class="fandom-page">
+        <ul class="fandom-list">
+            <% @fandoms.each do |fandom| %>
+                <% if fandom.uploaded_image.attached? %>
+                    <li class="image-link">
+                        <%= link_to (image_tag fandom.uploaded_image.service_url , class: "fandom-img"), "/" %> 
+                        <p class="image-word">
+                            <%= fandom.fandom %>
+                        </p>
+                    </li>
+                <% else %>
+                    <li>
+                        <%= image_tag "placeholder_image.svg", class:"fandom-img" %>
+                    </li>
+                <% end %>
+            <% end %>
+        </ul>
+    </div>
+</div>

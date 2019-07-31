@@ -73,6 +73,7 @@ end
 <% if user_signed_in? %>
   <% if current_user.profile != @product.profile %>
       <%= link_to 'add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}" %> |
+
       
       <%#= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %> 
       <div class="wishlist-box">
@@ -85,6 +86,7 @@ end
       </div>
 
       <%#= link_to 'Back', products_path %>
+
   <% end %>
 
   <% if current_user.profile == @product.profile %>
@@ -96,6 +98,7 @@ end
 <% else %>  <%#user needs to be signed in in order to add the product to their cart or their wishlist %>
   <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
   <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
+
 <% end %>
 
 
