@@ -50,11 +50,21 @@ end
 <%= @product.fandom.fandom%>
 </p>
 
+<% if @product.uploaded_image.attached? %>
+  <% @product.uploaded_image.each do |image| %>
+      <div id="artist-product-img">
+          <%= image_tag image.service_url, class: 'image-size' %>
+      </div>
+  <% end %>
+<% else %>
+  <p>No image for this product</p>
+<% end %>
 
+<br>
 <% if user_signed_in? %>
   <% if current_user.profile != @product.profile %>
-      <%= link_to 'add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}" %>
-      <%= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %>
+      <%= link_to 'add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}" %> |
+      <%= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %> |
       <%= link_to 'Back', products_path %>
   <% end %>
 
@@ -68,15 +78,6 @@ end
   <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
 <% end %>
 
-<% if @product.uploaded_image.attached? %>
-  <% @product.uploaded_image.each do |image| %>
-      <div id="artist-product-img">
-          <%= image_tag image.service_url, class: 'image-size' %>
-      </div>
-  <% end %>
-  
-<% else %>
-  <p>No image for this product</p>
-<% end %>
+
 
 

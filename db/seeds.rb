@@ -82,7 +82,7 @@
 
 # -----------------------------------------
 # CREATE A FEW MORE USERS WHO ARE ARTISTS and going to sell stuff on the site (that have the role of an artist [role_id = 2])
-=======
+
 # # -----------------------------------------
 
 # artist_users = [
@@ -112,7 +112,6 @@
 # # get a role_id of 1 upon creation of the user
 
 
-=======
 # # So we have to find our users bob, tom and amy (because we want them to be our artists) and then change their ro
 # artists_to_change = ["bob", "tom", "amy"]
 # artists_to_change.each do |name|
@@ -290,10 +289,91 @@
 
 
 
-# # NOTE: need to add fandom and category FK in product when seeding
+## SEEDING STICKERS
 
+# stickers = [
+#     {
+#         name: "Pikachu sticker",
+#         description: "used for decorating your items",
+#         price: "$15.00",
+#         size: "N/A",
+#         stock: 30,
+#         profile_id: User.find_by(email: "amy@gmail.com").profile.id,
+#         category_id: 2,
+#         fandom_id: 7
+#     },
+#     {
+#         name: "Young goku sticker",
+#         description: "young goku flying on his nimbus",
+#         price: "$16.00",
+#         size: "N/A",
+#         stock: 40,
+#         profile_id: User.find_by(email: "bob@gmail.com").profile.id,
+#         category_id: 2,
+#         fandom_id: 8
+#     },
+#     {
+#         name: "Finn and Jake sticker",
+#         description: "best buds hanging out",
+#         price: "$8.00",
+#         size: "N/A",
+#         stock: 40,
+#         profile_id: User.find_by(email: "bob@gmail.com").profile.id,
+#         category_id: 2,
+#         fandom_id: 11
+#     },
+#     {
+#         name: "Deadpool sticker",
+#         description: "deadpool and pony",
+#         price: "$15.00",
+#         size: "N/A",
+#         stock: 25,
+#         profile_id: User.find_by(email: "bob@gmail.com").profile.id,
+#         category_id: 2,
+#         fandom_id: 1
+#     },
+#     {
+#         name: "Negan sticker",
+#         description: "bad guy",
+#         price: "$14.00",
+#         size: "N/A",
+#         stock: 15,
+#         profile_id: User.find_by(email: "bob@gmail.com").profile.id,
+#         category_id: 2,
+#         fandom_id: 5
+#     },
+#     {
+#         name: "R2D2 sticker",
+#         description: "the famous robot",
+#         price: "$20.00",
+#         size: "N/A",
+#         stock: 30,
+#         profile_id: User.find_by(email: "bob@gmail.com").profile.id,
+#         category_id: 2,
+#         fandom_id: 3
+#     },
+#     {
+#         name: "Chewbacca sticker",
+#         description: "roarr",
+#         price: "$15.00",
+#         size: "N/A",
+#         stock: 20,
+#         profile_id: User.find_by(email: "bob@gmail.com").profile.id,
+#         category_id: 2,
+#         fandom_id: 3
+#     }
+# ]
 
-# uploading images
+# stickers.each do |sticker|
+#     Product.create(sticker)
+# end
 
-image = File.open("/Users/richardsando/rails-project/railsApp/app/assets/images/cat.jpg")
-Product.first.uploaded_image.attach(io:image, filename: 'cat.jpg')
+# image_names = ["pikachu-sticker.jpg", "goku-young-sticker.jpg", "finn_and_jake.jpg", "deadpool.jpg", "negan.jpg", "r2d2.jpg", "chewie.png"]
+# product_names = ["Pikachu sticker", "Young goku sticker", "Finn and Jake sticker", "Deadpool sticker", "Negan sticker", "R2D2 sticker", "Chewbacca sticker"]
+
+# zip = image_names.zip(product_names)
+
+# zip.each do |img_name, product_name|
+#     path = Rails.root.join("app", "assets", "images", img_name)
+#     Product.find_by(name: product_name).uploaded_image.attach(io: File.open(path), filename: img_name)
+# end

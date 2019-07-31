@@ -10,6 +10,7 @@
        @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
     </style>
   </head>
+
   <body>
   
     <div class="nav-wrapper">
@@ -36,10 +37,11 @@
                     <div class="profile-icon"> 
                           <%= link_to image_tag('user.svg') , {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
                     </div>
-                    
-                    <div class="cart-icon">
-                        <%= link_to image_tag('shopping-cart.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id } %>
-                    </div>
+                    <% if current_user.profile.present? %>
+                        <div class="cart-icon">
+                            <%= link_to image_tag('shopping-cart.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id } %>
+                        </div>
+                    <% end %>
                     
                   <% end %>
                   
