@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
+
+<% if notice == nil %>
+  <%# do nothing %>
+<% elsif notice.present? %>
+  <div class="message-wrap">
+    <%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
+    <p id="item-added-notice"><%= notice %></p>    <%# need to have a notice that pops up saying that the item was successfully added %>
+    <p> <%= link_to 'To cart', "/profiles/#{current_user.profile.id}/showcart" %> </p>
+  </div>
+<% end %>
 
 <p>
   <strong>Name:</strong>
@@ -64,10 +73,20 @@ end
 <% if user_signed_in? %>
   <% if current_user.profile != @product.profile %>
       <%= link_to 'add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}" %> |
-      qty = form. select
-      size = form. select
-      <%= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %> |
-      <%= link_to 'Back', products_path %>
+
+      
+      <%#= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %> 
+      <div class="wishlist-box">
+        <% if current_user.profile.wishlist.products.where("product_id = ?", @product.id).present? %>
+          <%# the current product that the user is on has already been added to the wishlist %>
+          <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-active"), "/profiles/#{current_user.profile.id}/show-wishlist/remove-item?product_id=#{@product.id}" %>
+        <% else %>
+          <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-inactive"), "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %>
+        <% end %>
+      </div>
+
+      <%#= link_to 'Back', products_path %>
+
   <% end %>
 
   <% if current_user.profile == @product.profile %>
@@ -75,9 +94,11 @@ end
         <%= link_to 'Edit', edit_product_path(@product) %> |
         <%= link_to 'back to profile', "/profiles/#{@product.profile.id}" %>
   <% end %>
-  <% else %>
-    <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
-    <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
+
+<% else %>  <%#user needs to be signed in in order to add the product to their cart or their wishlist %>
+  <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
+  <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
+
 <% end %>
 
 

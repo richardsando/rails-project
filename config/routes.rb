@@ -3,21 +3,18 @@ Rails.application.routes.draw do
   resources :profiles
   devise_for :users
   root to: 'pages#home'
-  get '/profiles/:id/addtocart' => 'profiles#add_to_cart'
+  get '/profiles/:id/addtocart' => 'profiles#add_to_cart' #working on this one
+
   get '/profiles/:id/showcart' => 'profiles#showcart'
+  get '/profiles/:id/showcart/remove-item' => 'profiles#remove_cart_item'
   get '/profiles/:id/checkout_cart' => 'profiles#checkout_cart'
   get '/profiles/:id/previous_orders' => 'profiles#previous_orders'
-
-  #remove cart item
-  get '/profiles/:id/showcart/remove-item' => 'profiles#remove_cart_item'
-
-  #remove wishlist item
-  get '/profiles/:id/show-wishlist/remove-item' => 'profiles#remove_wishlist_item'
-
 
   #wishlist stuff
   get '/profiles/:id/addtowishlist' => 'profiles#add_to_wishlist'
   get '/profiles/:id/show-wishlist' => 'profiles#show_wishlist'
+  get '/profiles/:id/show-wishlist/remove-item' => 'profiles#remove_wishlist_item'
+  get '/profiles/:id/show-wishlist/remove-item-on-wishlist' => 'profiles#remove_item_on_wishlist_page'
 
   # categories and fandoms
   get '/tshirts' => 'pages#tshirts'

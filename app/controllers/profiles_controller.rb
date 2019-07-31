@@ -6,18 +6,35 @@ class ProfilesController < ApplicationController
     @wishlist = current_user.profile.wishlist
   end
 
+  def remove_item_on_wishlist_page
+    wishlist_id = Profile.find(params[:id]).wishlist.id
+    @wishlistproduct = WishlistProduct.where("wishlist_id = ? AND product_id = ?", wishlist_id, params[:product_id]).first
+    @wishlistproduct.destroy
+    redirect_to "/profiles/#{params[:id]}/show-wishlist"
+  end
+
+  #maybe just add a flag to say what page you came from, so you know where to redirect_to
   def add_to_wishlist
     @wishlist = current_user.profile.wishlist
     product = Product.find(params[:product_id])
     @wishlist.products << product
-    redirect_to "/profiles/#{params[:id]}/show-wishlist"
+    # need to redirect back to the same product and have a notice rendering success 
+    redirect_to "/products/#{params[:product_id]}"
+
+    #this one redirects you straight to the wishlist
+    # redirect_to "/profiles/#{params[:id]}/show-wishlist"
   end
 
   def remove_wishlist_item
     wishlist_id = Profile.find(params[:id]).wishlist.id
     @wishlistproduct = WishlistProduct.where("wishlist_id = ? AND product_id = ?", wishlist_id, params[:product_id]).first
     @wishlistproduct.destroy
-    redirect_to "/profiles/#{params[:id]}/show-wishlist"
+
+    #need to redirect back to the item 
+    redirect_to "/products/#{params[:product_id]}"
+
+    #this one redirects you straight to the wishlist
+    # redirect_to "/profiles/#{params[:id]}/show-wishlist"
   end
 
   def showcart
@@ -28,7 +45,14 @@ class ProfilesController < ApplicationController
     @cart = current_user.profile.carts.where("active_status = ?", true).first   #get the active cart
     product = Product.find(params[:product_id])
     @cart.products << product
-    redirect_to "/profiles/#{params[:id]}/showcart"
+
+    respond_to do |format|
+      format.html {redirect_to "/products/#{params[:product_id]}", notice: 'The item has been successfully added to your cart.' }
+    end
+    #this one redirects to the cart
+  
+    # redirect_to "/profiles/#{params[:id]}/showcart"
+
   end
 
   def remove_cart_item
@@ -43,7 +67,8 @@ class ProfilesController < ApplicationController
   end
   
   def checkout_cart
-    Cart.find(params[:cart_id]).update_attribute(:active_status, false)   #make the old cart inactive
+    @checked_out_cart = Cart.find(params[:cart_id])
+    @checked_out_cart.update_attribute(:active_status, false)   #make the old cart inactive
     Cart.create(profile_id: params[:id])  #and then give a new cart to that profile
   end
 
