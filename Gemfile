@@ -3,15 +3,23 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.5'
 
-gem 'hirb'  #hirb gem lets you use see data in active record more clearly
-            #to use, enter the command 'Hirb.enable' every time you enter the console
-            #from there you can just call normal commands like 'Profile.all' or 'Role.all' to list everything nicely
+#hirb gem lets you use see data in active record more clearly
+#to use, enter the command 'Hirb.enable' every time you enter the console
+#from there you can just call normal commands like 'Profile.all' or 'Role.all' to list everything nicely
+gem 'jquery-rails'
+gem 'hirb' 
+#bootstrap
+gem 'bootstrap', '~> 4.3.1'
+#pundit
+gem 'pundit'
 #stripe
 gem 'stripe' 
 #activestorage
 gem "aws-sdk-s3", require: false
 #Need this in order to inline svg
 gem 'inline_svg'
+#sprockets
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 #devise
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

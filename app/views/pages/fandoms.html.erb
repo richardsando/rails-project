@@ -12,7 +12,7 @@
             <% @fandoms.each do |fandom| %>
                 <% if fandom.uploaded_image.attached? %>
                     <li class="image-link">
-                        <%= link_to (image_tag fandom.uploaded_image.service_url , class: "fandom-img"), "/" %> 
+                        <%= link_to (image_tag fandom.uploaded_image.service_url , class: "fandom-img"), "/fandoms/#{fandom.id}/" %> 
                         <p class="image-word">
                             <%= fandom.fandom %>
                         </p>

@@ -45,10 +45,11 @@
                         <%= image_tag 'placeholder_image.svg' %>
                     <% end %>
                 
-                
-                <p><%= link_to product.name, product %></p>
-                <p><%= product.price %></p>
-                <p><%= link_to product.profile.username, product.profile %></p>
+                <div class="product-details-container">
+                    <p><%= link_to product.name, product %></p>
+                    <p><%= product.price %></p>
+                    <p><%= link_to product.profile.username, product.profile %></p>
+                </div>
             </div> 
     <% end %>
     </div>
