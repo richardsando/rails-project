@@ -80,9 +80,9 @@
           <% if user_signed_in? %>
              <% if current_user.profile != nil %>
                <% if current_user.profile != @product.profile %>
-                  <div class="add-to-cart">
-                      <%= link_to 'Add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}" %> 
-                      </div>
+                
+                      <%= link_to 'Add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}",class: "button" %> 
+       
 
             
             <%#= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %> 

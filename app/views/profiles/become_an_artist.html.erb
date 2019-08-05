@@ -2,3 +2,4 @@
 
 <p>Pay one time subscription fee below to be able to add products to your page </p>
 <%= render "layouts/registration_stripe_form" %>
+<%= link_to 'Back to profile', "/profiles/#{current_user.profile.id}/" %>

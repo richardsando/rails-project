@@ -32,7 +32,7 @@
                     </div>
                <% end %>
           <% end %>
-
+          <br>
           <div class= "end-buttons">
           <div class="total-price">
           Cart total: $500
@@ -42,13 +42,18 @@
                <%= link_to 'Checkout', "" %>      <%# dead link - cant checkout if you have no items in the cart %>
           <% else %>
                <div class="checkout">
+               
                     <%= link_to 'Checkout', "/profiles/#{params[:id]}/checkout_cart?cart_id=#{@cart.id}" %>
                </div>
+               <%= render "layouts/checkout_stripe_form" %>
                <% cart_total = %>
           </div>
      <% end %>
-     </div>
-</div>
-<div class="back">
+      <br>
+      <div class="back">
      <%= link_to 'Back to profile', "/profiles/#{@cart.profile.id}/" %>
      </div> 
+     </div>
+    
+    
+</div>

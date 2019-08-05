@@ -31,10 +31,10 @@ class ProfilesController < ApplicationController
     @wishlistproduct.destroy
 
     #need to redirect back to the item 
-    # redirect_to "/products/#{params[:product_id]}"
+    redirect_to "/products/#{params[:product_id]}"
 
     #this one redirects you straight to the wishlist
-    redirect_to "/profiles/#{params[:id]}/show-wishlist"
+    # redirect_to "/profiles/#{params[:id]}/show-wishlist"
   end
 
   def showcart

@@ -20,6 +20,7 @@
 @import 'products.scss';
 @import "bootstrap";
 
+
 /* User sign in and sign forms. */
 .border-form-div {
     margin-top: 80px;
@@ -59,17 +60,46 @@
 }
 
 
+h1  {
+    color: gray;
+}
 
 a {
-    color: black;
+    // color: white;
     text-decoration: none;
+}
+p {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+    }
+
+.button {
+    background-color: rgb(86, 76, 175); /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.button:hover {
+    color: black;
 }
 .nav-wrapper {
     width: 100%;
     // position: fixed;
     height: 120px;
     // border-bottom-style: solid; 
-    // border-color: rgb(248, 220, 220);
+    border-color: rgb(216, 56, 56);
     // border-width: 2px; 
     z-index: 2;
     // background: linear-gradient(180deg, #EFB317 0%, rgba(194, 118, 86, 0.932719) 62.5%, rgba(172, 89, 117, 0.899751) 99.98%, rgba(131, 34, 175, 0.838542) 99.99%, rgba(106, 0, 211, 0.8) 100%);
@@ -81,8 +111,10 @@ a {
      display: flex;
      justify-content: space-between;
      align-items: center;
-    //  background-color: rgb(255, 249, 249);
-     opacity: 0.7;
+     background-color: red;
+     background-image: url("/app/assets/images/banners/fandom-banner.jpg");
+     opacity: 0.8;
+     background-color: adjust-color($color: red,$alpha: 0.5,$lightness: 1);
  }
  .logo {
      font-size: 40px;
