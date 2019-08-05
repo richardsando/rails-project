@@ -1,3 +1,11 @@
+<% if notice == "Signed out successfully." %>
+  <div class="message-wrap">
+    <%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
+    <p id="item-added-notice"><%= notice %></p>    <%# need to have a notice that pops up saying that the item was successfully added %>
+    <%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/", class: 'exit-link' %>
+  </div>
+<% end %>
+
 <h2>Welcome to culturePop, the place for artists to share art they have created for their favourite franchises</h2>
 
 <div class="page-wrapper">
@@ -7,9 +15,9 @@
                 <div class="product-img-wrapper">
                     
                     <% if product.uploaded_image.attached? %>
-                        <%= image_tag product.uploaded_image.first , class: "product-img" %>
+                        <%= link_to image_tag(product.uploaded_image.first , class: "product-img"), "/products/#{product.id}" %>
                     <% else %>
-                        <%= image_tag 'placeholder_image.svg' %>
+                        <%= link_to image_tag('placeholder_image.svg'), "/products/#{product.id}" %>
                     <% end %>
                 
                 </div>

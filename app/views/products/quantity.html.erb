@@ -1,0 +1,9 @@
+<h1>Add the quantity and pricing of your item in your store</h1>
+
+<h2>Product: <%= @product.name %> </h2>
+
+<h3> Sizes </h3>
+
+<% @sizes.each do |size|%>
+    <li><%= size %> </li>
+<% end %>
