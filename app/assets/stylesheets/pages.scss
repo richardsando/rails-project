@@ -2,10 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+    // background-color: lightblue;
+}
+
 .page-wrapper {
     display: flex;
     justify-content: center;
     width: 100vw;
+    background-color: lightblue;
     // background-color: red;
 }
 
@@ -14,9 +19,12 @@
     margin-right: 42px;
     display: grid;
     grid-auto-columns: auto;
-    grid-template-columns: 1fr 1fr 1fr;
+    // this is where you can change the number of columns display in the pages views:
+    grid-auto-flow: dense;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
     grid-gap: 20px;
+    background-color: lightblue;
     // justify-content: center
 }
 
@@ -25,7 +33,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
+    border-radius: 30px;
+    width: 250px;
 
 }
 
@@ -33,28 +43,51 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    // width: 200px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    min-width: 100%;
+
+    
 }
 
 .product-img {
     display: flex;
     justify-self: center;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
+    // width: 100%;
+    // justify-content: center;
+    // align-items: center;
     justify-self: center;
+    border-radius: 30px ;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 250px;
+    // max-width: 100%;
+    overflow: hidden;
+    min-width: 100%;
 }
+
 .product-img-wrapper  > a{
     display: flex;
-    justify-self: center;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    justify-self: center;
+}
+
+.product-details-container {
+    // padding-left: 10px;
+    padding: 10px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-start;
+//     align-items: flex-end;
 }
 
 .fandom-banner-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 .fandom-banner {
     height: 370px;
@@ -109,6 +142,7 @@ ul {
     justify-content: center;
     align-items: center;
     color: white;
+    // max-height: 200px;
 
   }
   .fandom-img {

@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
     # before the location can be stored.
     # before_action :authenticate_user!
 
+    protected
+
+    def after_sign_in_path_for(resource)
+        if current_user.profile == nil
+            new_profile_path
+        else
+            "/profiles/#{current_user.profile.id}"
+        end
+    end
+
+      
     private
     # Its important that the location is NOT stored if:
     # - The request method is not GET (non idempotent)
@@ -20,9 +31,9 @@ class ApplicationController < ActionController::Base
       store_location_for(:user, request.fullpath)
     end
 
-    def after_sign_in_path_for(resource_or_scope)
-        stored_location_for(resource_or_scope) || super
-    end
+#     def after_sign_in_path_for(resource_or_scope)
+#         stored_location_for(resource_or_scope) || super
+#     end
 
     # Overwriting the sign_out redirect path method
     def after_sign_out_path_for(resource_or_scope)

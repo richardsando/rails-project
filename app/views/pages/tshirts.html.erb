@@ -1,7 +1,9 @@
-<h1>T-shirts</h1>
 
 
-<div class="filter">
+ <<div class="page-wrapper">
+    <div class="page">
+
+    <div class="filter">
     <%= link_to "Marvel", marvel_path %><br>
     <%= link_to "DC", dc_path %><br>
     <%= link_to "Star Wars", star_wars_path %><br>
@@ -15,8 +17,7 @@
     <%= link_to "Adventure Time", adventure_time_path %><br>
     <%= link_to "Game Of Thrones", game_of_thrones_path %><br>
 </div>
-
-
+ 
 
 <table>
     <thead>
@@ -31,23 +32,26 @@
 
     <tbody>
 
- <div class="page-wrapper">
-    <div class="page">
+  
 
         <% @tshirts.each do |product| %>
-            <% if product.uploaded_image.attached? %>
-                <div class="product-img-wrapper">
-                <%= link_to (image_tag product.uploaded_image.first, class: "product-img"), {:controller => "products", :action => "show", :id => product.id} %>
+            <div class="product-wrapper">
+                
+                    
+                    <% if product.uploaded_image.attached? %>
+                    <div class="product-img-wrapper">
+                        <%= link_to (image_tag (product.uploaded_image),class: "product-img"), ("/products/#{product.id}") %>
+                        </div>
+                    <% else %>
+                        <%= image_tag 'placeholder_image.svg' %>
+                    <% end %>
+                
+                <div class="product-details-container">
+                    <p><%= link_to product.name, product %></p>
+                    <p><%= product.price %></p>
+                    <p><%= link_to product.profile.username, product.profile %></p>
                 </div>
-            <% else %>
-                <div class="product-img-wrapper">
-                    <%= link_to (image_tag ("placeholder_image.svg") , class: "product-img"), {:controller => "products", :action => "show", :id => product.id} %>
-                </div>
-            <% end %>
-            <p><%= link_to product.name, product %></p>
-            <p><%= product.price %></p>
-            <p><%= link_to product.profile.username, product.profile %></p>
-        </div> 
+            </div> 
     <% end %>
     </div>
  </div>

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
 
   #Fandom pages "oh what fun..."
+  get '/fandoms/:id' => 'fandoms#fandom'
+
   get '/marvel' => 'fandoms#marvel'
   get '/dc' => 'fandoms#dc'
   get '/star_wars' => 'fandoms#star_wars'

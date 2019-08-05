@@ -1,5 +1,11 @@
 class FandomsController < ApplicationController
 
+
+    def fandom
+        @products = Product.where(fandom_id: params[:id])
+        # raise
+    end
+
     def marvel
         @products = Product.where(fandom_id: 1)
     end
