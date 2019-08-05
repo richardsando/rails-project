@@ -15,100 +15,107 @@
   <% end %>
 <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+  <div class="product-page">
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+    <% if @product.uploaded_image.attached? %>
+          <div id="product-img">
+              <%= image_tag @product.uploaded_image.service_url, class: 'image-size' %>
+          </div>
+    <% else %>
+      <p>No image for this product</p>
+    <% end %>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
 
-<p>
-  <strong>Size:</strong>
-  <%= @product.size %>
-</p>
-
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
-
-<p>
-  <strong>Artist:</strong>
-  <%= link_to @product.profile.username, @product.profile  %>
-</p>
-
-<p>
-<strong>Category:</strong>
-<%= 
-if @product.category.category == "T-shirts"
-  link_to @product.category.category, '/tshirts'
-elsif @product.category.category == "Stickers"
-  link_to @product.category.category, '/stickers'
-elsif @product.category.category == "iPhone cases"
-  link_to @product.category.category, '/iphonecases'
-else @product.category.category == "Prints"
-  link_to @product.category.category, '/prints'
-end
-%>
-</p>
-
-<p>
-<strong>Fandom:</strong>
-<%= @product.fandom.fandom%>
-</p>
-
-<% if @product.uploaded_image.attached? %>
-  <%# <% @product.uploaded_image.each do |image| %> %>
-      <div id="artist-product-img">
-          <%= image_tag @product.uploaded_image.service_url, class: 'image-size' %>
-      </div>
-  <%# <% end %> %>
-<% else %>
-  <p>No image for this product</p>
-<% end %>
-
+    <div class="product-info">
+      <h1>
+        <%= @product.name %>
+      </h1>
+      <p class="by-artist">
+       Created by
+        <strong>
+          <%= link_to @product.profile.username, @product.profile  %>
+        </strong>
+      </p>
 <br>
-<% if user_signed_in? %>
-<% if current_user.profile != nil %>
-  <% if current_user.profile != @product.profile %>
-      <%= link_to 'add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}" %> |
+      <p class="description">
+        <%= @product.description %>
+      </p>
 
-      
-      <%#= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %> 
-      <div class="wishlist-box">
-        <% if current_user.profile.wishlist.products.where("product_id = ?", @product.id).present? %>
-          <%# the current product that the user is on has already been added to the wishlist %>
-          <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-active"), "/profiles/#{current_user.profile.id}/show-wishlist/remove-item?product_id=#{@product.id}" %>
-        <% else %>
-          <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-inactive"), "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %>
+      <p class="price">
+        <%= @product.price %>
+      </p>
+      <% size = ["XS","S","M","L","XL","XXL"] %>
+      <p class ="size">
+      Size: 
+        <%= @product.size %>
+      </p>
+      <% qty = [1,2,3,4,5,6,7] %>
+      <p class="qty">
+     qty
+
+      </p>
+
+      <p>
+      <strong>Category:</strong>
+      <%= 
+      if @product.category.category == "T-shirts"
+        link_to @product.category.category, '/tshirts'
+      elsif @product.category.category == "Stickers"
+        link_to @product.category.category, '/stickers'
+      elsif @product.category.category == "iPhone cases"
+        link_to @product.category.category, '/iphonecases'
+      else @product.category.category == "Prints"
+        link_to @product.category.category, '/prints'
+      end
+      %>
+      </p>
+
+      <p>
+      <strong>Fandom:</strong>
+      <%= @product.fandom.fandom%>
+      </p>
+
+
+      <div class = "add-to"> 
+          <% if user_signed_in? %>
+             <% if current_user.profile != nil %>
+               <% if current_user.profile != @product.profile %>
+                
+                      <%= link_to 'Add to cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{@product.id}",class: "button" %> 
+       
+
+            
+            <%#= link_to 'add to wishlist', "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %> 
+            <div class="wishlist-box">
+              <% if current_user.profile.wishlist.products.where("product_id = ?", @product.id).present? %>
+                <%# the current product that the user is on has already been added to the wishlist %>
+                <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-active"), "/profiles/#{current_user.profile.id}/show-wishlist/remove-item?product_id=#{@product.id}" %>
+              <% else %>
+                <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-inactive"), "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %>
+              <% end %>
+            </div>
+
+            <%#= link_to 'Back', products_path %>
+
         <% end %>
+
+        <% if current_user.profile == @product.profile %>
+              <%= link_to 'Delete', "/products/#{@product.id}", method: :delete %> |
+              <%= link_to 'Edit', edit_product_path(@product) %> |
+              <%= link_to 'back to profile', "/profiles/#{@product.profile.id}" %>
+        <% end %>
+        <% end %>
+
+      <% else %>  <%#user needs to be signed in in order to add the product to their cart or their wishlist %>
+        <div class="add-to-cart">
+        <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
+        </div>
+        <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
+
+      <% end %>
       </div>
-
-      <%#= link_to 'Back', products_path %>
-
-  <% end %>
-
-  <% if current_user.profile == @product.profile %>
-        <%= link_to 'Delete', "/products/#{@product.id}", method: :delete %> |
-        <%= link_to 'Edit', edit_product_path(@product) %> |
-        <%= link_to 'back to profile', "/profiles/#{@product.profile.id}" %>
-  <% end %>
-  <% end %>
-
-<% else %>  <%#user needs to be signed in in order to add the product to their cart or their wishlist %>
-  <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
-  <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
-
-<% end %>
+    </div>
 
 
 
-
+  

@@ -18,10 +18,11 @@
     margin-left: 42px;
     margin-right: 42px;
     display: grid;
-    grid-auto-columns: auto;
+    // grid-auto-columns: auto;
     // this is where you can change the number of columns display in the pages views:
     grid-auto-flow: dense;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    // grid-template-columns: 200px 200px 200px 200px;
     width: 100%;
     grid-gap: 20px;
     background-color: lightblue;
@@ -172,6 +173,7 @@ ul {
       display: flex;
     position: absolute;
     align-self: center;
+    color: white;
 
   }
   

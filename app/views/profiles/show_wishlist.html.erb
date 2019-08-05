@@ -1,15 +1,41 @@
-<h1>My wishlist</h1>
+     
+<div class="my-cart-page">
+    
+     <% num_array = [1,2,3,4,5,6,7,8,9,10,11,12] %>
+     <% count = 1 %>
+     <div class="my-cart">
+     <div class="header-wrapper">
+          <h1>My Wishlist</h1>
+     </div>
+          <% if @wishlist.products.empty? %>
+               <p>Your wishlist has zero items!</p>
+          <% else %>
+         
+               <% @wishlist.products.each do |product| %>
+                    <div class="cart-item">
+                    <div class="cart-img">
+                         <%= image_tag product.uploaded_image, class: "cart-image-size" %>
+                    </div>
+                    <div>
+                    <%= link_to product.name, "/products/#{product.id}" %> 
+                    </div>
+                    Artist: <%= product.profile.username %>
+                     
+                    <%= product.price %> 
+                    <div class="remove">
+                         <%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item?product_id=#{product.id}" %>
+                    </div>
+                    <%= link_to 'Add to Cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{product.id}" %>
+                    </div>
+               <% end %>
+          <% end %>
 
-<% if @wishlist.products.empty? %>
-    <p>Your wishlist is empty :( </p>
-<% else %>
-    <% @wishlist.products.each do |product| %>
-        <p>
-            <%= link_to product.name, product_path %> |
-            <%= product.price %> |
-            <%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item-on-wishlist?product_id=#{product.id}" %>
-        </p>
-    <% end %>
-<% end %>
+          <div class= "end-buttons">
+           
+     </div>
+     <br> 
+     <%= link_to 'Back to profile', "/profiles/#{@wishlist.profile.id}/" %>
+</div>
 
-<%= link_to 'Back to my Profile', "/profiles/#{params[:id]}/" %>
+
+    

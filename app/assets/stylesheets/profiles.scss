@@ -19,6 +19,7 @@
     height: 300px; 
 }
 
+
 .placeholder-banner {
     width: 100%;
     border-style: solid;
@@ -40,7 +41,7 @@
 }
 .username {
     position: absolute;
-    bottom: 50%;
+    bottom: 56%;
     right: 7%;
     font-size: 5vw;
 }
@@ -48,8 +49,47 @@
     margin-left: 42px;
     margin-right: 42px;
     margin-top: 15px; 
+    margin-bottom: 42px;
 }
 
 
+.my-cart-page {
+    display: flex;
+    justify-content: center;
+}
+.my-cart {
+    display:grid;
+    width: 60%;
+    // background-color: lightblue;
+    padding: 45px;
+    border-style: solid;
+    border-radius: 35px;
+    border-width: 3px;
+    border-color: lightblue;
+     
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cart-image-size {
+    width: 50px;
+}
 
 
+.p-details {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.header-wrapper {
+    padding-bottom: 20px;
+}
+
+// .prev-order {
+//     padding: 8px;
+//     border: solid lightblue 2px;
+//     border-radius: 25px;
+// }

@@ -1,20 +1,59 @@
 
-<h1>My Cart</h1>
+     
+<div class="my-cart-page">
+    
+     <% num_array = [1,2,3,4,5,6,7,8,9,10,11,12] %>
+     <% count = 1 %>
+     <div class="my-cart">
+     <div class="header-wrapper">
+          <h1>My Cart</h1>
+     </div>
+          <% if @cart.products.empty? %>
+               <p>Your cart has zero items!</p>
+          <% else %>
+         
+               <% @cart.products.each do |product| %>
+                    <div class="cart-item">
+                    <div class="cart-img">
+                         <%= image_tag product.uploaded_image, class: "cart-image-size" %>
+                    </div>
+                    <div>
+                    <%= link_to product.name, "/products/#{product.id}" %> 
+                    </div>
+                    Artist: <%= product.profile.username %>
+                     
+                    <%= product.price %> 
+                    <div class="qty">
+                         x 1
+                     </div>
+                    <div class="remove">
+                         <%= link_to 'Remove Item', "/profiles/#{params[:id]}/showcart/remove-item?product_id=#{product.id}" %>
+                    </div>
+                    </div>
+               <% end %>
+          <% end %>
+          <br>
+          <div class= "end-buttons">
+          <div class="total-price">
+          Cart total: $500
+          </div>
 
-<% if @cart.products.empty? %>
-     <p>Your cart has zero items!</p>
-<% else %>
-     <% @cart.products.each do |product| %>
-          <p>
-            <%= link_to product.name, "/products/#{product.id}" %>
-            <%= product.price %> |
-            <%= link_to 'Remove Item', "/profiles/#{params[:id]}/showcart/remove-item?product_id=#{product.id}" %>
-          </p>
+          <% if @cart.products.empty? %>
+               <%= link_to 'Checkout', "" %>      <%# dead link - cant checkout if you have no items in the cart %>
+          <% else %>
+               <div class="checkout">
+               
+                    <%= link_to 'Checkout', "/profiles/#{params[:id]}/checkout_cart?cart_id=#{@cart.id}" %>
+               </div>
+               <%= render "layouts/checkout_stripe_form" %>
+               <% cart_total = %>
+          </div>
      <% end %>
-<% end %>
-
-<% if @cart.products.empty? %>
-     <%= link_to 'Checkout', "" %>      <%# dead link - cant checkout if you have no items in the cart %>
-<% else %>
-     <%= link_to 'Checkout', "/profiles/#{params[:id]}/checkout_cart?cart_id=#{@cart.id}" %>
-<% end %>
+      <br>
+      <div class="back">
+     <%= link_to 'Back to profile', "/profiles/#{@cart.profile.id}/" %>
+     </div> 
+     </div>
+    
+    
+</div>
