@@ -22,9 +22,9 @@
             </div>
 
             <div class ="search-wrapper">
-                <%= form_tag(products_path) do %>
-                Search all products <%= text_field_tag :store %>
-                <%= submit_tag 'Go!' %>
+                <%= form_tag(products_path, method: :get) do %>
+                  Search all products <%= text_field_tag(:search, params[:search]) %>
+                  <%= submit_tag ("Search") %>
                 <% end %>
             </div>
 

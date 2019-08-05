@@ -8,4 +8,18 @@ class Product < ApplicationRecord
   has_many :wishlists, :through => :wishlist_products
   has_many_attached :uploaded_image
 
+  # def self.search(search)
+  #   if search
+  #     product = Product.find_by(name: search)
+  #     if product
+  #       self.where(product_id: product)
+  #     else 
+  #       Product.all
+  #     end
+  #   else
+  #     Product.all
+  #   end
+  # end
+
+
 end

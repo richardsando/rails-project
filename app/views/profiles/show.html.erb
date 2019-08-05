@@ -12,7 +12,9 @@
 
     <div class="profile">
 
-      <p id="notice"><%= notice %></p>
+      <% if notice == "Signed in successfully." %>
+        <p id="notice"><%= notice %></p>
+      <% end %>
 
       <div class="banner-wrapper">
 
