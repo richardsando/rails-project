@@ -18,7 +18,38 @@
 @import 'profiles.scss';
 @import 'pages.scss';
 @import 'products.scss';
-// @import "bootstrap";
+@import "bootstrap";
+
+/* User sign in and sign forms. */
+.border-form-div {
+    margin-top: 80px;
+    max-width: 400px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: rgb(241, 251, 255);
+    
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+       -moz-border-radius: 30px;
+            border-radius: 30px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            margin-top: 50px;
+  }
+  .border-form-div .form-signin-heading,
+  .border-form-div .checkbox {
+    margin-bottom: 10px;
+    margin-top: 60px; 
+  }
+  .border-form-div input[type="text"],
+  .border-form-div input[type="email"],
+  .border-form-div input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+  }
 
 * { 
     margin: 0px; 
@@ -26,6 +57,8 @@
     text-decoration: none;
     box-sizing: border-box;
 }
+
+
 
 a {
     color: black;

@@ -18,15 +18,15 @@
 
       <div class="banner-wrapper">
 
-          <% if @profile.uploaded_image.attached? %>
-              <div class="banner-img">  
-                <%= image_tag @profile.uploaded_image, class: 'image-size' %>
+          <% if @profile.cover_image.attached? %>
+              <div class="placeholder-banner">  
+                <%= image_tag @profile.cover_image, class: 'placeholder-banner' %>
               </div>     
           <% end %>
           <h1 class="username"><%= @profile.username %></h1>
-           <% if @profile.uploaded_image.attached? %>
+           <% if @profile.avatar.attached? %>
               <div class="profile-img">  
-                <%= image_tag @profile.uploaded_image, class: 'image-size' %>
+                <%= image_tag @profile.avatar, class: 'placeholder-profile' %>
               </div>
           <% else %>
               <%= image_tag "user.svg", class: "placeholder-profile" %>
@@ -72,11 +72,7 @@
                  <%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
           <% end %>
         <% end %> 
-        <% if @profile.uploaded_image.attached? %>
-            <%= image_tag @profile.uploaded_image, class: 'image-size' %>
-        <% else %>
-          <p>No image for this profile</p>
-        <% end %>
+      
 
 <%= link_to 'View Order History', "/profiles/#{@profile.id}/previous_orders" %> | 
 <%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%> |
@@ -84,11 +80,11 @@
 
 
 <br><br>
-<%= link_to 'Edit', edit_profile_path(@profile) %> |    <%# not sure why this isnt working %>
-<%= link_to 'Home', '/' %>
+<%= link_to 'Edit Profile', edit_profile_path(@profile) %> |    <%# not sure why this isnt working %>
+<%= link_to 'Back to home', '/' %>
 
         <br> 
-        <%= link_to 'Back', profiles_path %>
+      
       </div>
     </div>
   </div>
