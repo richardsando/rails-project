@@ -115,7 +115,7 @@ class ProfilesController < ApplicationController
       end
     end
   end
-
+  
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
