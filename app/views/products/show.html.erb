@@ -1,15 +1,15 @@
 
-<% if notice == nil %>
-  <%# do nothing %>
-<% elsif notice.present? %>
+<% if notice == 'The item has been successfully added to your cart.' %>
   <div class="message-wrap">
     <%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
     <p id="item-added-notice"><%= notice %></p>    <%# need to have a notice that pops up saying that the item was successfully added %>
+    
     <% if current_user != nil %>
       <% if current_user.profile != nil %>
-       <p> 
-          <%= link_to 'To cart', "/profiles/#{current_user.profile.id}/showcart" %>   
-      </p>
+  
+    <p> <%= link_to 'To cart.', "/profiles/#{current_user.profile.id}/showcart" %> </p>
+    <%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
+
   </div>
     <% end %>
   <% end %>

@@ -7,4 +7,6 @@ class Product < ApplicationRecord
   has_many :carts, :through => :cart_products
   has_many :wishlists, :through => :wishlist_products
   has_one_attached :uploaded_image
+
+
 end
