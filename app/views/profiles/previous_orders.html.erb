@@ -1,32 +1,29 @@
 <div class="my-cart-page">
      <div class="my-cart">
-        <div class="header-wrapper">
-            <h1>Previous Orders</h1>
-        </div>
-        <br>
-
-
-<% if @previous_orders.empty? %>
-    <h2>You have no previous orders</h2>
-<% else %>
-    <% @previous_orders.each do |order| %>
-        <h2><%= "Order ID #CPOP#{order.id}" %></h2>
-        <h2><%= "Placed on #{order.time_ordered}" %></h2>
-
-        <h2> Items: </h2>
-        <% order.product_variants.each do |product_variant| %>
-            <% purchase_entry = ProductsPurchased.where(cart_id: order.id, product_variant_id: product_variant.id).first %>
-            <h3> <%= "#{product_variant.product.name} | Size: #{product_variant.size.sizing} | QTY: #{purchase_entry.purchase_QTY} | $#{product_variant.price} " %> </h3>
-
-            <p>Total cost = $50</p>
-            </div>
-            <br>
-
-        <% end %>
-    <% end %>
-<% end %>
-
+        <h1>Previous Orders</h1>
+        <hr>
+        <% if @previous_orders.empty? %>
+            <h4>You have no previous orders</h4>
+        <% else %>
+            <% @previous_orders.each do |order| %>
+            <h4>
+                <%= "Order ID #CPOP#{order.id}" %>
+            </h4>
+            <h4>
+                <%= "Placed on #{order.time_ordered}" %>
+            </h4>
+            <% order.product_variants.each do |product_variant| %>
+                <% purchase_entry = ProductsPurchased.where(cart_id: order.id, product_variant_id: product_variant.id).first %>
+                <p> 
+                    <%= "#{product_variant.product.name} | Size: #{product_variant.size.sizing} | QTY: #{purchase_entry.purchase_QTY} | $#{product_variant.price} " %> 
+                </p>
+            <% end %>
+         <% end %>
+      <% end %>
+    <hr>
+    <br>
     <%= link_to 'Back to profile', "/profiles/#{params[:id]}" %>
+    </div>
     </div>
 </div>
 

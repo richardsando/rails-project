@@ -13,52 +13,58 @@
 
   <body>
   
-    <div class="nav-wrapper">
+  <div class="nav-wrapper">
 
-        <nav class="main-nav">
+    <nav class="main-nav">
 
-            <div class="logo">
-              <%= link_to 'CulturePop', '/' %>  
-            </div>
-
-            <div class ="search-wrapper">
-                <%= form_tag(products_path, method: :get) do %>
-                  Search all products <%= text_field_tag(:search, params[:search]) %>
-                  <%= submit_tag ("Search"),class: "btn btn-primary" %>
-                <% end %>
-            </div>
-
-            <div class="user-info">
-        
-              <% if current_user %>
-                  <% if current_user.profile.nil? %>
-                      <%= link_to "Create Profile", new_profile_path %>
-                  <% else %>
-                    <div class="profile-icon"> 
-                          <%= link_to image_tag('user.svg') , {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
-                    </div>
-                    <% if current_user.profile.present? %>
-                        <div class="cart-icon">
-                            <%= link_to image_tag('shopping-cart.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id } %>
-                        </div>
-                    <% end %>
-                    
-                  <% end %>
-                  
-                <% end %>
-                <%= render 'devise/menu/login_items' %>
-              </div>
-        </nav>
-          <div class="categories-nav">
-              <%= link_to 'T-Shirts', '/tshirts' %>
-              <%= link_to 'Prints', '/prints' %>
-              <%= link_to 'iPhone Cases', '/iphonecases' %>
-              <%= link_to 'Stickers', '/stickers' %>
-              <%= link_to 'Fandoms', '/fandoms' %>
+      <div class="left-nav">
+          <div class="logo">
+            <%= link_to 'CulturePop', '/' %>  
           </div>
+
+       
+            <%= form_tag(products_path, method: :get) do %>
+               <div class ="search-wrapper">
+                  <%= text_field_tag(:search, params[:search], placeholder: "Search all products", class: "form-control") %>
+                  <%= submit_tag ("Go"), class:"btn btn-tertiary"  %>
+              <% end %>
+              </div>
+         
+          
+      </div>
+
+        <div class="user-info">
+    
+          <% if current_user %>
+              <% if current_user.profile.nil? %>
+                  <%= link_to "Create Profile", new_profile_path %>
+              <% else %>
+                <div class="profile-icon"> 
+                      <%= link_to image_tag('user.svg') , {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
+                </div>
+                <% if current_user.profile.present? %>
+                    <div class="cart-icon">
+                        <%= link_to image_tag('shopping-cart.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id } %>
+                    </div>
+                <% end %>
+                
+              <% end %>
+              
+            <% end %>
+            <%= render 'devise/menu/login_items' %>
+          </div>
+    </nav>
+
+    <div class="categories-nav">
+        <%= link_to 'T-Shirts', '/tshirts' %>
+        <%= link_to 'Prints', '/prints' %>
+        <%= link_to 'iPhone Cases', '/iphonecases' %>
+        <%= link_to 'Stickers', '/stickers' %>
+        <%= link_to 'Fandoms', '/fandoms' %>
     </div>
+  </div>
       
-  </body>
+</body>
   
   <%= yield %>
 

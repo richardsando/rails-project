@@ -66,8 +66,11 @@ h1  {
 
 a {
     color: black;
-    text-decoration: none;
-    
+}
+
+a:not(.image-word){
+    // color: black;
+    text-decoration: none;  
 }
 p {
     color: black;
@@ -75,7 +78,7 @@ p {
 
 a:hover {
     text-decoration: none;
-    color: red;
+// color: red;
     }
 
 body {
@@ -109,6 +112,19 @@ body {
     z-index: 2;
     // background: linear-gradient(180deg, #EFB317 0%, rgba(194, 118, 86, 0.932719) 62.5%, rgba(172, 89, 117, 0.899751) 99.98%, rgba(131, 34, 175, 0.838542) 99.99%, rgba(106, 0, 211, 0.8) 100%);
 }
+
+.left-nav {
+    display: flex;
+    align-items: center;
+    width: 45%;
+    
+    justify-content: space-between;
+
+}
+
+.search-wrapper {
+    display: flex;
+}
  .main-nav {
     padding-left: 15px;
     padding-right: 15px;
@@ -124,8 +140,11 @@ body {
  .logo {
      font-size: 40px;
      background-image: url("./app/assets/images/cat.jpg");
-     color: red;
-     background-color: red; 
+    //  color: red;
+    //  background-color: red; 
+    border: none;
+    border-radius: 35px;
+
  }
  .profile-icon {
      width: 40px;
