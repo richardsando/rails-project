@@ -1,8 +1,5 @@
      
 <div class="my-cart-page">
-    
-     <% num_array = [1,2,3,4,5,6,7,8,9,10,11,12] %>
-     <% count = 1 %>
      <div class="my-cart">
      <div class="header-wrapper">
           <h1>My Wishlist</h1>
@@ -21,21 +18,16 @@
                     </div>
                     Artist: <%= product.profile.username %>
                      
-                    <%= product.price %> 
+              
                     <div class="remove">
                          <%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item?product_id=#{product.id}" %>
                     </div>
-                    <%= link_to 'Add to Cart', "/profiles/#{current_user.profile.id}/addtocart?product_id=#{product.id}" %>
+                  
                     </div>
                <% end %>
           <% end %>
 
-          <div class= "end-buttons">
-           
-     </div>
-     <br> 
-     <%= link_to 'Back to profile', "/profiles/#{@wishlist.profile.id}/" %>
-</div>
+
 
 
     

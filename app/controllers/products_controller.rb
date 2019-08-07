@@ -25,12 +25,13 @@ class ProductsController < ApplicationController
   end
 
   def quantity
+
     # need to render a tabular form here that lets you select the sizes, pricings
     @product = Product.find(params[:id])
 
-    if @product.category.category == "T-shirts"
-      @sizes = ["XS", "S", "M", "L", "XL"]
-    end
+    # if @product.category.category == "T-shirts"
+    #   @sizes = ["XS", "S", "M", "L", "XL"]
+    # end
   end
 
   # GET /products/1/edit
@@ -43,7 +44,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to "/products/#{@product.id}/quantity" }
+        format.html { redirect_to "/products/#{@product.id}/add-variant" }
         # format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -85,6 +86,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :size, :stock, :profile_id, :fandom_id, :category_id, :uploaded_image, :search)
+      params.require(:product).permit(:name, :description, :profile_id, :fandom_id, :category_id, :uploaded_image, :search)
     end
 end

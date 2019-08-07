@@ -1,0 +1,42 @@
+<h1>Add the quantity and pricing of your item in your store</h1>
+
+<h2>Product: <%= @product.name %> </h2>
+
+<h3> Sizes </h3>
+
+<% category = @product.category.category %>
+<% sizes = Size.where(category: category) %>
+<% sizes.each do |size| %>
+
+    <%= form_with(model: ProductVariant.new, url: '/', local: true) do |form| %>
+
+    <div class="field">
+        <%= form.label :qty %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+        <%= form.label :size %>
+        <%= form.text_field :size, placeholder: size, value: size.id %>
+    </div>
+
+    <div class="field">
+        <%= form.hidden_field :profile_id, value: (current_user.profile.id) %>
+    </div>
+    
+    <div class="field">
+        <%= form.label :price %>
+        <%= form.text_field :price %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+    <% end %>
+
+
+<% end %>
+
+
+
+

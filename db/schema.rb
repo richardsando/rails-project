@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_082222) do
+ActiveRecord::Schema.define(version: 2019_08_06_065658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,18 +59,34 @@ ActiveRecord::Schema.define(version: 2019_07_29_082222) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.string "color_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "fandoms", force: :cascade do |t|
     t.string "fandom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_variants", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "size_id"
+    t.bigint "color_id"
+    t.integer "stock_QTY"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_id"], name: "index_product_variants_on_color_id"
+    t.index ["product_id"], name: "index_product_variants_on_product_id"
+    t.index ["size_id"], name: "index_product_variants_on_size_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "price"
-    t.string "size"
-    t.integer "stock"
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,6 +95,16 @@ ActiveRecord::Schema.define(version: 2019_07_29_082222) do
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["fandom_id"], name: "index_products_on_fandom_id"
     t.index ["profile_id"], name: "index_products_on_profile_id"
+  end
+
+  create_table "products_purchaseds", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "product_variant_id"
+    t.integer "purchase_QTY"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_products_purchaseds_on_cart_id"
+    t.index ["product_variant_id"], name: "index_products_purchaseds_on_product_variant_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -97,6 +123,13 @@ ActiveRecord::Schema.define(version: 2019_07_29_082222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "category"
+    t.string "sizing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -134,9 +167,14 @@ ActiveRecord::Schema.define(version: 2019_07_29_082222) do
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "profiles"
+  add_foreign_key "product_variants", "colors"
+  add_foreign_key "product_variants", "products"
+  add_foreign_key "product_variants", "sizes"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "fandoms"
   add_foreign_key "products", "profiles"
+  add_foreign_key "products_purchaseds", "carts"
+  add_foreign_key "products_purchaseds", "product_variants"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "roles"
   add_foreign_key "wishlist_products", "products"

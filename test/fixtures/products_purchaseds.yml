@@ -2,8 +2,10 @@
 
 one:
   cart: one
-  product: one
+  product_variant: one
+  purchase_QTY: 1
 
 two:
   cart: two
-  product: two
+  product_variant: two
+  purchase_QTY: 1

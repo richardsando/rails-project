@@ -1,9 +1,13 @@
-<h1>Add the quantity and pricing of your item in your store</h1>
-
-<h2>Product: <%= @product.name %> </h2>
+<h1>Add a <%= @product.name %> variant </h1>
 
 <h3> Sizes </h3>
 
-<% @sizes.each do |size|%>
-    <li><%= size %> </li>
+<% category = @product.category.category %>
+<% sizes = Size.where(category: category) %>
+<% sizes.each do |size| %>
+    <p><%= size.sizing %></p>
 <% end %>
+
+
+
+

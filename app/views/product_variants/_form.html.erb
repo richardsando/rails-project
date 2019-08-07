@@ -1,0 +1,47 @@
+<%= form_with(model: product_variant, local: true) do |form| %>
+  <% if product_variant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product_variant.errors.count, "error") %> prohibited this product_variant from being saved:</h2>
+
+      <ul>
+      <% product_variant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# this code fragment makes sure that the artist can only add sizes for variants they dont already have %>
+  <% variant_category = Product.find(params[:id]).category.category %>
+  <% product = Product.find(params[:id]) %>
+  <% size_ids = [] %>
+  <% if product.product_variants.exists? %>
+    <% product.product_variants.each do |variant| %>
+      <% size_ids << variant.size_id %>
+    <% end %>
+  <% end %>
+
+
+  <div class="field" >
+    <%= form.label :size %>
+    <%= form.collection_select :size_id, Size.where(category: variant_category).where.not(id: size_ids), :id, :sizing %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :stock_QTY %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :product_id, value: params[:id] %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

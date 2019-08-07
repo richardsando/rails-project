@@ -3,17 +3,17 @@
      <div class="my-cart">
     <h1 class="header-wrapper"> Thank you for your purchase! </h1>
 
-    <h3>
-        Item<% if @checked_out_cart.products.length > 1%>s<% end %> ordered:
-    </h3>
+<h2>
+    Item<% if @checked_out_cart.product_variants.length > 1%>s<% end %> ordered:
+</h2>
 
-    <% @checked_out_cart.products.each do |product| %>
-        <p> 
-            <%= image_tag product.uploaded_image, class: "cart-image-size" %>
-            <%= "#{product.name} by #{product.profile.username} | #{product.price} | qty: " %> 
-            </p>
-    <% end %>
 
+<% @checked_out_cart.product_variants.each do |product_variant| %>
+    <% purchase_entry = ProductsPurchased.where(cart_id: @checked_out_cart.id, product_variant_id: product_variant.id).first %>
+    <h3> <%= "#{product_variant.product.name} | Size: #{product_variant.size.sizing} | QTY: #{purchase_entry.purchase_QTY} | $#{product_variant.price} " %> </h3>
+<% end %>
+<br>
+    
     <p> Total: $500 </p>
     <br>
     
@@ -21,5 +21,6 @@
 </div>
 
 </div>
+
 
 
