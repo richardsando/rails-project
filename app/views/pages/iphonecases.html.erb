@@ -9,7 +9,7 @@
                     
                     <% if product.uploaded_image.attached? %>
                     <div class="product-img-wrapper">
-                        <%= link_to (image_tag (product.uploaded_image.first),class: "product-img"), ("/products/#{product.id}") %>
+                        <%= link_to (image_tag (product.uploaded_image),class: "product-img"), ("/products/#{product.id}") %>
                         </div>
                     <% else %>
                         <%= image_tag 'placeholder_image.svg' %>

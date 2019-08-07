@@ -65,6 +65,7 @@ end
     <div class="field" >
         <%= form.label :size %>
         <%= form.collection_select :size_id, Size.where(category: @product.category.category).where(id: possible_sizes), :id, :sizing %>
+        
     </div>
 
     <div class="field">

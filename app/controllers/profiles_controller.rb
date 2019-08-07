@@ -94,7 +94,9 @@ class ProfilesController < ApplicationController
    
     @product_purchased = ProductsPurchased.where("cart_id = ? AND product_variant_id = ?", cart_id, params[:product_variant_id]).first
     quantity = @product_purchased.purchase_QTY
-
+    if quantity == nil
+      quantity = 0
+    end
     product_variant = ProductVariant.find(params[:product_variant_id])
     new_stock_amount = product_variant.stock_QTY + quantity
     product_variant.update_attribute(:stock_QTY, new_stock_amount)
