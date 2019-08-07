@@ -1,15 +1,33 @@
-<h1>My wishlist</h1>
+     
+<div class="my-cart-page">
+     <div class="my-cart">
+     <div class="header-wrapper">
+          <h1>My Wishlist</h1>
+     </div>
+          <% if @wishlist.products.empty? %>
+               <p>Your wishlist has zero items!</p>
+          <% else %>
+         
+               <% @wishlist.products.each do |product| %>
+                    <div class="cart-item">
+                    <div class="cart-img">
+                         <%= image_tag product.uploaded_image, class: "cart-image-size" %>
+                    </div>
+                    <div>
+                    <%= link_to product.name, "/products/#{product.id}" %> 
+                    </div>
+                    Artist: <%= product.profile.username %>
+                     
+              
+                    <div class="remove">
+                         <%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item?product_id=#{product.id}" %>
+                    </div>
+                  
+                    </div>
+               <% end %>
+          <% end %>
 
-<% if @wishlist.products.empty? %>
-    <p>Your wishlist is empty :( </p>
-<% else %>
-    <% @wishlist.products.each do |product| %>
-        <p>
-            <%= link_to product.name, product_path %> |
-            <%#= product.price %> |
-            <%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item-on-wishlist?product_id=#{product.id}" %>
-        </p>
-    <% end %>
-<% end %>
 
-<%= link_to 'Back to my Profile', "/profiles/#{params[:id]}/" %>
+
+
+    

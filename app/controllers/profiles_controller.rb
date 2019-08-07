@@ -108,7 +108,7 @@ class ProfilesController < ApplicationController
     end
 
   end
-
+ 
   def become_an_artist
     current_user.update(role_id: 2)
   end
@@ -143,6 +143,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    @profile = Profile.find(params[:id])
   end
 
   # POST /profiles
@@ -162,10 +163,11 @@ class ProfilesController < ApplicationController
       end
     end
   end
-  
+
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    @profile = Profile.find(params[:id])
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -196,6 +198,6 @@ class ProfilesController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:username, :about, :location, :joindate, :user_id, :uploaded_image)
+      params.require(:profile).permit(:username, :about, :location, :joindate, :user_id, :avatar, :cover_image)
     end
 end

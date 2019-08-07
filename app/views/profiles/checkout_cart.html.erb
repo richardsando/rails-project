@@ -1,6 +1,7 @@
-<h1> Thank you for your purchase! </h1>
 
-<br>
+<div class="my-cart-page">
+     <div class="my-cart">
+    <h1 class="header-wrapper"> Thank you for your purchase! </h1>
 
 <h2>
     Item<% if @checked_out_cart.product_variants.length > 1%>s<% end %> ordered:
@@ -12,5 +13,14 @@
     <h3> <%= "#{product_variant.product.name} | Size: #{product_variant.size.sizing} | QTY: #{purchase_entry.purchase_QTY} | $#{product_variant.price} " %> </h3>
 <% end %>
 <br>
+    
+    <p> Total: $500 </p>
+    <br>
+    
+    <%= link_to 'Back to profile', "/profiles/#{current_user.profile.id}"%>
+</div>
 
-<%= link_to 'Return to profile', "/profiles/#{current_user.profile.id}"%>
+</div>
+
+
+

@@ -1,5 +1,10 @@
-<h1>Previous Orders</h1>
-<br>
+<div class="my-cart-page">
+     <div class="my-cart">
+        <div class="header-wrapper">
+            <h1>Previous Orders</h1>
+        </div>
+        <br>
+
 
 <% if @previous_orders.empty? %>
     <h2>You have no previous orders</h2>
@@ -12,9 +17,17 @@
         <% order.product_variants.each do |product_variant| %>
             <% purchase_entry = ProductsPurchased.where(cart_id: order.id, product_variant_id: product_variant.id).first %>
             <h3> <%= "#{product_variant.product.name} | Size: #{product_variant.size.sizing} | QTY: #{purchase_entry.purchase_QTY} | $#{product_variant.price} " %> </h3>
-        <% end %>
-        <br>
-    <% end %>
-<% end %>
 
-<%= link_to 'Return to profile', "/profiles/#{params[:id]}" %>
+            <p>Total cost = $50</p>
+            </div>
+            <br>
+
+        <% end %>
+    <% end %>
+    <%= link_to 'Back to profile', "/profiles/#{params[:id]}" %>
+    </div>
+</div>
+
+
+
+     

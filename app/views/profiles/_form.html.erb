@@ -1,3 +1,6 @@
+<div class="border-form-div">
+<h1>Edit Profile</h1>
+<br>
 <%= form_with(model: profile, local: true) do |form| %>
   <% if profile.errors.any? %>
     <div id="error_explanation">
@@ -11,33 +14,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
+    <%= form.label :username, class: "control-label" %> <br>
+    <%= form.text_field :username, class: "form-control" %> <br>
 
-  <div class="field">
-    <%= form.label :about %>
-    <%= form.text_area :about %>
-  </div>
+    <%= form.label :about,class: "control-label" %> <br>
+    <%= form.text_area :about,class: "form-control" %> <br>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
+    <%= form.label :location, class: "control-label" %> <br>
+    <%= form.text_field :location,class: "form-control" %> <br>
 
-  <div class="field">
-    <%= form.label :joindate %>
-    <%= form.date_select :joindate %>
-  </div>
+    <%= form.label :avatar, class: "control-label" %> <br>
+    <%= form.file_field :avatar %> <br> <br>
 
-  <div class="field">
+    <%= form.label :cover_image, class: "control-label" %> <br>
+    <%= form.file_field :cover_image %> <br> <br>
+
+    
     <%= form.hidden_field :user_id, value: (current_user.id)%>
-  </div>
 
-  
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= form.submit class: "btn btn-primary" %>
+
 <% end %>
+
+<%= link_to 'Back', "/profiles/#{@profile.id}/" %>
+</div>

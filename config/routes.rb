@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :products
-  resources :profiles
   resources :product_variants
+  resources :profiles, except: :index
   devise_for :users
   root to: 'pages#fandoms'
 

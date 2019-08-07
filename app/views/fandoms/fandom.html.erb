@@ -1,7 +1,21 @@
-<h1>
-    <% @products.each do |product| %>
-        <p>
-            <%= product.name %>
-        </p>
+
+<div class= "fandom-page">
+    <% if @products.length != 0 %>
+        <% @products.each do |product| %>
+            
+                <% if product.uploaded_image.attached? %>   
+                <div class="fandom-wrapper">
+                  <%= image_tag product.uploaded_image, class: "fandom-img-size" %>
+                <% else %>
+                <%= image_tag 'placeholder_image.svg', class: "fandom-img-size" %>
+                
+                <% end %>
+                
+                <%= product.name %>
+            </div>
+        <% end %>
+
+        <% else %>
+        <p>This fandom has no uploaded products!</p>
     <% end %>
-</h1>
+</div>

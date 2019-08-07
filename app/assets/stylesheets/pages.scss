@@ -6,25 +6,36 @@
     // background-color: lightblue;
 }
 
+h1  {
+    // background-color: lightblue;
+}
+.header {
+    background-color: lightblue;
+    padding: 0px;
+    margin: 0px;
+}
 .page-wrapper {
     display: flex;
     justify-content: center;
     width: 100vw;
+//     background-color: lightblue;
     background-color: lightblue;
-    // background-color: red;
+    // padding: 100px;
 }
 
 .page {
     margin-left: 42px;
     margin-right: 42px;
     display: grid;
-    grid-auto-columns: auto;
+    // grid-auto-columns: auto;
     // this is where you can change the number of columns display in the pages views:
     grid-auto-flow: dense;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    // grid-template-columns: 200px 200px 200px 200px;
     width: 100%;
     grid-gap: 20px;
     background-color: lightblue;
+    padding-bottom: 100px;
     // justify-content: center
 }
 
@@ -107,6 +118,7 @@
     display: grid;
     width: 100%;
     grid-gap: 20px;
+    padding-bottom: 100px;
     // justify-content: center
 }
 
@@ -172,6 +184,7 @@ ul {
       display: flex;
     position: absolute;
     align-self: center;
+    color: white;
 
   }
   
