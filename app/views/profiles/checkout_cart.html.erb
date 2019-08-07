@@ -3,11 +3,13 @@
 <br>
 
 <h2>
-    Item<% if @checked_out_cart.products.length > 1%>s<% end %> ordered:
+    Item<% if @checked_out_cart.product_variants.length > 1%>s<% end %> ordered:
 </h2>
 
-<% @checked_out_cart.products.each do |product| %>
-    <h3> <%= "#{product.name} | #{product.price} | qty: " %> </h3>
+
+<% @checked_out_cart.product_variants.each do |product_variant| %>
+    <% purchase_entry = ProductsPurchased.where(cart_id: @checked_out_cart.id, product_variant_id: product_variant.id).first %>
+    <h3> <%= "#{product_variant.product.name} | Size: #{product_variant.size.sizing} | QTY: #{purchase_entry.purchase_QTY} | $#{product_variant.price} " %> </h3>
 <% end %>
 <br>
 

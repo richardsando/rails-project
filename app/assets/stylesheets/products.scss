@@ -38,6 +38,11 @@
     // top: 3rem;
 }
 
+#qty-exceeded-notice {
+    color: red;
+    padding: 1rem;
+}
+
 .message-wrap {
     // border: 1px solid red;
     height: 4rem;
@@ -76,3 +81,4 @@
 .exit-link {
     margin-left: 10rem;
 }
+

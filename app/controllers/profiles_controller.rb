@@ -41,6 +41,37 @@ class ProfilesController < ApplicationController
     @cart = current_user.profile.carts.where("active_status = ?", true).first   #gets the current active cart
   end
 
+  def add_product_to_cart
+    #accessible variables from form are size_id, qty, and the id (profile) making the purchase
+
+
+    # if params[:qty] >  
+
+    @cart = current_user.profile.carts.where("active_status = ?", true).first   #get the active cart
+
+    #need to find the product variant 
+    product_variant = ProductVariant.where(product_id: params[:product_id]).where(size_id: params[:size_id]).first
+
+    if params[:qty].to_i > product_variant.stock_QTY
+      respond_to do |format|
+        format.html {return redirect_to "/products/#{params[:product_id]}", notice: 'Sorry, you have ordered more items than there are in stock.' }
+      end
+    end
+
+    @cart.product_variants << product_variant
+
+    #now find the ProductPurchased entry and update the field for purchase quantity
+    ProductsPurchased.where(cart_id: @cart.id, product_variant_id: product_variant.id).first.update_attribute(:purchase_QTY, params[:qty])
+
+    new_stock_amount = product_variant.stock_QTY - params[:qty].to_i
+    product_variant.update_attribute(:stock_QTY, new_stock_amount)
+    
+    #now decease the stock of the product variant 
+    respond_to do |format|
+      format.html {redirect_to "/products/#{params[:product_id]}", notice: 'The item has been successfully added to your cart.' }
+    end
+  end
+
   def add_to_cart
     @cart = current_user.profile.carts.where("active_status = ?", true).first   #get the active cart
     product = Product.find(params[:product_id])
@@ -56,10 +87,26 @@ class ProfilesController < ApplicationController
   end
 
   def remove_cart_item
+    #NEED TO CLEAN THIS CODE
+
     cart_id = Profile.find(params[:id]).carts.where("active_status = ?", true).first.id
-    @cartproduct = CartProduct.where("cart_id = ? AND product_id = ?", cart_id, params[:product_id]).first
-    @cartproduct.destroy
-    redirect_to "/profiles/#{params[:id]}/showcart"
+
+   
+    @product_purchased = ProductsPurchased.where("cart_id = ? AND product_variant_id = ?", cart_id, params[:product_variant_id]).first
+    quantity = @product_purchased.purchase_QTY
+
+    product_variant = ProductVariant.find(params[:product_variant_id])
+    new_stock_amount = product_variant.stock_QTY + quantity
+    product_variant.update_attribute(:stock_QTY, new_stock_amount)
+
+    @product_purchased.destroy
+    
+    #now with the quantity we need to add it back to the product_variant stock
+
+    respond_to do |format|
+      format.html {redirect_to "/profiles/#{params[:id]}/showcart", notice: 'Item removed from cart.' }
+    end
+
   end
 
   def become_an_artist

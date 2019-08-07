@@ -5,11 +5,13 @@
     <h2>You have no previous orders</h2>
 <% else %>
     <% @previous_orders.each do |order| %>
-        <h2><%= "Order ID ##{order.id}" %></h2>
+        <h2><%= "Order ID #CPOP#{order.id}" %></h2>
         <h2><%= "Placed on #{order.time_ordered}" %></h2>
-        <h2> Items// </h2>
-        <% order.products.each do |product| %>
-            <h3> <%= "#{product.name} #{[product.price]} qty:" %> </h3>
+
+        <h2> Items: </h2>
+        <% order.product_variants.each do |product_variant| %>
+            <% purchase_entry = ProductsPurchased.where(cart_id: order.id, product_variant_id: product_variant.id).first %>
+            <h3> <%= "#{product_variant.product.name} | Size: #{product_variant.size.sizing} | QTY: #{purchase_entry.purchase_QTY} | $#{product_variant.price} " %> </h3>
         <% end %>
         <br>
     <% end %>

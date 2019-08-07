@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
   resources :products
   resources :profiles
+  resources :product_variants
   devise_for :users
-  root to: 'pages#home'
+  root to: 'pages#fandoms'
 
-  get '/products/:id/quantity' => 'products#quantity'
+
+  get '/products/:id/add-variant' => 'product_variants#new'
+
+  get '/products/:product_id/edit-variant/:id' => 'product_variants#edit'
+  get '/products/:product_id/remove-variant/:id' => 'product_variants#destroy'
+
+
+  post '/profiles/:id/addproducttocart' => 'profiles#add_product_to_cart'
   
   get '/profiles/:id/addtocart' => 'profiles#add_to_cart' 
   get '/profiles/:id/showcart' => 'profiles#showcart'
