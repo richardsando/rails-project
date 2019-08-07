@@ -24,7 +24,7 @@
             <div class ="search-wrapper">
                 <%= form_tag(products_path, method: :get) do %>
                   Search all products <%= text_field_tag(:search, params[:search]) %>
-                  <%= submit_tag ("Search") %>
+                  <%= submit_tag ("Search"),class: "btn btn-primary" %>
                 <% end %>
             </div>
 
@@ -57,6 +57,10 @@
               <%= link_to 'Fandoms', '/fandoms' %>
           </div>
     </div>
+      
   </body>
+  
   <%= yield %>
-</html>
+
+
+</html>  

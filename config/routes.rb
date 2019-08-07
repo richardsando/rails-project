@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :products
-  resources :profiles
+  resources :profiles, except: :index
   devise_for :users
   root to: 'pages#home'
 

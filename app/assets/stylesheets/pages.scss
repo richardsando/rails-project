@@ -6,12 +6,21 @@
     // background-color: lightblue;
 }
 
+h1  {
+    // background-color: lightblue;
+}
+.header {
+    background-color: lightblue;
+    padding: 0px;
+    margin: 0px;
+}
 .page-wrapper {
     display: flex;
     justify-content: center;
     width: 100vw;
+//     background-color: lightblue;
     background-color: lightblue;
-    // background-color: red;
+    // padding: 100px;
 }
 
 .page {
@@ -26,6 +35,7 @@
     width: 100%;
     grid-gap: 20px;
     background-color: lightblue;
+    padding-bottom: 100px;
     // justify-content: center
 }
 
@@ -108,6 +118,7 @@
     display: grid;
     width: 100%;
     grid-gap: 20px;
+    padding-bottom: 100px;
     // justify-content: center
 }
 
