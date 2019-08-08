@@ -16,11 +16,12 @@
         <p id="notice"><%= notice %></p>
       <% end %>
 
+
       <div class="banner-wrapper">
 
           <% if @profile.cover_image.attached? %>
               <div class="placeholder-banner">  
-                <%= image_tag @profile.cover_image, class: 'placeholder-banner' %>
+                  <%= image_tag  @profile.cover_image.variant(resize: "400x300").processed.service_url %>
               </div>     
           <% end %>
           <h1 class="username"><%= @profile.username %></h1>

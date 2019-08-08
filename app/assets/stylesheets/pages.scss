@@ -1,42 +1,40 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-* {
-    // background-color: lightblue;
+a {
+    color: black;
 }
 
-h1  {
-    // background-color: lightblue;
-}
 .header {
-    background-color: lightblue;
+    background-color: rgb(39, 39, 39);
     padding: 0px;
     margin: 0px;
 }
 .page-wrapper {
+    // margin-top: 100px; 
+    padding-top: 160px;
     display: flex;
     justify-content: center;
     width: 100vw;
-//     background-color: lightblue;
-    background-color: lightblue;
-    // padding: 100px;
+    // background: linear-gradient(270.1deg, #272727 4.83%, #9A9898 53.08%, #2F2F2F 101.9%);
+    background: linear-gradient(270.1deg, #360000 4.83%, #9B4E4E 53.08%, #360101 101.9%);
 }
 
 .page {
+    // margin-top: 25px;
     margin-left: 42px;
     margin-right: 42px;
     display: grid;
-    // grid-auto-columns: auto;
     // this is where you can change the number of columns display in the pages views:
     grid-auto-flow: dense;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    // grid-template-columns: 200px 200px 200px 200px;
     width: 100%;
     grid-gap: 20px;
-    background-color: lightblue;
-    padding-bottom: 100px;
-    // justify-content: center
+    // background: linear-gradient(270.1deg, #272727 4.83%, #9A9898 53.08%, #2F2F2F 101.9%);
+    background: linear-gradient(270.1deg, #360000 4.83%, #9B4E4E 53.08%, #360101 101.9%);
+    border: #272727 2px solid;
+
+}
+
+a {
+    color: orange;
 }
 
 .product-wrapper {
@@ -44,7 +42,6 @@ h1  {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // align-items: center;
     border-radius: 30px;
     width: 250px;
 
@@ -55,7 +52,6 @@ h1  {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    // width: 200px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     min-width: 100%;
@@ -66,15 +62,10 @@ h1  {
 .product-img {
     display: flex;
     justify-self: center;
-    // width: 100%;
-    // justify-content: center;
-    // align-items: center;
-    justify-self: center;
     border-radius: 30px ;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     height: 250px;
-    // max-width: 100%;
     overflow: hidden;
     min-width: 100%;
 }
@@ -86,30 +77,30 @@ h1  {
 }
 
 .product-details-container {
-    // padding-left: 10px;
     padding: 10px;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: flex-start;
-//     align-items: flex-end;
 }
 
 .fandom-banner-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding-bottom: 0px;
+
     overflow: hidden;
+    border: solid black 2px;
 }
 .fandom-banner {
     height: 370px;
-    filter: grayscale(50%);
     opacity: 0.9;
 }
 .fandom-banner-text {
     position: absolute;
     // top: 10em;
     color: white;
-    font-size: 6em;
+    font-size: 5em;
 
 }
 .fandom-page {
@@ -118,17 +109,21 @@ h1  {
     display: grid;
     width: 100%;
     grid-gap: 20px;
-    padding-bottom: 100px;
+    box-shadow: 25px 25px 25px rgba(0,0,0,0.9);
+    margin-bottom: 100px;
+    // padding-bottom: 100px;
     // justify-content: center
 }
 
 ul {
     columns: 250px;
     break-inside: avoid;
-    margin-left: 20px;
+    margin-left: 0px;
     // margin: 20px;
     margin-right: 20px;
     z-index: 0;
+    padding-inline-start: 20px;
+    
     // padding: 1em;
   }
 
@@ -164,8 +159,8 @@ ul {
     object-fit: cover;
     margin-top: 0px;
     // margin-bottom: 20px;
-    border: 1px solid black;
-    box-shadow: 1px 3px 8px rgba(0,0,0,0.5);
+    border: 2px solid rgb(27, 27, 27);
+    // box-shadow: 1px 3px 8px rgba(0,0,0,0.5);
     filter: grayscale(100%);
     transform: scale(1);
     transition: transform 1.25s, filter 0.5s, box-shadow 0.5s, scale 0.5s;
@@ -174,7 +169,7 @@ ul {
   .image-link:hover .fandom-img,
   .image-link:focus .fandom-img { 
       z-index: 100;
-    -webkit-transform: scale(1.2);
+    -webkit-transform: scale(1.1);
     -webkit-filter: none;
     filter: none;
     box-shadow: #224 0.2em 0.2em 0.6em 0.1em;
@@ -182,6 +177,13 @@ ul {
 
   .image-word {
       display: flex;
+    position: absolute;
+    align-self: center;
+    color: white;
+  }
+
+  a.image-word {
+    display: flex;
     position: absolute;
     align-self: center;
     color: white;

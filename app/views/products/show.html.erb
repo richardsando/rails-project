@@ -1,6 +1,5 @@
 <div class="product-page">
 
-
     <% if notice == 'The item has been successfully added to your cart.' %>
       <div class="message-wrap">
         <%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
@@ -10,6 +9,7 @@
 
       </div>
     <%# might not need this anymore - NO I STILL WILL IF THE USER ADDS ANOTHER ONE  %>
+
     <% elsif notice == 'Sorry, you have ordered more items than there are in stock.' %>
       <div class="message-wrap">
         <p id="qty-exceeded-notice"><%= notice %></p> 
@@ -18,9 +18,7 @@
     <% end %>
     
 
-
   <div class="product">
-
     <% if @product.uploaded_image.attached? %>
       <div id="artist-product-img">
           <%= image_tag @product.uploaded_image.service_url, class: 'image-size' %>
@@ -43,7 +41,9 @@
         </p>
 
         <p>
-        <%= link_to @product.category.category %>
+
+          <%= link_to @product.category.category, "/#{@product.category}" %>
+
         </p>
 
         <p>
@@ -103,13 +103,8 @@
       <% end %>
     </div>
 
-
-
-
       <% if user_signed_in? %>
         <% if current_user.profile != nil && current_user.profile != @product.profile %>
-            
-
           <% if current_user.profile == @product.profile %> 
                 <%= link_to 'Delete', "/products/#{@product.id}", method: :delete %> |
                 <%= link_to 'Edit', edit_product_path(@product) %> |
@@ -122,14 +117,10 @@
             <%= link_to 'Add to cart', "/users/sign_in", data: { confirm: 'You must log in to add to cart, are you sure?' } %>
           </div>
           <%= link_to 'Add to wishlist', "/users/sign_in", data: { confirm: 'You must log in to add to wishlist, are you sure?' }%>
-
+       
         <% end %>
       <% end %>
-
-
-
     
-
     <% if user_signed_in? && current_user.profile == @product.profile %>
 
       <br><br><br>
@@ -159,18 +150,13 @@
                 </tr>
               <% end %>
             </tbody>
-
           </table>
     <% end %>
-
   </div>
-  
-
-
 </div>
 
 <footer>This is the footer</footer>
 
 
 
-  
+   

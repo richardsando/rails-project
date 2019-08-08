@@ -17,7 +17,7 @@
 
 <div class="my-cart">
           <h1>My Cart</h1>
-
+     <hr>
           <% if @cart.product_variants.empty? %>
                <p>Your cart has zero items!</p>
           <% else %>
@@ -25,18 +25,21 @@
                     <div class="showcart-entry">
                          <% base_product = product_variant.product %>
                          <% purchase_entry = ProductsPurchased.where(cart_id: @cart.id, product_variant_id: product_variant.id).first %>
-                         
-                         <%= link_to base_product.name, "/products/#{base_product.id}" %> |
-                         <%= "  Size: #{product_variant.size.sizing}" %> |
-                         <% if purchase_entry.purchase_QTY == 1 %>
-                              <%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
-                         <% else %>
-                              <%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=decrement" %>
-                         <% end %>
-                         <%= "  QTY: #{purchase_entry.purchase_QTY}" %> 
-                         <%= link_to inline_svg("_ionicons_svg_md-add.svg", class: "increment-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=increment" %> |
-                         <%= link_to 'Remove Item', "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
+                         <p>
+                            <%= image_tag base_product.uploaded_image.service_url, class: "cart-image-size" %>
+                           <%= link_to base_product.name, "/products/#{base_product.id}" %> |
+                           <%= "  Size: #{product_variant.size.sizing}" %> |
+                           <% if purchase_entry.purchase_QTY == 1 %>
+                                <%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
+                           <% else %>
+                                <%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=decrement" %>
+                           <% end %>
+                           <%= "  QTY: #{purchase_entry.purchase_QTY}" %> 
+                           <%= link_to inline_svg("_ionicons_svg_md-add.svg", class: "increment-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=increment" %> |
+                           <%= link_to 'Remove Item', "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
+                         </p> 
                     </div>               
+               <hr>
                <% end %>
           <% end %>
 
@@ -47,6 +50,7 @@
           <% else %>
                <%= link_to 'Checkout', "/profiles/#{params[:id]}/checkout_cart?cart_id=#{@cart.id}" %>
           <% end %>
+          <%= link_to 'Back to profile', "/profiles/#{params[:id]}" %>
      </div>
 </div>
      

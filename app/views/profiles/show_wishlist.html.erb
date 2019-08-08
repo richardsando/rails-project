@@ -23,11 +23,11 @@
                          <%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item?product_id=#{product.id}" %>
                     </div>
                   
-                    </div>
+                    
                <% end %>
           <% end %>
-
-
+     <%= link_to 'Back to Profile', "/profiles/#{current_user.profile.id}" %>
+</div>
 
 
     
