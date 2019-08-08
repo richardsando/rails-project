@@ -92,3 +92,17 @@
 //     border: solid lightblue 2px;
 //     border-radius: 25px;
 // }
+
+.decrement-icon, .increment-icon {
+    width: 2rem;
+    height: 2rem;
+    fill:grey;
+}
+
+.decrement-icon:hover, .increment-icon:hover {
+    fill: #333;
+}
+
+#out-of-stock-notice {
+    color: #ff3333;
+}

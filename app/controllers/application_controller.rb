@@ -5,6 +5,20 @@ class ApplicationController < ActionController::Base
     # before the location can be stored.
     # before_action :authenticate_user!
 
+    def active_cart(profile_id)
+        return Profile.find(profile_id).carts.where("active_status = ?", true).first
+    end
+
+    def cart_total(cart_id)
+        cart = Cart.find(cart_id)   #get the cart that the products belong to 
+        total = 0.0
+        cart.products_purchaseds.each do |purchased_product|
+            total += purchased_product.purchase_QTY * ProductVariant.find(purchased_product.product_variant_id).price
+        end
+        return total
+    end
+
+
     protected
 
     def after_sign_in_path_for(resource)
