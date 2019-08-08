@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    authorize()
   end
 
   # POST /products
