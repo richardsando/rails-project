@@ -1,76 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>culturePop</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  
-    <style>
-       @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-    </style>
-  </head>
-
-  <body>
-  
-  <div class="nav-wrapper">
-
-    <nav class="main-nav">
-
-      <div class="left-nav">
-          <div class="logo">
-            <%= link_to 'CulturePop', '/' %>  
-          </div>
-
-            <%= form_tag(products_path, method: :get,class: "search-bar") do %>
-               <div class ="search-wrapper">
-                  <%= text_field_tag(:search, params[:search], placeholder: "Search all products", class: "form-control") %>
-                  <%= submit_tag ("Go"), class:"btn btn-tertiary"  %>
-              <% end %>
-              </div>
-         
-          
-      </div>
-
-        <div class="user-info">
-          <% if current_user %>
-              <% if current_user.profile.nil? %>
-                  <%= link_to "Create Profile", new_profile_path %>
-              <% else %>
-              <%= current_user.profile.username %>
-             <%= link_to (image_tag "user.svg", class: "user-icon"), "/profiles/#{current_user.profile.id}" %> 
-    
-    
-                <% if current_user.profile.present? %>
-                    <div class="cart-icon">
-                        <%= link_to image_tag('shopping-cart-grey.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id },alt:"back" %>
-                        <%= link_to image_tag('cart-hover.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id },class: "cart-top" %>
-                    </div>
-
-                    
-                <% end %>
-                
-              <% end %>
-              
-            <% end %>
-            <%= render 'devise/menu/login_items' %>
-          </div>
-    </nav>
-
-        <div class="categories-nav">
-            
-            <%= link_to 'T-Shirts', "/categories/1" %>
-            <%= link_to 'Stickers', "/categories/2" %>
-            <%= link_to 'iPhone Cases', "/categories/3" %>
-            <%= link_to 'Prints', "/categories/4" %>
-        </div>
-
-  </div>
-      
-</body>
-  
-  <%= yield %>
-
-
+	<head>
+		<title>culturePop</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+		</style>
+	</head>
+	<body>
+		<div class="nav-wrapper">
+			<nav class="main-nav">
+				<div class="left-nav">
+					<div class="logo">
+						<%= link_to 'CulturePop', '/' %>
+					</div>
+					<%= form_tag(products_path, method: :get,class: "search-bar") do %>
+						<div class ="search-wrapper">
+							<%= text_field_tag(:search, params[:search], placeholder: "Search all products", class: "form-control") %>
+							<%= submit_tag ("Go"), class:"btn btn-tertiary"  %>
+						<% end %>
+					</div>
+				</div>
+				<div class="user-info">
+					<% if current_user %>
+						<% if current_user.profile.nil? %>
+							<%= link_to "Create Profile", new_profile_path %>
+						<% else %>
+							<p class="logged-in-as"> <%= current_user.profile.username %> </p>
+							<%= link_to (image_tag "user.svg", class: "user-icon"), "/profiles/#{current_user.profile.id}" %>
+							<% if current_user.profile.present? %>
+								<div class="cart-icon">
+									<%= link_to image_tag('shopping-cart-grey.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id },alt:"back" %>
+									<%= link_to image_tag('cart-hover.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id },class: "cart-top" %>
+								</div>
+							<% end %>
+						<% end %>
+					<% end %>
+					<%= render 'devise/menu/login_items' %>
+				</div>
+			</nav>
+			<div class="categories-nav">
+				<%= link_to 'T-Shirts', "/categories/1" %>
+				<%= link_to 'Stickers', "/categories/2" %>
+				<%= link_to 'iPhone Cases', "/categories/3" %>
+				<%= link_to 'Prints', "/categories/4" %>
+			</div>
+		</div>
+	</body>
+	<%= yield %>
 </html>  
