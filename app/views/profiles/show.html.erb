@@ -1,100 +1,96 @@
 <div class="page-wrapper">
-    <div class="page">
-
-      <% if notice == "Signed in successfully." %>
-        <p id="notice"><%= notice %></p>
-      <% end %>
-
-
-      <div class="banner-wrapper">
+	<div class="page">
+		<% if notice == "Signed in successfully." %>
+			<p id="notice"><%= notice %></p>
+		<% end %>
+		<div class="banner-wrapper">
+			<% if @profile.cover_image.attached? %>
+				<%= image_tag  @profile.cover_image.service_url %>
+			<% else %>
+				<%= image_tag"banners/placeholder-banner.jpg" %>
+			<% end %>
+			<div class="profile-info">
+				<% if @profile.avatar.attached? %>
+					<div class="profile-img">
+						<%= image_tag @profile.avatar, class: 'placeholder-profile' %>
+					</div>
+				<% else %>
+					<%= image_tag "user.svg", class: "placeholder-profile" %>
+				<% end %>
+				<p>
+					<strong>About:</strong>
+					<%= @profile.about %>
+				</p>
+				<p>
+					<strong>Location:</strong>
+					<%= @profile.location %>
+				</p>
+				<p>
+					<strong>Joindate:</strong>
+					<%= @profile.created_at.to_date%>
+				</p>
+				<br>
+				<p>
+					<%= @profile.username %>'s current privilege is set to <%= @profile.user.role.privilege %>
+				</p>
+			</div>
+			<h1 class="username">
+				<%= @profile.username %>
+			</h1>
+		</div>
+		<% if user_signed_in?%>
+			<% if current_user == @profile.user %>
+				<div class="user-actions">
+          <h1>Welcome back, <%= @profile.username %>. What would you like to do?</h1>
+					<p><%= link_to 'View Order History', "/profiles/#{@profile.id}/previous_orders" %></p>
+					<p><%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%></p>
+					<p><%= link_to 'View Cart', "/profiles/#{@profile.id}/showcart"%></p>
           
-              <div class="placeholder-banner">  
-            <% if @profile.cover_image.attached? %>
-                <%= image_tag  @profile.cover_image.service_url %>
-            <% else %>
-                <%= image_tag "/banners/2.jpg" %>
-            <% end %>
-              </div>     
-          
-
-          <h1 class="username"><%= @profile.username %></h1>
-
-           <% if @profile.avatar.attached? %>
-              <div class="profile-img">  
-                <%= image_tag @profile.avatar, class: 'placeholder-profile' %>
-              </div>
-          <% else %>
-              <%= image_tag "user.svg", class: "placeholder-profile" %>
-          <% end %>
-
-      </div>
-
-
-    <div class="profile-info">
-        <p>
-          <strong>About:</strong>
-          <%= @profile.about %>
-        </p>
-        <p>
-          <strong>Location:</strong>
-          <%= @profile.location %>
-      </p>
-
-        <p>
-          <strong>Joindate:</strong>
-          <%= @profile.created_at.to_date%>
-        </p>
-        <br>
-        <p>
-          <%= @profile.username %> is a <%= @profile.user.role.privilege %> 
-        </p>
-
-
-        <br>
-
-        <% if current_user == @profile.user %>
-            <h1>Me</h1>
-            <p><%= link_to 'View Order History', "/profiles/#{@profile.id}/previous_orders" %></p> 
-            <p><%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%></p> 
-            <p><%= link_to 'View Cart', "/profiles/#{@profile.id}/showcart"%></p> 
-            <p><%= link_to 'Edit Profile', edit_profile_path(@profile) %></p> 
-            <p><%= link_to 'Add one of your creations', new_product_path %> </p>
-        <% end %>
-    </div>  
-        <h3 class="my-products">
-            My products available for sale
-        </h3> 
-                <% @profile.products.each do |product| %>
-                    <% if product.uploaded_image.attached? %>
-                        <%= image_tag product.uploaded_image, class: "profile-product-image" %>
-                    <% else %>
-                        <%= image_tag "placeholder_image.svg" %>
-                    <% end %>   
-                    <%= link_to product.name, "/products/#{product.id}" %>
-                    <% if current_user.profile == @profile %>
-                          | <%= link_to "Edit", {:controller => "products", :action => "edit", :id => product.id } %>
-                          | <%= link_to 'Remove',  "/products/#{product.id}", method: :delete %>
-                    <% end %>
-                <% end %>
-              <br>
-
-
-              <% if current_user.profile == @profile %>
-                <p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
-              <% else %>
-                 <%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
-              <% end %>
-        
-
-        <br> 
-      
-
-        
-      <%= link_to 'Back to home', '/' %>
-
-  </div>
+           <br>
+					<p>
+						<%= link_to 'Edit Profile', edit_profile_path(@profile) %>
+					</p>
+					<p>
+						<%= link_to 'Add a product to the store', new_product_path %>
+					</p>
+				</div>
+			<% end %>
+		<% end %>
+		<h1 class="my-products-title">
+			Products made by me!
+		</h1>
+		<ul>
+			<% @profile.products.each do |product| %>
+				<% if product.uploaded_image.attached? %>
+					<li class="product-image-link">
+						<%= link_to (image_tag product.uploaded_image, class: "product-img"), "/products/#{product.id}/" %>
+					<% else %>
+						<li class="product-image-link">
+							<%= link_to (image_tag "placeholder_image.svg", class:"product-img"), "/products/#{product.id}/" %>
+						</li>
+					<% end %>
+					<div class="product-details-container">
+						<p class="product-name">  <%= link_to product.name, "/products/#{product.id}",class: "product-name" %> $<%= product.product_variants.first.price %> </p>
+						<p class="made-by"> By <%= link_to product.profile.username, "/profiles/#{product.profile.id}" %></p>
+						<% if current_user %>
+							<% if current_user.profile == @profile %>
+								<%= link_to "Edit", {:controller => "products", :action => "edit", :id => product.id } %>
+								<%= link_to 'Remove',  "/products/#{product.id}", method: :delete %>
+							<% end %>
+						<% end %>
+					</div>
+				</li>
+			<% end %>
+		</ul>
+		<br>
+		<% if user_signed_in? %>
+			<% if current_user.profile == @profile %>
+				<p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
+			<% else %>
+				<%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
+			<% end %>
+		<% end %>
+		<br>
+		<%= link_to 'Back to home', '/' %>
+	</div>
 </div>
-
-
-
-
