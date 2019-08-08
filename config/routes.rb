@@ -26,29 +26,34 @@ Rails.application.routes.draw do
   get '/profiles/:id/show-wishlist/remove-item' => 'profiles#remove_wishlist_item'
   get '/profiles/:id/show-wishlist/remove-item-on-wishlist' => 'profiles#remove_item_on_wishlist_page'
 
+
+
   # categories and fandoms
+
+  get '/categories/:id' => 'pages#category'
   get '/tshirts' => 'pages#tshirts'
   get '/iphonecases' => 'pages#iphonecases'
   get '/stickers' => 'pages#stickers'
   get '/prints' => 'pages#prints'
-  get '/fandoms' => 'pages#fandoms'
+
+
 
 
   #Fandom pages "oh what fun..."
   get '/fandoms/:id' => 'fandoms#fandom'
 
-  get '/marvel' => 'fandoms#marvel'
-  get '/dc' => 'fandoms#dc'
-  get '/star_wars' => 'fandoms#star_wars'
-  get '/dr_who' => 'fandoms#dr_who'
-  get '/the_walking_dead' => 'fandoms#the_walking_dead'
-  get '/supernatural' => 'fandoms#supernatural'
-  get '/pokemon' => 'fandoms#pokemon'
-  get '/dragonball_z' => 'fandoms#dragonball_z'
-  get '/fullmetal_alchemist' => 'fandoms#fullmetal_alchemist'
-  get '/sherlock' => 'fandoms#sherlock'
-  get '/adventure_time' => 'fandoms#adventure_time'
-  get '/game_of_thrones' => 'fandoms#game_of_thrones'
+  # get '/marvel' => 'fandoms#marvel'
+  # get '/dc' => 'fandoms#dc'
+  # get '/star_wars' => 'fandoms#star_wars'
+  # get '/dr_who' => 'fandoms#dr_who'
+  # get '/the_walking_dead' => 'fandoms#the_walking_dead'
+  # get '/supernatural' => 'fandoms#supernatural'
+  # get '/pokemon' => 'fandoms#pokemon'
+  # get '/dragonball_z' => 'fandoms#dragonball_z'
+  # get '/fullmetal_alchemist' => 'fandoms#fullmetal_alchemist'
+  # get '/sherlock' => 'fandoms#sherlock'
+  # get '/adventure_time' => 'fandoms#adventure_time'
+  # get '/game_of_thrones' => 'fandoms#game_of_thrones'
 
   resources :charges
   get 'profiles/:id/become_artist' => 'profiles#become_an_artist'

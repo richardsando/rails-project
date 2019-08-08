@@ -15,13 +15,13 @@
   <% end %>
   
     <%= form.label :username, class: "control-label" %> <br>
-    <%= form.text_field :username, class: "form-control" %> <br>
+    <%= form.text_field :username, class: "form-control", required: true %> <br>
 
     <%= form.label :about,class: "control-label" %> <br>
-    <%= form.text_area :about,class: "form-control" %> <br>
+    <%= form.text_area :about,class: "form-control", required: true %> <br>
 
     <%= form.label :location, class: "control-label" %> <br>
-    <%= form.text_field :location,class: "form-control" %> <br>
+    <%= form.text_field :location,class: "form-control", required: true %> <br>
 
     <%= form.label :avatar, class: "control-label" %> <br>
     <%= form.file_field :avatar %> <br> <br>

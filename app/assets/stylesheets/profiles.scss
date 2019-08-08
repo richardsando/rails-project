@@ -1,14 +1,14 @@
 .profile-wrapper {
-    position: relative;
+    padding-top: 140px; 
+    // position: relative;
     display: flex;
     justify-content: center;
     width: 100vw;
 }
+  
 
 .profile {
-    margin-top: 10px;
-    // margin-left: 30px;
-    // margin-right: 30px;
+   
     width: 100vw;
     background-color: rgb(221, 255, 255);
 }
@@ -35,13 +35,13 @@
     width: 25%;
     border-color: white; 
     border-width: 7px; 
-    top: 2.5%;
+    top: 20%;
     left: 10vw;
 
 }
 .username {
     position: absolute;
-    bottom: 56%;
+    bottom: 40%;
     right: 7%;
     font-size: 5vw;
 }
@@ -53,8 +53,11 @@
 }
 
 .my-cart-page {
+    margin-top: 100px; 
+    padding-top: 180px; 
     display: flex;
     justify-content: center;
+    margin: 0px;
 }
 .my-cart {
     display:grid;
@@ -87,8 +90,3 @@
     padding-bottom: 20px;
 }
 
-// .prev-order {
-//     padding: 8px;
-//     border: solid lightblue 2px;
-//     border-radius: 25px;
-// }
