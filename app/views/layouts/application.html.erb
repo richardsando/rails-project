@@ -13,10 +13,6 @@
   </head>
 
   <body>
-
-
-  
-  
   
   <div class="nav-wrapper">
 
@@ -27,7 +23,7 @@
             <%= link_to 'CulturePop', '/' %>  
           </div>
 
-            <%= form_tag(products_path, method: :get) do %>
+            <%= form_tag(products_path, method: :get,class: "search-bar") do %>
                <div class ="search-wrapper">
                   <%= text_field_tag(:search, params[:search], placeholder: "Search all products", class: "form-control") %>
                   <%= submit_tag ("Go"), class:"btn btn-tertiary"  %>
@@ -42,16 +38,17 @@
               <% if current_user.profile.nil? %>
                   <%= link_to "Create Profile", new_profile_path %>
               <% else %>
-                
+              <%= current_user.profile.username %>
              <%= link_to (image_tag "user.svg", class: "user-icon"), "/profiles/#{current_user.profile.id}" %> 
     
-     
-                      
-              
+    
                 <% if current_user.profile.present? %>
                     <div class="cart-icon">
-                        <%= link_to image_tag('shopping-cart-grey.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id } %>
+                        <%= link_to image_tag('shopping-cart-grey.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id },alt:"back" %>
+                        <%= link_to image_tag('cart-hover.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id },class: "cart-top" %>
                     </div>
+
+                    
                 <% end %>
                 
               <% end %>
@@ -63,10 +60,10 @@
 
         <div class="categories-nav">
             
-            <%= link_to 'T-Shirts', '/tshirts' %>
-            <%= link_to 'Prints', '/prints' %>
-            <%= link_to 'iPhone Cases', '/iphonecases' %>
-            <%= link_to 'Stickers', '/stickers' %>
+            <%= link_to 'T-Shirts', "/categories/1" %>
+            <%= link_to 'Stickers', "/categories/2" %>
+            <%= link_to 'iPhone Cases', "/categories/3" %>
+            <%= link_to 'Prints', "/categories/4" %>
         </div>
 
   </div>

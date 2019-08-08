@@ -3,20 +3,21 @@
     
 <div class="page-wrapper">
    
-    <div class="fandom-page">
+    <div class="page">
      <div class="fandom-banner-wrapper">
-    <%= image_tag 'banners/fandom-banner-low.jpg', class: "fandom-banner" %>
-        <h2 class="fandom-banner-text">
-            Creations from your <br> favourite franchises
-        </h2>
-    </div>
-        <ul class="fandom-list">
+            <%= image_tag 'banners/fandom-banner-low.jpg', class: "fandom-banner" %>
+             <h2 class="fandom-banner-text">
+                 Creations from your <br> favourite franchises
+            </h2>
+     </div>
+
+        <ul>
             <% @fandoms.each do |fandom| %>
                 <% if fandom.uploaded_image.attached? %>
                     <li class="image-link">
-                        <%= link_to (image_tag fandom.uploaded_image.service_url , class: "fandom-img"), "/fandoms/#{fandom.id}/" %> 
+                        <%= link_to (image_tag fandom.uploaded_image , class: "fandom-img"), "/fandoms/#{fandom.id}/" %> 
                         <p class="image-word">
-                         <%= link_to fandom.fandom, "/fandoms/#{fandom.id}/" %>
+                             <%= link_to fandom.fandom, "/fandoms/#{fandom.id}/" %>
                         </p>
                     </li>
                 <% else %>

@@ -1,28 +1,14 @@
 class PagesController < ApplicationController
 
+    def show
+        @products = Product.all
+        @category = Category.find(params[:id])
 
-
+    end
     
-def tshirts
-    @tshirts = Product.where(category_id: 1).shuffle
-end
-
-def prints
-    @prints = Product.where(category_id: 4).shuffle
-end
-
-def iphonecases
-    @iphonecases = Product.where(category_id: 3).shuffle
-end
-
-def stickers
-    @stickers = Product.where(category_id: 2).shuffle
-end
-
-def fandoms
-    @products = Product.all
-    @fandoms = Fandom.all
-end
-
+    def fandoms
+        @products = Product.all
+        @fandoms = Fandom.all
+    end
 
 end

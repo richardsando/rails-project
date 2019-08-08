@@ -6,16 +6,16 @@
     <div class="page">
 
          <div class="fandom-banner-wrapper">
-             <%= image_tag 'banners/tshirts-banner.jpg', class: "tshirt-banner" %>
-             <h2 class="fandom-banner-text">
-                 Stickers
+             <%= image_tag "banners/#{params[:id]}.jpg", class: "tshirt-banner" %>
+             <h2 class="banner-text">
+                <%= @category.category %>
             </h2>
         </div>
 
         <ul>
 
             <% @products.each do |product| %>
-                <% if product.category.id == 2 %>
+                <% if product.category.id == params[:id].to_i %>
                     <% if product.uploaded_image.attached? %>
                         <li class="product-image-link">
                              <%= link_to (image_tag product.uploaded_image, class: "product-img"), "/products/#{product.id}/" %> 

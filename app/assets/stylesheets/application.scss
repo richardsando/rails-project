@@ -14,22 +14,55 @@
  *= require_self
  */
 
-@import 'nice-select';
 @import 'profiles.scss';
 @import 'pages.scss';
 @import 'products.scss';
-@import "bootstrap";
+// @import "bootstrap";
 
+@font-face {
+    font-family: 'bubblegumsregular';
+    src: font-url('bubblegumsregular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: "komikah";
+    src: font-url('komikah_-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+  
 
- 
- a
- {
-   text-decoration: none;
-   color: #232323;
-   
-   transition: color 0.3s ease;
- }
- 
+* { 
+    margin: 0px; 
+    font-family: 'Montserrat', sans-serif;
+    // font-family: "komikah";
+    text-decoration: none;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+form {
+    padding-top: 160px;
+}
+.border-form-div {
+    padding-top: 160px;
+    margin-top: 0px;
+    background-color: white; 
+}
+.search-bar {
+    padding-top: 0px;
+}
+
+a {
+    color: white;
+    font-family: "komikah";
+}
+p {
+    font-family: "komikah";
+}
+  
+
  a:hover
  {
     text-decoration: none;
@@ -67,17 +100,9 @@
     padding: 7px 9px;
   }
 
-* { 
-    margin: 0px; 
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    box-sizing: border-box;
-    z-index: 0;
-}
 
-a {
-    color: white;
-}
+
+
 p {
     color: black;
 }
@@ -85,7 +110,7 @@ p {
 .nav-wrapper {
     position: fixed;
     width: 100%;
-    height: 140px;
+    height: 100px;
     z-index: 10;
 }
 
@@ -117,18 +142,18 @@ body {
 }
  .main-nav {
     padding-left: 15px;
-    padding-right: 15px;
+    // padding-right: 15px;
      height: 70%;
      display: flex;
      justify-content: space-between;
      align-items: center;
-    //  background: linear-gradient(270.1deg, #272727 4.83%, #9A9898 53.08%, #2F2F2F 101.9%);
      background: linear-gradient(270.1deg, #360000 4.83%, #9B4E4E 53.08%, #360101 101.9%);
  }
- .logo {
+ .logo > a {
      font-size: 40px;
     border-radius: 35px;
     margin-right: 20px;
+    font-family: 'bubblegumsregular';
 
  }
  .profile-icon {
@@ -136,15 +161,36 @@ body {
  }
  .cart-icon {
      width: 40px;
+     display: inline-block;
+     position: relative;
  }
+
+ .cart-icon .cart-top {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+ .cart-icon:hover .cart-top {
+     display: inline;
+ }
+     
  .user-info {
      display: flex;
      align-items: center;
      justify-content: space-around;
-     width: 15%;
+     width: 22%;
      opacity: 0.7;
      font-size: 20px;
      z-index: 5;
+     border: solid 2px rgb(92, 85, 85);
+     padding: 5px;
+     border-radius: 25px;
+     border-top-right-radius: 0px;
+     border-bottom-right-radius: 0px;
+     border-right: 0px;
 
  }
 
@@ -161,9 +207,10 @@ body {
      justify-content: space-around;
      align-items: center; 
      height: 30%;
-    //  background: linear-gradient(270.1deg, #272727 4.83%, #9A9898 53.08%, #2F2F2F 101.9%);
-    background-color: rgb(46, 46, 46);
-     opacity: 0.8;
+     background: linear-gradient(270.1deg, #360000 4.83%, #9B4E4E 53.08%, #360101 101.9%);
+     border-bottom: solid black 2px;
+ 
+  
 
    
  }
