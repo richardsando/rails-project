@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+
+
     
 def tshirts
     @tshirts = Product.where(category_id: 1)
@@ -18,6 +20,7 @@ def stickers
 end
 
 def fandoms
+    @products = Product.all
     @fandoms = Fandom.all
 end
 
