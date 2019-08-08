@@ -1,4 +1,4 @@
-<div class="border-form-div">
+
   <%= form_with(model: product, local: true) do |form| %>
     <% if product.errors.any? %>
       <div id="error_explanation">
@@ -49,4 +49,4 @@
   <% end %>
   <br>
   <%= link_to 'Back to profile', "/profiles/#{current_user.profile.id}" %>
-</div>
+

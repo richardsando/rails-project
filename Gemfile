@@ -9,9 +9,8 @@ ruby '2.5.5'
 gem 'jquery-rails'
 gem 'hirb' 
 
-
 #bootstrap
-gem 'bootstrap', '~> 4.3.1'
+# gem 'bootstrap', '~> 4.3.1'
 #pundit
 gem 'pundit'
 #stripe
