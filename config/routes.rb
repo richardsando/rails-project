@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 
 
   post '/profiles/:id/addproducttocart' => 'profiles#add_product_to_cart'
-  
+
+  get '/profiles/:id/showcart/:purchase_id/change-qty' => 'profiles#change_item_qty'   #need to find a better way to do this through the controller
+
+
   get '/profiles/:id/addtocart' => 'profiles#add_to_cart' 
   get '/profiles/:id/showcart' => 'profiles#showcart'
   get '/profiles/:id/showcart/remove-item' => 'profiles#remove_cart_item'
