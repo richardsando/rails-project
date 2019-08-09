@@ -1,40 +1,35 @@
-<div class="border-form-div">
-<h1>Edit Profile</h1>
-<br>
-<%= form_with(model: profile, local: true) do |form| %>
-  <% if profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-      <ul>
-      <% profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-    <%= form.label :username, class: "control-label" %> <br>
-    <%= form.text_field :username, class: "form-control", required: true %> <br>
-
-    <%= form.label :about,class: "control-label" %> <br>
-    <%= form.text_area :about,class: "form-control", required: true %> <br>
-
-    <%= form.label :location, class: "control-label" %> <br>
-    <%= form.text_field :location,class: "form-control", required: true %> <br>
-
-    <%= form.label :avatar, class: "control-label" %> <br>
-    <%= form.file_field :avatar %> <br> <br>
-
-    <%= form.label :cover_image, class: "control-label" %> <br>
-    <%= form.file_field :cover_image %> <br> <br>
-
-    
-    <%= form.hidden_field :user_id, value: (current_user.id)%>
-
-    <%= form.submit class: "btn btn-primary" %>
-
-<% end %>
-
-<%= link_to 'Back', "/profiles/#{@profile.id}/" %>
+<div class="page-wrapper">
+	<div class="page">
+		<div class="border-form-div">
+			<h1>Edit Profile</h1>
+			<br>
+			<%= form_with(model: profile, local: true) do |form| %>
+				<% if profile.errors.any? %>
+					<div id="error_explanation">
+						<h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+						<ul>
+							<% profile.errors.full_messages.each do |message| %>
+								<li><%= message %></li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+				<%= form.label :username, class: "control-label" %> <br>
+				<%= form.text_field :username, class: "form-control", required: true %> <br>
+				<%= form.label :about,class: "control-label" %> <br>
+				<%= form.text_area :about,class: "form-control", required: true %> <br>
+				<%= form.label :location, class: "control-label" %> <br>
+				<%= form.text_field :location,class: "form-control", required: true %> <br>
+				<%= form.label :avatar, class: "control-label" %> <br>
+				<%= form.file_field :avatar %> <br>
+				<br>
+				<%= form.label :cover_image, class: "control-label" %> <br>
+				<%= form.file_field :cover_image %> <br>
+				<br>
+				<%= form.hidden_field :user_id, value: (current_user.id)%>
+				<%= form.submit class: "btn btn-primary" %>
+			<% end %>
+			<%= link_to 'Back', "/profiles/#{@profile.id}/" %>
+		</div>
+	</div>
 </div>

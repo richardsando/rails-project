@@ -1,52 +1,46 @@
-
-  <%= form_with(model: product, local: true) do |form| %>
-    <% if product.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-        <ul>
-        <% product.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="field">
-      <%= form.label :product_name, class: "control-label" %>
-      <%= form.text_field :name, :required => true, class: "form-control" %>
-    </div>
-
-    <div class="field">
-      <%= form.label :description, class: "control-label" %>
-      <%= form.text_area :description, :required => true, class: "form-control" %>
-    </div>
-
-    <br>
-
-    <div class="field">
-      <%= form.hidden_field :profile_id, value: (current_user.profile.id) %>
-    </div>
-
-    <div class="field" >
-      <%= form.label :category, class: "control-label" %>
-      <%= form.collection_select :category_id, Category.all, :id, :category %>
-    </div>
-    
-    <div class="field">
-      <%= form.label :fandom, class: "control-label" %>
-      <%= form.collection_select :fandom_id, Fandom.all, :id, :fandom, class: "control-form" %>
-    </div>
-
-    <div class="field">
-      <%= form.label :uploaded_image %>
-      <%= form.file_field :uploaded_image %>
-    </div>
-  <br>
-    <div class="actions">
-      <%= form.submit  class: "btn btn-primary" %>
-    </div>
-  <% end %>
-  <br>
-  <%= link_to 'Back to profile', "/profiles/#{current_user.profile.id}" %>
-
+<div class="page-wrapper">
+	<div class="page">
+		<%= form_with(model: product, local: true) do |form| %>
+			<% if product.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+					<ul>
+						<% product.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+			<div class="field">
+				<%= form.label :product_name, class: "control-label" %>
+				<%= form.text_field :name, :required => true, class: "form-control" %>
+			</div>
+			<div class="field">
+				<%= form.label :description, class: "control-label" %>
+				<%= form.text_area :description, :required => true, class: "form-control" %>
+			</div>
+			<br>
+			<div class="field">
+				<%= form.hidden_field :profile_id, value: (current_user.profile.id) %>
+			</div>
+			<div class="field" >
+				<%= form.label :category, class: "control-label" %>
+				<%= form.collection_select :category_id, Category.all, :id, :category %>
+			</div>
+			<div class="field">
+				<%= form.label :fandom, class: "control-label" %>
+				<%= form.collection_select :fandom_id, Fandom.all, :id, :fandom, class: "control-form" %>
+			</div>
+			<div class="field">
+				<%= form.label :uploaded_image %>
+				<%= form.file_field :uploaded_image %>
+			</div>
+			<br>
+			<div class="actions">
+				<%= form.submit  class: "btn btn-primary" %>
+			</div>
+		<% end %>
+		<br>
+		<%= link_to 'Back to profile', "/profiles/#{current_user.profile.id}" %>
+	</div>
+</div>

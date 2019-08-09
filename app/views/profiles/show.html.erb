@@ -41,17 +41,21 @@
 		<% if user_signed_in?%>
 			<% if current_user == @profile.user %>
 				<div class="user-actions">
-          <h1>Welcome back, <%= @profile.username %>. What would you like to do?</h1>
+					<h1 class="welcome">Welcome <%= @profile.username %>. What would you like to do?</h1>
+					<br>
 					<p><%= link_to 'View Order History', "/profiles/#{@profile.id}/previous_orders" %></p>
 					<p><%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%></p>
 					<p><%= link_to 'View Cart', "/profiles/#{@profile.id}/showcart"%></p>
-          
-           <br>
+					<% if current_user.role.id == 1 %>
+						<h3><%= link_to 'Sell your art!', "/profiles/#{@profile.id}/become_artist" %> </h3>
+					<% else %>
+						<p>
+							<%= link_to 'Add a product to the store', new_product_path %>
+						</p>
+					<% end %>
+					<br>
 					<p>
 						<%= link_to 'Edit Profile', edit_profile_path(@profile) %>
-					</p>
-					<p>
-						<%= link_to 'Add a product to the store', new_product_path %>
 					</p>
 				</div>
 			<% end %>
@@ -82,15 +86,5 @@
 				</li>
 			<% end %>
 		</ul>
-		<br>
-		<% if user_signed_in? %>
-			<% if current_user.profile == @profile %>
-				<p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
-			<% else %>
-				<%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
-			<% end %>
-		<% end %>
-		<br>
-		<%= link_to 'Back to home', '/' %>
 	</div>
 </div>
