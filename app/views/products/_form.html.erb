@@ -1,5 +1,6 @@
 <div class="page-wrapper">
 	<div class="page">
+	<div class="border-form-div"> 
 		<%= form_with(model: product, local: true) do |form| %>
 			<% if product.errors.any? %>
 				<div id="error_explanation">
@@ -12,7 +13,7 @@
 				</div>
 			<% end %>
 			<div class="field">
-				<%= form.label :product_name, class: "control-label" %>
+				<%= form.label :product_name,  class: "control-label" %>
 				<%= form.text_field :name, :required => true, class: "form-control" %>
 			</div>
 			<div class="field">
@@ -43,4 +44,5 @@
 		<br>
 		<%= link_to 'Back to profile', "/profiles/#{current_user.profile.id}" %>
 	</div>
+</div>
 </div>
