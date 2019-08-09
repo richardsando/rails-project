@@ -19,6 +19,7 @@ class ProductVariantsController < ApplicationController
 
   # GET /product_variants/1/edit
   def edit
+    authorize(@product_variant)
   end
 
   # POST /product_variants

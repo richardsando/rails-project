@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
-  require "mini_magick"
+  before_action :set_profile, only: [:show, :edit, :update, :destroy, :become_an_artist]
 
   def no_user
     respond_to do |format|
@@ -40,8 +39,10 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    authorize(@profile)
+    
     @profile = Profile.find(params[:id])
+    authorize(@profile)
+  
     # raise
   end
 

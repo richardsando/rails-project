@@ -1,5 +1,6 @@
 <div class="page-wrapper">
 	<div class="page">
+	<div class="border-form-div">
 		<%= form_with(model: product_variant, local: true) do |form| %>
 			<% if product_variant.errors.any? %>
 				<div id="error_explanation">
@@ -26,11 +27,11 @@
 			</div>
 			<div class="field">
 				<%= form.label :quantity %>
-				<%= form.number_field :stock_QTY %>
+				<%= form.number_field :stock_QTY, class: "form-control", required: true %>
 			</div>
 			<div class="field">
 				<%= form.label :price %>
-				<%= form.text_field :price %>
+				<%= form.number_field :price, step:  0.01, class: "form-control", required: true %>
 			</div>
 			<div class="field">
 				<%= form.hidden_field :product_id, value: params[:id] %>
@@ -40,4 +41,5 @@
 			</div>
 		<% end %>
 	</div>
+</div>
 </div>

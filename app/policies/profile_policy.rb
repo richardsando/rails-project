@@ -1,4 +1,10 @@
 class ProfilePolicy < ApplicationPolicy
+    attr_reader :user, :profile
+
+    def initialize(user, profile)
+      @user = user
+      @profile = profile
+    end
 
     def edit?
         @user.profile == @profile
@@ -20,9 +26,8 @@ class ProfilePolicy < ApplicationPolicy
         @user.profile == @profile
     end
 
-    def become_artist
+    def become_an_artist?
         @user.profile == @profile
     end
-
 
 end
