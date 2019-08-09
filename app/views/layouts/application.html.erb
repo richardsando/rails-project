@@ -33,8 +33,8 @@
 							<%= link_to (image_tag "user.svg", class: "user-icon"), "/profiles/#{current_user.profile.id}" %>
 							<% if current_user.profile.present? %>
 								<div class="cart-icon">
-									<%= link_to image_tag('shopping-cart-grey.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id },alt:"back" %>
-									<%= link_to image_tag('cart-hover.svg'), {:controller => "profiles", :action => "showcart", :id => current_user.profile.id },class: "cart-top" %>
+									<%= link_to image_tag('shopping-cart-grey.svg'), {:controller => "carts", :action => "showcart", :id => current_user.profile.id },alt:"back" %>
+									<%= link_to image_tag('cart-hover.svg'), {:controller => "carts", :action => "showcart", :id => current_user.profile.id },class: "cart-top" %>
 								</div>
 							<% end %>
 						<% end %>
