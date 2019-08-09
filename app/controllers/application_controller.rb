@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
     # before the location can be stored.
     # before_action :authenticate_user!
 
+    include Pundit
+    protect_from_forgery
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+    private
+
+    def user_not_authorized
+        flash[:alert] = "You are not authorized to perform this action."
+        redirect_to(request.referrer || root_path)
+    end
+
     def active_cart(profile_id)
         return Profile.find(profile_id).carts.where("active_status = ?", true).first
     end

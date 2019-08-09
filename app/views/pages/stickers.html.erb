@@ -1,27 +1,38 @@
-<h1 class="header"> Stickers </h1>
 
- <div class="page-wrapper">
+
+    
+<div class="page-wrapper">
+   
     <div class="page">
 
-        <% @stickers.each do |product| %>
-            <div class="product-wrapper">
-                
-                    
+         <div class="fandom-banner-wrapper">
+             <%= image_tag 'banners/tshirts-banner.jpg', class: "tshirt-banner" %>
+             <h2 class="fandom-banner-text">
+                 Stickers
+            </h2>
+        </div>
+
+        <ul>
+
+            <% @products.each do |product| %>
+                <% if product.category.id == 2 %>
                     <% if product.uploaded_image.attached? %>
-                    <div class="product-img-wrapper">
-                        <%= link_to (image_tag (product.uploaded_image),class: "product-img"), ("/products/#{product.id}") %>
-                        </div>
-                    <% else %>
-                        <%= image_tag 'placeholder_image.svg' %>
+                        <li class="product-image-link">
+                             <%= link_to (image_tag product.uploaded_image, class: "product-img"), "/products/#{product.id}/" %> 
+                               <% else %>
+                         <li class="product-image-link">
+                             <%= link_to (image_tag "placeholder_image.svg", class:"product-img"), "/products/#{product.id}/" %>
+                        </li>
                     <% end %>
-                
-                <div class="product-details-container">
-                    <p><%= link_to product.name, product %></p>
-                    <p>$ <%= product.base_price %></p>
-                    <p><%= link_to product.profile.username, product.profile %></p>
-                </div>
-            </div> 
-    <% end %>
+                            <div class="product-details-container">
+                                <p class="product-name">  <%= link_to product.name, "/products/#{product.id}",class: "product-name" %> $<%= product.product_variants.first.price %> </p>
+                                <p class="made-by"> By <%= link_to product.profile.username, "/profiles/#{product.profile.id}" %></p>
+                             </div>
+                        </li>
+
+                <% end %>
+            <% end %>
+        </ul>
     </div>
- </div>
-  <footer>This is the footer</footer>
+</div>
+ <footer>This is the footer</footer>

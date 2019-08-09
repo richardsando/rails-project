@@ -1,226 +1,225 @@
 a {
-    color: black;
+  color: black;
 }
 
 .header {
-    background-color: rgb(39, 39, 39);
-    padding: 0px;
-    margin: 0px;
+  background-color: rgb(39, 39, 39);
+  padding: 0px;
+  margin: 0px;
 }
 .page-wrapper {
-    // margin-top: 100px; 
-    padding-top: 160px;
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    // background: linear-gradient(270.1deg, #272727 4.83%, #9A9898 53.08%, #2F2F2F 101.9%);
-    background: linear-gradient(270.1deg, #360000 4.83%, #9B4E4E 53.08%, #360101 101.9%);
+  padding-top: 160px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  background: linear-gradient(
+    270.1deg,
+    #360000 4.83%,
+    #9b4e4e 53.08%,
+    #360101 101.9%
+  );
 }
 
 .page {
-    // margin-top: 25px;
-    margin-left: 42px;
-    margin-right: 42px;
-    display: grid;
-    // this is where you can change the number of columns display in the pages views:
-    grid-auto-flow: dense;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 100%;
-    grid-gap: 20px;
-    // background: linear-gradient(270.1deg, #272727 4.83%, #9A9898 53.08%, #2F2F2F 101.9%);
-    background: linear-gradient(270.1deg, #360000 4.83%, #9B4E4E 53.08%, #360101 101.9%);
-    border: #272727 2px solid;
-
+  margin-left: 42px;
+  margin-right: 42px;
+  display: grid;
+  width: 80%;
+  grid-gap: 10px;
+  box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.9);
+  margin-bottom: 100px;
+  background-color: white;
 }
-
-a {
-    color: orange;
-}
-
-.product-wrapper {
-    background-color: white; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 30px;
-    width: 250px;
-
-}
-
-.product-img-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    min-width: 100%;
-
-    
-}
-
-.product-img {
-    display: flex;
-    justify-self: center;
-    border-radius: 30px ;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    height: 250px;
-    overflow: hidden;
-    min-width: 100%;
-}
-
-.product-img-wrapper  > a{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
 .product-details-container {
-    padding: 10px;
+  padding: 10px;
+  padding-top: 5px;
+  color: black;
+  background-color: white;
+  border-top: solid 2px black;
+}
+.product-name {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  font-size: 1em;
+}
+.made-by {
+  color: black;
+  font-size: 0.45em;
+}
+
+.made-by > a {
+  color: black;
 }
 
 .fandom-banner-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    margin-left: 20px;
-    margin-top: 20px;
-    padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding-bottom: 0px;
 
-    overflow: hidden;
-    border: solid black 2px;
+  overflow: hidden;
+  border: solid black 2px;
 }
 .fandom-banner {
-    height: 370px;
-    opacity: 0.9;
+  height: 370px;
+}
+.tshirt-banner {
+  filter: grayscale(55%);
+  height: 370px;
+  opacity: 0.9;
 }
 .fandom-banner-text {
-    position: absolute;
-    // top: 10em;
-    color: white;
-    font-size: 5em;
-
+  position: absolute;
+  color: rgb(238, 220, 220);
+  font-size: 5em;
 }
+.banner-text {
+  position: absolute;
+  color: black;
+  font-size: 5em;
+  font-family: "bubblegumsregular";
+}
+
 .fandom-page {
-    margin-left: 42px;
-    margin-right: 42px;
-    display: grid;
-    width: 100%;
-    grid-gap: 20px;
-    box-shadow: 25px 25px 25px rgba(0,0,0,0.9);
-    margin-bottom: 100px;
-    // padding-bottom: 100px;
-    // justify-content: center
+  margin-left: 42px;
+  margin-right: 42px;
+  // display: grid;
+  width: 80%;
+  grid-gap: 20px;
+  box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.9);
+  margin-bottom: 100px;
 }
 
 ul {
-    columns: 250px;
-    break-inside: avoid;
-    margin-left: 0px;
-    // margin: 20px;
-    margin-right: 20px;
-    z-index: 0;
-    padding-inline-start: 20px;
-    
-    // padding: 1em;
-  }
+  columns: 250px;
+  break-inside: avoid;
+  margin-left: 0px;
+  margin-right: 20px;
+  z-index: 0;
+  padding-inline-start: 20px;
+  padding-bottom: 18px;
+  // display: flex;
+}
 
-  li {
-    list-style-type:none;
-    z-index: 0;
-  }
+li {
+  list-style-type: none;
+  z-index: 0;
+  width: 20em;
+  max-width: 100%;
+  display: inline-block;
+  display: flex;
+}
 
-  .fandom-page {
-      width: 80%;
-      background-color: white; 
-  }
-  .image-link {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: inline-block;
-    // padding: 5px;
-    width: 20em;
-    max-width: 100%;
-    z-index: 0;
-    display: flex;
-    font-size: 1.5em;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    // max-height: 200px;
+.fandom-page {
+  width: 80%;
+  background-color: white;
+}
+.image-link {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: inline-block;
+  width: 20em;
+  max-width: 100%;
+  z-index: 0;
+  display: flex;
+  font-size: 1.5em;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.product-image-link {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 20em;
+  max-width: 100%;
+  font-size: 1.5em;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border: solid black 2px;
+  background-color: white;
+}
 
-  }
-  .fandom-img {
-    z-index: 0;
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    margin-top: 0px;
-    // margin-bottom: 20px;
-    border: 2px solid rgb(27, 27, 27);
-    // box-shadow: 1px 3px 8px rgba(0,0,0,0.5);
-    filter: grayscale(100%);
-    transform: scale(1);
-    transition: transform 1.25s, filter 0.5s, box-shadow 0.5s, scale 0.5s;
-    -webkit-transition: transform 1.25s, filter 0.5s, -webkit-filter 0.5s, box-shadow 0.5s, scale 0.5s;
-  }
-  .image-link:hover .fandom-img,
-  .image-link:focus .fandom-img { 
-      z-index: 100;
-    -webkit-transform: scale(1.1);
-    -webkit-filter: none;
-    filter: none;
-    box-shadow: #224 0.2em 0.2em 0.6em 0.1em;
-  }
+.product-img {
+  display: block;
+  justify-self: center;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
 
-  .image-word {
-      display: flex;
-    position: absolute;
-    align-self: center;
-    color: white;
-  }
+.fandom-img {
+  z-index: 0;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  margin-top: 0px;
+  // margin-bottom: 20px;
+  border: 2px solid rgb(27, 27, 27);
+  // box-shadow: 1px 3px 8px rgba(0,0,0,0.5);
+  filter: grayscale(100%);
+  transform: scale(1);
+  transition: transform 1.25s, filter 0.5s, box-shadow 0.5s, scale 0.5s;
+  -webkit-transition: transform 1.25s, filter 0.5s, -webkit-filter 0.5s,
+    box-shadow 0.5s, scale 0.5s;
+}
+.image-link:hover .fandom-img,
+.image-link:focus .fandom-img {
+  z-index: 100;
+  -webkit-transform: scale(1.1);
+  -webkit-filter: none;
+  filter: none;
+  box-shadow: #224 0.2em 0.2em 0.6em 0.1em;
+}
 
-  a.image-word {
-    display: flex;
-    position: absolute;
-    align-self: center;
-    color: white;
+.image-word {
+  display: flex;
+  position: absolute;
+  align-self: center;
+  color: white;
+}
 
-  }
-  
+a.image-word {
+  display: flex;
+  position: absolute;
+  align-self: center;
+  color: white;
+}
 
-  #item-added-notice {
-    // border: 1px solid black;
-    // width: 80vw;
-    // height: 3rem;
-    color: green;
-    padding: 1rem;
-    // position: absolute;
-    // z-index: 100;
-    // left: 2rem;
-    // top: 3rem;
+#item-added-notice {
+  // border: 1px solid black;
+  // width: 80vw;
+  // height: 3rem;
+  color: green;
+  padding: 1rem;
+  // position: absolute;
+  // z-index: 100;
+  // left: 2rem;
+  // top: 3rem;
 }
 
 .message-wrap {
-    // border: 1px solid red;
-    height: 4rem;
-    width: 100vw;    
-    position: absolute;
-    z-index: 100;
-    // left: 2rem;
-    top: 10rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items:center;
-    background-color: #f2f2f2;
+  // border: 1px solid red;
+  height: 4rem;
+  width: 100vw;
+  position: absolute;
+  z-index: 100;
+  // left: 2rem;
+  top: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
 }
 
 .check-icon {
-    fill: green;
-    width: 2rem;
-    height: 2rem;
+  fill: green;
+  width: 2rem;
+  height: 2rem;
 }
-

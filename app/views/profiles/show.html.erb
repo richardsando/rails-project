@@ -1,95 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-
-  <div class="profile-wrapper">
-
-    <div class="profile">
-
-      <% if notice == "Signed in successfully." %>
-        <p id="notice"><%= notice %></p>
-      <% end %>
-
-
-      <div class="banner-wrapper">
-
-          <% if @profile.cover_image.attached? %>
-              <div class="placeholder-banner">  
-                  <%= image_tag  @profile.cover_image.variant(resize: "400x300").processed.service_url %>
-              </div>     
-          <% end %>
-          <h1 class="username"><%= @profile.username %></h1>
-           <% if @profile.avatar.attached? %>
-              <div class="profile-img">  
-                <%= image_tag @profile.avatar, class: 'placeholder-profile' %>
-              </div>
-          <% else %>
-              <%= image_tag "user.svg", class: "placeholder-profile" %>
-          <% end %>
-      </div>
-    <div class="profile-info">
-        <p>
-          <strong>About:</strong>
-          <%= @profile.about %>
-        </p>
-        <p>
-           <strong>Location:</strong>
-          <%= @profile.location %>
-       </p>
-
-        <p>
-          <strong>Joindate:</strong>
-          <%= @profile.created_at%>
-        </p>
-        <br>
-        <p>
-          <%= @profile.username %> is a <%= @profile.user.role.privilege %> 
-        </p>
-
-
-  <br>
-        <% if current_user %>
-          <% if current_user.role.id == 2  %>
-              <% @profile.products.each do |product| %>
-                <p>
-                  <%= link_to product.name, "/products/#{product.id}" %>
-                  <% if current_user.profile == @profile %>
-                        | <%= link_to "Edit", {:controller => "products", :action => "edit", :id => product.id } %>
-                        | <%= link_to 'Remove',  "/products/#{product.id}", method: :delete %>
-                  <% end %>
-                </p>
-              <% end %>
-              <br>
-              <% if current_user.profile == @profile %>
-                <p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
-              <% end %>
-              <% else %>
-                 <%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
-          <% end %>
-        <% end %> 
-      
-
-<%= link_to 'View Order History', "/profiles/#{@profile.id}/previous_orders" %> | 
-<%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%> |
-<%= link_to 'View Cart', "/profiles/#{@profile.id}/showcart"%>
-
-
-<br><br>
-<%= link_to 'Edit Profile', edit_profile_path(@profile) %> |    <%# not sure why this isnt working %>
-<%= link_to 'Back to home', '/' %>
-
-        <br> 
-      
-      </div>
-    </div>
-  </div>
-</body>
-
-</html>
-
+<div class="page-wrapper">
+	<div class="page">
+		<% if notice == "Signed in successfully." %>
+			<p id="notice"><%= notice %></p>
+		<% end %>
+		<div class="banner-wrapper">
+			<% if @profile.cover_image.attached? %>
+				<%= image_tag  @profile.cover_image.service_url %>
+			<% else %>
+				<%= image_tag"banners/placeholder-banner.jpg" %>
+			<% end %>
+			<div class="profile-info">
+				<% if @profile.avatar.attached? %>
+					<div class="profile-img">
+						<%= image_tag @profile.avatar, class: 'placeholder-profile' %>
+					</div>
+				<% else %>
+					<%= image_tag "user.svg", class: "placeholder-profile" %>
+				<% end %>
+				<p>
+					<strong>About:</strong>
+					<%= @profile.about %>
+				</p>
+				<p>
+					<strong>Location:</strong>
+					<%= @profile.location %>
+				</p>
+				<p>
+					<strong>Joindate:</strong>
+					<%= @profile.created_at.to_date%>
+				</p>
+				<br>
+				<p>
+					<%= @profile.username %>'s current privilege is set to <%= @profile.user.role.privilege %>
+				</p>
+			</div>
+			<h1 class="username">
+				<%= @profile.username %>
+			</h1>
+		</div>
+		<% if user_signed_in?%>
+			<% if current_user == @profile.user %>
+				<div class="user-actions">
+          <h1>Welcome back, <%= @profile.username %>. What would you like to do?</h1>
+					<p><%= link_to 'View Order History', "/profiles/#{@profile.id}/previous_orders" %></p>
+					<p><%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%></p>
+					<p><%= link_to 'View Cart', "/profiles/#{@profile.id}/showcart"%></p>
+          
+           <br>
+					<p>
+						<%= link_to 'Edit Profile', edit_profile_path(@profile) %>
+					</p>
+					<p>
+						<%= link_to 'Add a product to the store', new_product_path %>
+					</p>
+				</div>
+			<% end %>
+		<% end %>
+		<h1 class="my-products-title">
+			Products made by me!
+		</h1>
+		<ul>
+			<% @profile.products.each do |product| %>
+				<% if product.uploaded_image.attached? %>
+					<li class="product-image-link">
+						<%= link_to (image_tag product.uploaded_image, class: "product-img"), "/products/#{product.id}/" %>
+					<% else %>
+						<li class="product-image-link">
+							<%= link_to (image_tag "placeholder_image.svg", class:"product-img"), "/products/#{product.id}/" %>
+						</li>
+					<% end %>
+					<div class="product-details-container">
+						<p class="product-name">  <%= link_to product.name, "/products/#{product.id}",class: "product-name" %> $<%= product.product_variants.first.price %> </p>
+						<p class="made-by"> By <%= link_to product.profile.username, "/profiles/#{product.profile.id}" %></p>
+						<% if current_user %>
+							<% if current_user.profile == @profile %>
+								<%= link_to "Edit", {:controller => "products", :action => "edit", :id => product.id } %>
+								<%= link_to 'Remove',  "/products/#{product.id}", method: :delete %>
+							<% end %>
+						<% end %>
+					</div>
+				</li>
+			<% end %>
+		</ul>
+		<br>
+		<% if user_signed_in? %>
+			<% if current_user.profile == @profile %>
+				<p><%= link_to 'Click Here to add an item to your store', new_product_path %></p>
+			<% else %>
+				<%= link_to "become an artist", "/profiles/#{@profile.id}/become_artist" %>
+			<% end %>
+		<% end %>
+		<br>
+		<%= link_to 'Back to home', '/' %>
+	</div>
+</div>
