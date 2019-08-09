@@ -6,10 +6,47 @@
 //     display: flex;
 //     justify-content: space-evenly;
 // }
-.fandom-wrapper {
 
+.fandom-page-banner-wrapper {
+    display: flex;
+    // display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    // overflow: hidden;
+    // border: solid black 2px;
+  }
+
+.fandom-banner {
+    filter: grayscale(55%);
+    height: 370px;
+    opacity: 1;
+    border: black 2px solid;
+  }
+
+
+
+.fandom-banner-text {
+    font-family: "Montserrat", sans-serif;
+    opacity: 1;
+    color: white;
 }
 
 .fandom-img-size {
     width: 250px;
+}
+
+.oops {
+    margin: 20px;
+    font-family: "komikah";
+}
+
+.back { 
+    margin: 20px;
+}
+
+.back  *{
+    color: black;
 }

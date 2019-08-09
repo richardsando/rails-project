@@ -35,10 +35,7 @@ Rails.application.routes.draw do
 
   # categories and fandoms
   get '/categories/:id' => 'pages#category'
-  get '/tshirts' => 'pages#tshirts'
-  get '/iphonecases' => 'pages#iphonecases'
-  get '/stickers' => 'pages#stickers'
-  get '/prints' => 'pages#prints'
+
 
 
   #Fandom pages "oh what fun..."

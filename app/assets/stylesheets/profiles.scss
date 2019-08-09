@@ -41,6 +41,7 @@
 }
 
 .username {
+    font-family: "komikah";
     position: absolute;
     bottom: 15%;
     right: 15%;
@@ -65,6 +66,9 @@
     border: black 2px solid;
     padding: 20px;
 }
+.welcome {
+    font-family: "komikah";
+}
 
 .profile-info * { 
     color: black;
@@ -83,11 +87,15 @@
 }
 
 .my-products-title {
+    font-family: "komikah";
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .my-products {
 
 }
+
 
 ul {
     columns: 250px;
