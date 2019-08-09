@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   get '/categories/:id' => 'pages#show'
 
 
-
   #Fandom pages "oh what fun..."
   get '/fandoms/:id' => 'fandoms#fandom'
 

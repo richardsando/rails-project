@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  # before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   require "mini_magick"
 
   def no_user
@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
   end
  
   def become_an_artist
+    authorize(@profile)
     current_user.update(role_id: 2)
   end
 
@@ -33,18 +34,21 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
+    authorize(Profile)
     @profile = Profile.new
   end
 
   # GET /profiles/1/edit
   def edit
+    authorize(@profile)
     @profile = Profile.find(params[:id])
+    # raise
   end
 
   # POST /profiles
   # POST /profiles.json
   def create
-    
+    authorize(Profile)
     @profile = Profile.new(profile_params)
     respond_to do |format|
       if @profile.save 
@@ -62,6 +66,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    authorize(@profile)
     @profile = Profile.find(params[:id])
     respond_to do |format|
       if @profile.update(profile_params)
@@ -77,6 +82,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
+    authorize(@profile)
     @profile.destroy
     respond_to do |format|
       format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
