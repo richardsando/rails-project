@@ -17,7 +17,7 @@
 
 <div class="my-cart">
           <h1>My Cart</h1>
-     <hr>
+          <hr>
           <% if @cart.product_variants.empty? %>
                <p>Your cart has zero items!</p>
           <% else %>
@@ -50,7 +50,8 @@
           <% else %>
                <%= link_to 'Checkout', "/profiles/#{params[:id]}/checkout_cart?cart_id=#{@cart.id}" %>
           <% end %>
-          <%= link_to 'Back to profile', "/profiles/#{params[:id]}" %>
+          <%= link_to 'Back to profile', "/profiles/#{params[:id]}", :class => "some-shit" %>
+          <%= link_to 'home', '/', :class => "some-shit" %>
      </div>
 </div>
      
