@@ -25,6 +25,7 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profiles/1
+  
   # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])

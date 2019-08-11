@@ -1,15 +1,21 @@
 class ProductVariantPolicy < ApplicationPolicy
 
+
+    def initialize(user, product_variant)
+        @user = user
+        @product_variant = product_variant
+      end
+
     def edit?
-        @user.profile == @product.profile
+        @user.profile == @product_variant.product.profile
     end
 
     def update?
-        @user.profile == @product.profile
+        @user.profile == @product_variant.product.profile
     end
 
     def new?
-        @user.profile == @product.profile
+        @user && @user.role.id == 2 && @product.profile.user == @user
     end
     
     def create?
@@ -17,7 +23,7 @@ class ProductVariantPolicy < ApplicationPolicy
     end
 
     def destroy?
-        @user.profile == @profile.profile
+        @user.profile == @product_variant.product.profile
     end
     
 end

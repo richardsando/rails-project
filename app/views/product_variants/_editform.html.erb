@@ -1,41 +1,41 @@
-<%= form_with(model: product_variant, local: true) do |form| %>
-  <% if product_variant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product_variant.errors.count, "error") %> prohibited this product_variant from being saved:</h2>
-
-      <ul>
-      <% product_variant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <% variant = ProductVariant.find(params[:id]) %>
-  <% force_size_id = variant.size_id %>
-  <% variant_category = Product.find(params[:product_id]).category.category %>
-  
-
-  <div class="field" >
-    <%= form.label :size %>
-    <%= form.collection_select :size_id, Size.where(category: variant_category).where(id: force_size_id), :id, :sizing %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.text_field :stock_QTY %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :product_id, value: params[:product_id] %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="page-wrapper">
+	<div class="page">
+		<div class="border-form-div">
+    <h2> Edit product variants</h2>
+    <br>
+			<%= form_with(model: product_variant, local: true) do |form| %>
+				<% if product_variant.errors.any? %>
+					<div id="error_explanation">
+						<h2><%= pluralize(product_variant.errors.count, "error") %> prohibited this product_variant from being saved:</h2>
+						<ul>
+							<% product_variant.errors.full_messages.each do |message| %>
+								<li><%= message %></li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+				<% variant = ProductVariant.find(params[:id]) %>
+				<% force_size_id = variant.size_id %>
+				<% variant_category = Product.find(params[:product_id]).category.category %>
+				<div class="field" >
+					<%= form.label :size %>
+					<%= form.collection_select :size_id, Size.where(category: variant_category).where(id: force_size_id), :id, :sizing %>
+				</div>
+				<div class="field">
+					<%= form.label :quantity %>
+					<%= form.text_field :stock_QTY %>
+				</div>
+				<div class="field">
+					<%= form.label :price %>
+					<%= form.text_field :price %>
+				</div>
+				<div class="field">
+					<%= form.hidden_field :product_id, value: params[:product_id] %>
+				</div>
+				<div class="actions">
+					<%= form.submit %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

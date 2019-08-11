@@ -7,27 +7,30 @@ class ProfilePolicy < ApplicationPolicy
     end
 
     def edit?
-        @user.profile == @profile
+        @user && @user.profile == @profile
     end
 
     def update?
-        @user.profile == @profile
+        @user && @user.profile == @profile
     end
 
     def new?
-        @user.profile == nil
+       @user && @user.profile == nil
     end
     
     def create?
-        @user.profile == nil
+      @user && @user.profile == nil
     end
 
     def destroy?
-        @user.profile == @profile
+       @user &&  @user.profile == @profile
     end
 
     def become_an_artist?
-        @user.profile == @profile
+       @user && @user.profile == @profile
     end
 
+    def showcart
+      @user &&  @user.profile == @profile
+    end
 end
