@@ -1,33 +1,29 @@
-     
-<div class="my-cart-page">
-     <div class="my-cart">
-     <div class="header-wrapper">
-          <h1>My Wishlist</h1>
-     </div>
-          <% if @wishlist.products.empty? %>
-               <p>Your wishlist has zero items!</p>
-          <% else %>
-         
-               <% @wishlist.products.each do |product| %>
-                    <div class="cart-item">
-                    <div class="cart-img">
-                         <%= image_tag product.uploaded_image, class: "cart-image-size" %>
-                    </div>
-                    <div>
-                    <%= link_to product.name, "/products/#{product.id}" %> 
-                    </div>
-                    Artist: <%= product.profile.username %>
-                     
-              
-                    <div class="remove">
-                         <%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item-on-wishlist?product_id=#{product.id}" %>
-                    </div>
-                  
-                    
-               <% end %>
-          <% end %>
-     <%= link_to 'Back to Profile', "/profiles/#{current_user.profile.id}" %>
-</div>
-
-
-    
+<div class="page-wrapper">
+	<div class="page">
+		<div class="my-cart-page">
+			<div class="my-cart">
+				<h1 class="my-cart-heading">My Wishlist</h1>
+				<% if @wishlist.products.empty? %>
+					<p>Your wishlist has zero items!</p>
+				<% else %>
+					<% @wishlist.products.each do |product| %>
+						<div class="showcart-entry">
+							
+								<%= image_tag product.uploaded_image, class: "cart-image-size" %>
+				
+						
+								<%= link_to product.name, "/products/#{product.id}" %>
+				
+							<p>  Artist: <%= link_to product.profile.username, "/profiles/#{product.profile.id}" %> </p> 
+							<div class="remove">
+								<%= link_to 'Remove Item', "/profiles/#{params[:id]}/show-wishlist/remove-item-on-wishlist?product_id=#{product.id}" %>
+							</div>
+                                   </div>
+                                   <br>
+						<% end %>
+					<% end %>
+					<%= link_to 'Back to Profile', "/profiles/#{current_user.profile.id}" %>
+				</div>
+			</div>
+		</div>
+	</div>

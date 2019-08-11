@@ -1,153 +1,163 @@
-
-
-
 .product-page {
-    display: flex;
-    padding-top: 160px;
-    margin-bottom: 160px;
-    justify-content: space-around;
+  display: flex;
+  padding-top: 160px;
+  margin-bottom: 160px;
+  justify-content: space-around;
 }
-
 
 .product {
-    display: flex;
-    justify-content: space-between;
-    border: solid 3px lightblue;
-    padding: 20px; 
-    border-radius: 25px; 
-}
+  display: flex;
+  justify-content: space-evenly;
+  border: solid 2px black;
+  padding: 0px;
+  margin: 20px;
+  max-width: 100%;
+//   background: rgb(101, 175, 144);
 
+}
 
 .product-banner-text {
-    position: absolute;
-    color: rgb(238, 220, 220);
-    font-size: 2em;
-  }
+  position: absolute;
+  color: rgb(238, 220, 220);
+  font-size: 2em;
+}
 .my-cart-page {
-    // margin-top: 100px;
-    margin-bottom: 100px;
+  // margin-top: 100px;
+  margin-bottom: 100px;
 }
 .image-size {
-    width: 400px;
-    border-radius: 25px;
-    margin-right: 25px;
+  width: 380px;
+  border: none;
+  padding: none;
+  border-right: 2px black solid;
+  margin: none;
 }
-
+.price {
+    font-size: 1.5em;
+}
+.product-title {
+    font-family: "komikah"
+}
 .product-info {
-    margin-left: 15px;
+  padding: 20px;
+  padding-left: none;
+//   background: pink;
 }
 
 .add-to {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .add-to-cart {
-    text-decoration: white;
-    background-color: lightcoral;
-    padding: 20px; 
-    border-radius: 55px;
+  text-decoration: white;
+  background-color: lightcoral;
+  padding: 20px;
+  border-radius: 55px;
 }
 
 .end-buttons {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
+}
+
+.wishlist-box {
+    background: grey;
 }
 .wishlist-icon-inactive {
-    width: 2rem;
-    height: 2rem;
-    fill: #646464;
-    stroke: #646464;
-    // stroke-width: 1rem;
+  width: 2rem;
+  height: 2rem;
+  fill: #646464;
+  stroke: #646464;
+  // stroke-width: 1rem;
 }
 
 .wishlist-icon-inactive:hover {
-    fill: #4287f5;
+  fill: #4287f5;
 }
 
 .wishlist-icon-active {
-    width: 2rem;
-    height: 2rem;
-    fill: #4287f5;
+  width: 2rem;
+  height: 2rem;
+  fill: #4287f5;
 }
 
 #item-added-notice {
-    // display: flex;
-    // border: 1px solid black;
-    // width: 80vw;
-    // height: 3rem;
-    color: green;
-    padding: 1rem;
-    // position: absolute;
-    // z-index: 100;
-    // left: 2rem;
-    // top: 3rem;
+  // display: flex;
+  // border: 1px solid black;
+  // width: 80vw;
+  // height: 3rem;
+  color: green;
+  padding: 1rem;
+  // position: absolute;
+  // z-index: 100;
+  // left: 2rem;
+  // top: 3rem;
 }
-
 
 #qty-exceeded-notice {
-    color: red;
-    padding: 1rem;
+  color: red;
+  padding: 1rem;
 }
 
-
 .back {
-    display: flex;
+  display: flex;
 }
 
 .message-wrap {
-    // border: 1px solid red;
-    height: 4rem;
-    width: 100vw;    
-    position: absolute;
-    z-index: 100;
-    // left: 2rem;
-    top: 10rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items:center;
-    background-color: #f2f2f2;
+  // border: 1px solid red;
+  height: 4rem;
+  width: 100vw;
+  position: absolute;
+  z-index: 100;
+  // left: 2rem;
+  top: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
 }
 
 .message-wrap a {
-    color: #3399ff;
+  color: #3399ff;
 }
 
 .message-wrap a:hover {
-    color: #0066ff;
+  color: #0066ff;
 }
 
 .check-icon {
-    fill: green;
-    width: 2rem;
-    height: 2rem;
+  fill: green;
+  width: 2rem;
+  height: 2rem;
 }
 
 .exit-icon {
-    fill: #333;
-    width: 2rem;
-    height: 2rem;
+  fill: #333;
+  width: 2rem;
+  height: 2rem;
 }
 
 .exit-link {
-    margin-left: 10rem;
+  margin-left: 10rem;
 }
-
 
 .add-product-btn {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+  background-color: #fcfcfc;
+  border: black 2px solid;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
-
+.add-product-btn:hover {
+    color: tomato;
+}

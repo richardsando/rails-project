@@ -1,0 +1,15 @@
+<div class="wishlist-box">
+	<% if !user_signed_in? %>
+		<%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-inactive"), "/user_does_not_exist_wishlist?product_id=#{@product.id}&product_size=#{params[:product_size]}" %>
+	<% elsif user_signed_in? %>
+		<% if !owning_artist(@product) %>
+			<% if current_user.profile.wishlist.products.where("product_id = ?", @product.id).present? %>
+				<%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-active"), "/profiles/#{current_user.profile.id}/show-wishlist/remove-item?product_id=#{@product.id}" %>
+			<% else %>
+				<%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-inactive"), "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %>
+			<% end %>
+		<% elsif owning_artist(@product) %>
+			<%#show nada%>
+		<% end %>
+	<% end %>
+</div>

@@ -1,32 +1,40 @@
-<div class="my-cart-page">
-     <div class="my-cart">
-        <h1>Previous Orders</h1>
-        <hr>
-        <% if @previous_orders.empty? %>
-            <h4>You have no previous orders</h4>
-        <% else %>
-            <% @previous_orders.each do |order| %>
-            <h4>
-                <%= "Order ID #CPOP#{order.id}" %>
-            </h4>
-            <h4>
-                <%= "Placed on #{order.time_ordered}" %>
-            </h4>
-            <% order.product_variants.each do |product_variant| %>
-                <% purchase_entry = ProductsPurchased.where(cart_id: order.id, product_variant_id: product_variant.id).first %>
-                <p> 
-                    <%= "#{product_variant.product.name} | Size: #{product_variant.size.sizing} | QTY: #{purchase_entry.purchase_QTY} | $#{product_variant.price} " %> 
-                </p>
-            <% end %>
-         <% end %>
-      <% end %>
-    <hr>
-    <br>
-    <%= link_to 'Back to profile', "/profiles/#{params[:id]}" %>
-    </div>
-    </div>
+<div class="page-wrapper">
+	<div class="page">
+		<div class="my-cart-page">
+			<hr>
+			<div class="my-cart">
+				<h1 class="my-cart-heading">Previous Orders</h1>
+				<br>
+				<% if @previous_orders.empty? %>
+					<h2>You have no previous orders</h2>
+				<% else %>
+					<% @previous_orders.each do |order| %>
+						<div class="showcart-entry">
+							<div>
+								<h3>
+									<%= "Order ID #CPOP#{order.id}" %>
+								</h3>
+								<p>
+									<%= "Placed on #{order.time_ordered}" %>
+								</p>
+							</div>
+							<div>
+								<% order.product_variants.each do |product_variant| %>
+									<% purchase_entry = ProductsPurchased.where(cart_id: order.id, product_variant_id: product_variant.id).first %>
+									<p> <%=  purchase_entry.purchase_QTY  %> x
+										<%= link_to product_variant.product.name, "/products/#{product_variant.product.id}" %> Size: <%=  product_variant.size.sizing %>
+										$ <%=  product_variant.price  %>
+									</p>
+								<% end %>
+							</div>
+						</div>
+						<br>
+						<hr>
+					<% end %>
+				<% end %>
+				<br>
+				<%= link_to 'Back to profile', "/profiles/#{params[:id]}" %>
+			</div>
+		</div>
+	</div>
 </div>
-
-
-
-     
