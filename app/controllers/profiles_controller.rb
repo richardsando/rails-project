@@ -15,7 +15,10 @@ class ProfilesController < ApplicationController
   end
  
   def become_an_artist
-    current_user.update(role_id: 2)
+    # current_user.update(role_id: 2)   #this shouldnt happen at this stage
+  end
+
+  def become_artist_success
   end
 
   # GET /profiles

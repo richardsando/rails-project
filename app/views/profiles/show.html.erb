@@ -47,7 +47,7 @@
 					<p><%= link_to 'View Wishlist', "/profiles/#{@profile.id}/show-wishlist"%></p>
 					<p><%= link_to 'View Cart', "/profiles/#{@profile.id}/showcart"%></p>
 					<% if current_user.role.id == 1 %>
-						<h3><%= link_to 'Sell your art!', "/profiles/#{@profile.id}/become_artist" %> </h3>
+						<h3><%= link_to 'Sell your art!', "/profiles/#{@profile.id}/become_an_artist" %> </h3>
 					<% else %>
 						<p>
 							<%= link_to 'Add a product to the store', new_product_path %>

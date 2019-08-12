@@ -38,15 +38,148 @@ Description of your project, including,
 9. Explain the different high-level components (abstractions) in your App.
 10. Detail any third party services that your App will use.
 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+
 12. Discuss the database relations to be implemented.
-13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
-14. Provide your database schema design.
-15. Provide User stories for your App.
-16. Provide Wireframes for your App.
-17. Describe the way tasks are allocated and tracked in your project.
-18. Discuss how Agile methodology is being implemented in your project.
-19. Provide an overview and description of your Source control process.
-20. Provide an overview and description of your Testing process.
-21. Discuss and analyse requirements related to information system security.
-22. Discuss methods you will use to protect information and data.
-23. Research what your legal obligations are in relation to handling user data.
+
+For out project solution to be implemented properly, we had to carefully consider, as well as reconsider at some points, the database relations that we would have. 
+
+We began with the user model that would relate to the role that the user has (as regular user or seller). A user would also have a 'has one' relationship with a profile. It was this profile model that we would use as a springboard to implement all our other relevant database relations. 
+
+Having a profile meant that naturally the profile would have one wishlist, which would be able to access products that were added to it through a join table between the wishlist and product models. In addition, the profile would have many carts, some that were inactive but always having one that was active as part of that users current session. 
+
+A product itself would have many variants to it as we needed to account for the different sizes and prices that each variant would have as part of the sellers stock. So this meant that a product would have many product variants to its name. This further meant that a profile would have access to products with their specific selected size (product variants) through a join tabled titled ProductsPurchased. This model would essentially keep track of which product variants belonged to which cart and would keep track of the quantity purchased. 
+
+There were some further database relations that were implemented to categorise the products. A product would have one fandom and one category. Furthermore a product variant would have one size. 
+
+
+**_13. Describe your project’s models in terms of the relationships (active record associations) they have with each other._**
+
+In the current build of the project, there are a total of 12 models that are in use. These models have certain associations with each other to ensure that the site functionality works. 
+
+
+**_14. Provide your database schema design._**
+
+
+**_15. Provide User stories for your App._**
+
+*User*
+- as a >fandom< hobbyist i would like to buy cool items related to >fandom< all in the one place because it makes shopping and searching easier and seamless
+- as a (guest) user with no account i would like to view the products freely without restrictions so that i can still view products i might purchase
+- as a user i want to be able to navigate the site by product and fandom categories as it allows me to find what im looking for specifically
+- as a user with an account, i would like to add products to by wishlist so i can manage the items that i would like to purchase in the future
+- as a user with an account, i would like to view the product im buying, and select the size i need with the correct price being displayed for that size
+- as a user purchasing items i would like to be able to increase the quantity easily or remove items in my cart 
+- as a user who has ordered with the site before, i would like to view my previous orders and what i purchased, including the time i made the order
+
+*Seller*
+- as a user with a basic profile, i would like to become a seller at the click of a link for ease of access
+- as a seller i would like to add my own products to the store, including the product name and description, as well as select what category and fandom it falls under
+- as a seller i would like to add different stock and sizes for the products that i have added to the store
+
+ 
+**_16. Provide Wireframes for your App._**
+
+**_17. Describe the way tasks are allocated and tracked in your project._**
+
+Although we sometimes used our own notes to keep track of sub tasks when working on our own product goals, we implemented the use of Trello in order to keep an overall track of the projects completion. 
+
+After daily discussions with the group about how we wanted to approach the goals for the day, we split up the tasks that needed to be completed based on what everyone was comfortable with doing. However. there were some tasks that were completed as a group on one computer, as the shared input was beneficial in working through the problem and attaining the teams vision for that part of the app.
+
+The specific tasks that the team needed to complete were kept track of in Trello using lists. These lists varied in name and were divided into 'in progress', 'to do', and 'completed'. We would note down certain functionality and products that the site needed to have in the 'to do' list, and then move that over to the 'in progress' list once someone had begun work on that task. These ability to move these sub-tasks to different completion status lists allowed us to visualise how our project was progressing overall. 
+
+Additional lists that we had lon our trello board were 'readme', 'MVP' and 'stretch'. These lists werent inherently crucial to our task management but enabled us to see our project plan and what we wanted to achieve for our minimum viable product and what we wanted to knock off down the line as a stretch goal.
+
+
+
+
+**_18. Discuss how Agile methodology is being implemented in your project._**
+
+Agile methodology was implemented in several ways through the lifetime of the project. At the beginning of our days we would discuss what everyone was working on at the time, whether any help was needed from other group members with that task, and ultimately, what it was that we wanted to achieve for the day.
+
+By having these discussions with the group we were able to gain  a grander picture of how our site was developing and how to better allocate our time to complete certain functionalities for the web app. In addition, in accordance to the agile methodology, we were also able to continuously view and interact with the product (app) that we were working on. Because we could so easily see the progress that we were making we were easily able to review the strengths and weakneses of the site as a team which allowed us to revise our plan when needed and review our current goals.
+
+
+
+**_19. Provide an overview and description of your Source control process._**
+
+The source control process that the group engaged in was done wholly through GitHub. Initially, at the beginning of the project, we created a dummy html file and ensured that the whole group was able to successfully pull the file from the master branch, edit it in their own local branch and then push it back up to the master branch on github. We then practiced creating a pull request and merging the existing changes. 
+
+After we all got comfortable with the commands required to make this whole process transition seamlessly, we created a repository on one of our github accounts, which became the home for our project files.
+
+In terms of the version control management for the project itself, our team would work on different parts of the project in branches created on our personal machines. These branches were aptly named after the part of the project we were contributing to. After we had completed a certain version of the project feature in these branches, we notified each other that were going to push the branch to the master. Most of the time the group was together when these pushes happened so we could easily create a pull request and then review and discuss the relevant changes with the merge process. 
+
+After everyone had successfully merged their files with the master on github and therefore updated the project to the latest version, we would then pull the latest version back down to our local machine and check it out to another branch, before repeating the same process outlined above. By pushing to github and having various branches on our own machines we made sure that we always had a version that we could fall back to in case serious errors arose.
+
+**_20. Provide an overview and description of your Testing process._**
+
+The testing process to ensure that the app was working the way we intended was completed through manual 'run-throughs' instead of creating specific test cases in our code. 
+
+These run-throughs were essentially tests where we used the site by adopting the average users point of view by considering their thoughts regarding the accessibility and functions of the site.
+
+The functions that we wanted to prioritize in our testing were the ones that were essential to the integrity and overall completeness of the site. 
+
+The first set of manual tests that we focused on were in relation to devise and profile creation. We wanted to make sure that a site user could:
+- sign up for an account
+- create a profile by filling in the relevant information
+- sign in with an already existing profile 
+
+We then proceeded to test the main functionality and purpose of our site. The two main goals of these tests were to check off if a user with an account and a profile could browse and purchase the items they wanted, as well as become an artist for the site and sell their own products. 
+
+The specific site functions tested for a regular user were to: 
+- browse the available fandoms on the home page and click on the desired fandom, which would display all products belonging to the fandom
+- browse by the available categories through the navigation tabs so the user could access specific products such as a phone case
+- search for products in the search bar 
+- add a product to the wishlist
+- select the desired product size and have the correct pricing appear on the products display page
+- add the product to the cart and have a 'successfully added' render message
+- update quantities on the cart page, and remove items
+- pay with card and checkout
+
+After the 'run-through' tests were completed for the normal user, we tested the functionality for a normal user to become an artist. This involved tests for: 
+- clicking 'sell your products' to be directed to a payment page to become an artist
+- adding their own products on the store for sale
+- adding product variants (stock) in different sizes and having the stock display for the artist once they visit the product page
+- removing items in stock
+
+The ability for a user to complete the above actions further meant that the basic CRUD operations that were required for the relevant models and controllers were also in working order. In addition, the code for the third party payment system stripe was also working correctly.
+
+Finally, we wanted to test the accessibility that users had to certain areas of the site depending on their role and whether they were signed up or not. In order to check if pundit was working we entered url's that the users didnt have access to so we could see if they were directed to a page which handled these attempts at acessing parts of the site they weren't allowed in. In addition, the users were restrited to only browse products on the site and were successfully prompted to sign up if they tried to add a product to the cart.
+
+
+
+
+
+
+
+**_21. Discuss and analyse requirements related to information system security._**
+
+**Information systems security** (INFOSEC) refer to the various processes and methodologies employed by a business to keep its precious information confidential, available and assured in its integrity. The key goal of these processes are to reduce the possiblity of malicious access by unauthorised parties and mitigate information risks.
+
+These requirements for maintaining security, which are often abbreviated as the CIA triad, have their own specific focuses to ensure a balanced protection of the data.
+
+**Confidentiality**, a key component of privacy, is the act of making information unavailable and undisclosable to those unauthorised individuals and other entities seeking to gain access to this information, but allowing authorised viewers to access the data in question. Data is commonly categorised by the severity it can cause in the case of a leak, with strict measures being placed appropriately depending on this categorisation. Instances of a comprimise of confidentiality include the theft of passwords or financial information. 
+
+**Integrity** refers to maintaining an accuracy, completeness and trustworthiness of data throughout its entire life cycle. This means that data may not be modified by unauthorized users as well as erroneous changes and accidental deletion by users who are authorised. 
+
+**Availability** of information is important so that ultimately a site can serve its intended purpose. The availability of the data and resources is ensured through proper maintenance and functioning of the systems used to store and process this data, including both the hardware and software components. 
+
+
+**_22. Discuss methods you will use to protect information and data._**
+
+There are many steps and measures that can be taken to ensure that the business's information is secure. One of the first measures to be taken is to employ security tools such as malware detection, vulnerability scanning and firewalls so that any malicious activity with the itention of breaching the site is detected and identified before being dealt with appropriately.
+
+However, in the unfortunate event of a successful breach, it is absolutely vital that the businesses data and the customers information and records are still available through remote back ups. Thus, there should be an emphasis on regularly backing up data using multiple back-up methods. These can include backin-up the data to either a cloud storage service, or to a more tangible portable device. If a device is used it should be copied multiple times and placed in several separate locations with ease of access. The regularity of the back-ups will vary, and can occur on a daily, weekly, quarterly or yearly basis. 
+
+Furthermore, the customers data should be encrypted by the site when handling sensitive information such as passwords, as to avoid interception by malicious third parties. The encryption for the authorisation process used in our web app is handled by devise, which itself relies on a gem named 'bcrypt' that manages the encryptions specifically. 
+
+
+
+**_23. Research what your legal obligations are in relation to handling user data._**
+
+Many businesses have the legal obligation of protecting and keeping their customers' personal information secure and private. Australian privacy laws, contained in the "Privacy Acts", are what entities must adhere to be responsible for regulating the collection, use and disclosure of personal information about their users and their data. 
+
+The personal information of a user is anything that can personally identify them, and for the most part includes their name, addresses, contact information such as their phone number and email, photos, videos, authentication details for the site and most importantly their financial and payment information in the form of bank and credit card details.  
+
+These businesses must be transparent in the way that they will handle and use the data that is collected. In order to achieve this transparency, sites must disclose the purpose for which the data will be used and limit the use of data for the outlined and intended purposes only.
+
+In order to fully satisfy these legal obligations, businesses need to comply to the Australian Privacy Principles (APPs). The business entities have the onus of providing an up to date privacy policy which details how the users information will be managed. Furthermore, steps need to be taken so that the user's information is accurate and up to date, and accessible to the user upon request by the individual.

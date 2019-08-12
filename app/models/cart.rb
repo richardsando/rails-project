@@ -20,7 +20,7 @@ class Cart < ApplicationRecord
     return time #time is returned as a string 
   end
 
-  def total
+  def carttotal
     total = 0
     self.products.each do |product|
       total += product.price

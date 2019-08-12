@@ -26,7 +26,7 @@
                          <% base_product = product_variant.product %>
                          <% purchase_entry = ProductsPurchased.where(cart_id: @cart.id, product_variant_id: product_variant.id).first %>
                          <p>
-                            <%= image_tag base_product.uploaded_image.service_url, class: "cart-image-size" %>
+                           <%= image_tag base_product.uploaded_image.service_url, class: "cart-image-size" %>
                            <%= link_to base_product.name, "/products/#{base_product.id}" %> |
                            <%= "  Size: #{product_variant.size.sizing}" %> |
                            <% if purchase_entry.purchase_QTY == 1 %>
@@ -43,13 +43,10 @@
                <% end %>
           <% end %>
 
-          <%= "Cart total: $#{cart_total(@cart.id)}" %>
-
-          <% if @cart.product_variants.empty? %>
-               <%= link_to 'Checkout', "" %>      <%# dead link - cant checkout if you have no items in the cart %>
-          <% else %>
-               <%= link_to 'Checkout', "/profiles/#{params[:id]}/checkout_cart?cart_id=#{@cart.id}", :class => "checkout" %>
+          <% if !@cart.product_variants.empty? %>
+               <%= render "layouts/checkout_stripe_form" %>              
           <% end %>
+
           <%= link_to 'Back to profile', "/profiles/#{params[:id]}", :class => "some-shit" %>
           <%= link_to 'home', '/', :class => "some-shit" %>
      </div>

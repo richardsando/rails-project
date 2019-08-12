@@ -809,3 +809,141 @@ end
 product_variants.each do |variant|
     ProductVariant.create!(variant)
 end
+
+#MELS SEEDING STUFF
+Product.all.each do |product|
+    if product.category == 1
+        product_variants = [
+            {
+                product_id: product.id,         
+                size_id: 1,
+                stock_QTY: 20,
+                price: 16
+            },
+            {
+                product_id: product.id,         
+                size_id: 2,
+                stock_QTY: 20,
+                price: 18
+            },
+            {
+                product_id: product.id,
+                size_id: 3,
+                stock_QTY: 20,
+                price: 18                           #------t-shirt sizes--------
+            },
+            {
+                product_id: product.id,
+                size_id: 4,
+                stock_QTY: 20,
+                price: 18
+            },
+            {
+                product_id: product.id,         
+                size_id: 5,
+                stock_QTY: 20,
+                price: 20
+            },
+            {
+                product_id: product.id,         
+                size_id: 6,
+                stock_QTY: 20,
+                price: 22
+            }
+        ]
+​
+        product_variants.each do |variant|
+            ProductVariant.create!(variant)
+        end
+​
+    elsif product.category == 2
+        product_variants = [
+            {
+                product_id: product.id,
+                size_id: 7,
+                stock_QTY: 20,
+                price: 2.5
+            },
+            {
+                product_id: product.id,         
+                size_id: 8,
+                stock_QTY: 20,
+                price: 6.25                            #-------------sticker sizes---------
+            },
+            {
+                product_id: product.id,         
+                size_id: 9,
+                stock_QTY: 20,
+                price: 12.34
+            }
+        ]
+​
+        product_variants.each do |variant|
+            ProductVariant.create!(variant)
+        end
+​
+    elsif product.category == 3
+        product_variants = [
+            {
+                product_id: product.id,
+                size_id: 10,
+                stock_QTY: 20,
+                price: 14.25
+            },
+            {
+                product_id: product.id,         
+                size_id: 11,
+                stock_QTY: 20,                         #------iphone case sizes------
+                price: 15.83
+            },
+            {
+                product_id: product.id,         
+                size_id: 12,
+                stock_QTY: 20,
+                price: 16.75
+            },
+            {
+                product_id: product.id,         
+                size_id: 13,
+                stock_QTY: 20,
+                price: 18.99
+            }
+        ]
+​
+        product_variants.each do |variant|
+            ProductVariant.create!(variant)
+        end
+​
+    elsif product.category == 4
+        product_variants = [
+            {
+                product_id: product.id,
+                size_id: 14,
+                stock_QTY: 20,
+                price: 32
+            },
+            {
+                product_id: product.id,
+                size_id: 15,
+                stock_QTY: 20,
+                price: 56                               #----------Print sizes---------
+            },
+            {
+                product_id: product.id,         
+                size_id: 16,
+                stock_QTY: 20,
+                price: 79
+            },
+            {
+                product_id: product.id,         
+                size_id: 17,
+                stock_QTY: 20,
+                price: 98
+            }
+        ]
+        
+        product_variants.each do |variant|
+            ProductVariant.create!(variant)
+        end
+    end
+end
