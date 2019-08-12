@@ -14,7 +14,37 @@ Github repository:
 https://github.com/richardsando/rails-project
 
 
-![alt text](/assets/images/DOCS/)
+## Figma screenshots
+![alt text](app/assets/images/DOCS/figma.png)
+
+### Homepage
+![alt text](app/assets/images/DOCS/figma02.png)
+
+### Design process
+![alt text](app/assets/images/DOCS/figma03.png)
+
+
+## Entity Relationship Diagram
+![alt text](app/assets/images/DOCS/ERD.png)
+
+## User flow
+![alt text](app/assets/images/DOCS/user_flow.png)
+
+## Trello
+![alt text](app/assets/images/DOCS/trello.png)
+
+## App screenshots
+#### Home
+![alt text](app/assets/images/DOCS/home.png)
+#### T shirts category 
+![alt text](app/assets/images/DOCS/tshirts.png)
+#### Profile page
+![alt text](app/assets/images/DOCS/profile.png)
+#### Cart page
+![alt text](app/assets/images/DOCS/my_cart.png)
+#### Wishlist page
+![alt text](app/assets/images/DOCS/wishlist.png)
+
 
 
 1. What is the need (i.e. challenge) that you will be addressing in your project?
