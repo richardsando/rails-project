@@ -41,7 +41,6 @@
 .product-info {
   padding: 20px;
   padding-left: none;
-//   background: pink;
 }
 
 .add-to {
@@ -49,6 +48,8 @@
   align-items: center;
   justify-content: space-between;
 }
+
+
 
 .header-wrapper {
   display: flex;
@@ -67,24 +68,34 @@
 }
 
 .wishlist-box {
-    background: grey;
+    // background: grey;
+    width: 120px;
+    display: flex;
+    justify-content: center;
 }
 .wishlist-icon-inactive {
-  width: 2rem;
-  height: 2rem;
+  width: 4rem;
+  height: 4rem;
   fill: #646464;
   stroke: #646464;
-  // stroke-width: 1rem;
+  stroke-width: 1rem;
+}
+.wishlist-container {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  height: 100px;
+  align-items: flex-end;
 }
 
 .wishlist-icon-inactive:hover {
-  fill: #4287f5;
+  // fill: #4287f5;
 }
 
 .wishlist-icon-active {
-  width: 2rem;
-  height: 2rem;
-  fill: #4287f5;
+  // width: 4rem;
+  // height: 4rem;
+  // fill: #4287f5;
 }
 
 #item-added-notice {

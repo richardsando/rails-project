@@ -1,41 +1,37 @@
 <div class="page-wrapper">
 	<div class="page">
 		<div class="fandom-page-banner-wrapper">
-            <% if @fandom.uploaded_image.attached? %>
-			    <%= image_tag @fandom.uploaded_image.service_url, class: "fandom-banner" %>
-             <% end %>
+			<% if @fandom.uploaded_image.attached? %>
+				<%= image_tag @fandom.uploaded_image.service_url, class: "fandom-banner" %>
+			<% end %>
 			<h2 class="fandom-banner-text">
 				<%= @fandom.fandom %>
 			</h2>
 		</div>
-      
-      <br>
-		
-        <% if @fandom.products.length == 0 %>
-        <h1 class="oops">Oops! There are no uploaded products for this fandom!</h1>
-        <h3 class="back"> <%= link_to 'Back to fandoms', "/" %> </h3>
-        <% else %>
-        <ul>
-			<% @products.each do |product| %>
-				<% if product.fandom.id == params[:id].to_i %>
-					<% if product.uploaded_image.attached? %>
-                        <li class="product-image-link">
-                            <%= link_to (image_tag product.uploaded_image, class: "product-img"), "/products/#{product.id}/" %>
-                    <% else %>
-                        <li class="product-image-link">
-                            <%= link_to (image_tag "placeholder_image.svg", class:"product-img"), "/products/#{product.id}/" %>
-                    <% end %>
-
-                    <div class="product-details-container">
-                        <p class="product-name">  <%= link_to product.name, "/products/#{product.id}",class: "product-name" %> $<%= product.product_variants.first.price %> </p>
-                        <p class="made-by"> By <%= link_to product.profile.username, "/profiles/#{product.profile.id}" %></p>
-                    </div>
-					    </li>
-                    <% end %>
-			    <% end %>
-		    </ul>        
-        <% end %>
-
+		<br>
+		<% if @fandom.products.length == 0 %>
+			<h1 class="oops">Oops! There are no uploaded products for this fandom!</h1>
+			<h3 class="back"> <%= link_to 'Back to fandoms', "/" %> </h3>
+		<% else %>
+			<ul>
+				<% @products.each do |product| %>
+					<% if product.fandom.id == params[:id].to_i %>
+						<% if product.uploaded_image.attached? %>
+							<li class="product-image-link">
+								<%= link_to (image_tag product.uploaded_image, class: "product-img"), "/products/#{product.id}/" %>
+							<% else %>
+								<li class="product-image-link">
+									<%= link_to (image_tag "placeholder_image.svg", class:"product-img"), "/products/#{product.id}/" %>
+								<% end %>
+								<div class="product-details-container">
+									<p class="product-name">  <%= link_to product.name, "/products/#{product.id}",class: "product-name" %> $<%= product.product_variants.first.price %> </p>
+									<p class="made-by"> By <%= link_to product.profile.username, "/profiles/#{product.profile.id}" %></p>
+								</div>
+							</li>
+						<% end %>
+					<% end %>
+				</ul>
+			<% end %>
+		</div>
 	</div>
-</div>
-<footer>This is the footer</footer>
+	

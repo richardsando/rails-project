@@ -287,9 +287,18 @@ body {
 }
 
 footer {
-  //  margin-top: 100px;
-  background-color: rgb(82, 82, 82);
-  color: lightblue;
+  display: flex;
+  justify-content: space-between;
+  font-family: "komikah", sans-serif;
+  padding: 3px;
+  height: 30px;
+  background-color: white;
+  border-top: solid 2px black;
+  // color: lightblue;
+}
+
+footer * {
+  font-family: "komikah", sans-serif;
 }
 .pundit {
   padding: 20px;
