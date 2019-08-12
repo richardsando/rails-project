@@ -17,11 +17,23 @@ https://github.com/richardsando/rails-project
 ![alt text](/assets/images/DOCS/)
 
 
-1. What is the need (i.e. challenge) that you will be addressing in your project?
-2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
-3. Describe the project will you be conducting and how. your App will address the needs.
-4. Describe the network infrastructure the App may be based on.
-5. Identify and describe the software to be used in your App.
+**_1. What is the need (i.e. challenge) that you will be addressing in your project?_**
+
+We want to create an app that satisfies the need for pop culture enthusiasts to purchase all of their pop culture items in the one place, whether it be t-shirts, phone cases, stickers and art prints. The challenge of the website is to create a satisfactory experience for people looking to purchase items on the website, and provide an ease of access and simplicity in purchasing these items. Additionally, our website aims at completing the two way marketplace interaction by allowing users to become artists on the site themselves, and add their own products for sale on the marketplace.
+
+**_2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?_**
+
+The problem that we are trying to solve is to offer artists a chance to sell the pop culture influenced products that they create, and thereby create a catalogue of pop culture influenced products in our web store. By doing so we will enable enthusiasts to discover favourite artists and purchase products that they like. It is a problem that needs solving as it adds convenience to a users life. 
+
+**_3. Describe the project will you be conducting and how. your App will address the needs._**
+
+The project our team is conducting is simply creating a web store named culturePOP. In doing this project we aim to bring the needs of the artist and the needs of the buyer into account in order to create a seamless experience when selling and purchasing products in this two way marketplace. We hope to satisfy the buyers needs of being able to easily find and access products that appeal to them at the click of a button. On the other hand, we hope to satisfy the artists needs by providing them with an a relatiely easy process of becoming an artist in the first place, adding the specific product to the store and then updating the sizes and stock.
+
+**_4. Describe the network infrastructure the App may be based on._**
+
+Our application is deployed through the Platform Heroku, a software that allows developers to push code directly from GitHub to deployment via Heroku's platform and network infrastructure. When our application is ready, we create a new app on Heroku and push the code in our GitHub repository directly to Heroku so that Heroku can prepare it for deployment. Heroku receives the code and initiates the build process. Heroku bundles together assets that are needed to run the application, to create a 'slug', Which describes the bundled file that’s ready for deployment. Heroku executes the slug in an isolated Unix container that provides an environment for the app to run in. In turn creating you web application. 
+
+**_5. Identify and describe the software to be used in your App._**
 
 In the process of developing Culture POP, we used many different Languages and software to build and deploy our Ruby on Rails application. For Starters Languages, we utilized HTML, ERB and CSS for the logic and styling. 
 
@@ -43,11 +55,23 @@ In Fifth place (not ranked on importance) is GitHub!! Arguably the most refreshi
 
 Now lastly Deployment! In development we used Heroku. Heroku is a popular platform that allows for deployment of web applications without owning your own database or server. Users can push code in many different languages directly from GitHub to the internet via Heroku where it handles building and deployment of the application. 
 
-6. Identify the database to be used in your App and provide a justification for your choice.
-7. Identify and describe the production database setup (i.e. postgres instance).
-8. Describe the architecture of your App.
+<<terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
 
-## 9. Explain the different high-level components (abstractions) in your App.
+**_6. Identify the database to be used in your App and provide a justification for your choice._**
+
+The database used in the application is PostgresSQL. The sole reason behind using this as our database was so that we could successfully deploy the project to Heroku. 
+
+**_7. Identify and describe the production database setup (i.e. postgres instance)._**
+
+The postgres instance was set up by running 'rails new rails-project --database=postgresql' in our VS code command line when we created the app. After switching directory so that we were within the project directory we then ran 'rails db:create' to create the postgres instance.  
+
+**_8. Describe the architecture of your App.
+
+The Client displays the web page in a web browser and handles User Interface and user interactions with the web page. The HTTP requests and directs to the Route asked for by the users prompt. A map of pathways defined by the application, define which functions are called in the controller depending on different requests from the server. What is to be accessed and shown to the user is defined in the controller. The controller checks if the user is allowed access to the prompted route and if not, the controller then shows an error. 
+
+In our application we have allowed users to see products, make an account, buy a product, become an artist (by subscription) and sell products. In that order. 
+
+**_9. Explain the different high-level components (abstractions) in your App._**
 
 Culturepop is built using Ruby on Rails, which follows the MVC (model, views and controller) configuration. 
 
@@ -55,13 +79,36 @@ The model is what queries the database we use and makes the data usable by Ruby.
 
 The views we use within this application are what are viewed on the front end in the browser. These are embebbed ruby files which are htmls with an extension that allows ruby code to be used in the front end. 
 
+
 The controllers we use within Ruby on Rails are used to direct the user to certain pages and functions within the applictaion. Eg when a user clicks on a link in a view that link is sent from browser to the controller which then points to a function. These functions or actions as they are called in rails often manipulate data in the database. They also can result in a different view.
 
+**_10. Detail any third party services that your App will use._**
 
-10. Detail any third party services that your App will use.
-11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+Third party applications sevice used:
+- Hirb: mini view framework for the rails console that displays entries in a no-wrap table
+- Devise: flexible authentication solution composed of several modules; allows for user authentication, registration and confirmation
+- Amazon Simple Storage Service (Amazon S3): object storage service that offers industry-leading scalability, data availability, security, and performance. 
+- Stripe: online payment processing for businesses, allowing users to pay for services within the app using a credit card.
+- inline_svg: embed svg documents inside the rails view and style them with css
+- Pundit: build a simple, robust and scaleable authorization system
+- Ionicons: library for svg icons
 
-12. Discuss the database relations to be implemented.
+**_11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb)._**
+
+There are several existing marketplace apps that operate in a similar way to the app that we created. The most notable ones include:
+- https://www.redbubble.com/
+- https://www.etsy.com/au/
+- https://society6.com/
+- https://www.designbyhumans.com/
+
+Although it is hard to know exactly how the databases behind these websites operate, it is reasonable to the assume that they are all quite similar and share many of the same intricacies in their model set ups and database relations.
+
+Most of these sites have the same relationships between a user/profile, carts, wishlists, and products. Furthermore within these models there will be similar fields that cover all attributes of the model. However, one of the biggest focuses of these sites that sell items in variations, is the database set up for how the variants and different sizes/colors will be implemented.
+
+Since a product has many variations it is fair to assume that there will be models in these sites that address this issue. There would certainly be structures in the database that handle all of the possible options for all products. Unlike our site which blankets all products under a product model, other web apps may have inidividual models for all categories of items, such as shoes, t-shirts, hats etc. This helps keep products categorised and seperate, allowing them to have fields that apply specific to those types of products.
+
+
+**_12. Discuss the database relations to be implemented._**
 
 For out project solution to be implemented properly, we had to carefully consider, as well as reconsider at some points, the database relations that we would have. 
 
@@ -76,11 +123,70 @@ There were some further database relations that were implemented to categorise t
 
 **_13. Describe your project’s models in terms of the relationships (active record associations) they have with each other._**
 
-In the current build of the project, there are a total of 12 models that are in use. These models have certain associations with each other to ensure that the site functionality works. 
+In the current build of the project, there are a total of 12 models that are in use. The active record associations are as follows:
+
+**Cart**
+- belongs_to :profile
+- has_many :products_purchaseds, dependent: :destroy
+- has_many :product_variants, :through => :products_purchaseds
+
+**Category**
+- has_many :products
+
+**Fandom**
+- has_many :products
+- has_one_attached :uploaded_image
+
+**ProductVariant**
+- belongs_to :product
+- belongs_to :size
+- belongs_to :color, optional: true
+- has_many :products_purchaseds, dependent: :destroy
+- has_many :carts, :through => :products_purchaseds
+
+**Product**
+- belongs_to :profile
+- belongs_to :category
+- belongs_to :fandom
+- has_many :wishlist_products, dependent: :destroy
+- has_many :wishlists, :through => :wishlist_products
+- has_one_attached :uploaded_image
+- has_many :product_variants, dependent: :destroy
+
+**ProductsPurchased**
+- belongs_to :cart
+- belongs_to :product_variant
+
+**Profile**
+- belongs_to :user
+- has_many :carts, dependent: :destroy
+- has_many :products, dependent: :destroy
+- has_one :wishlist, dependent: :destroy
+- has_one_attached :avatar
+- has_one_attached :cover_image
+
+**Role**
+- has_many :users
+
+**User**
+- belongs_to :role
+- after_initialize :set_default_role, :if => :new_record?
+- after_create :create_initial_profile
+- has_one :profile, dependent: :destroy
+
+**WishlistProduct**
+- belongs_to :wishlist
+- belongs_to :product
+
+**Wishlist**
+- belongs_to :profile
+- has_many :wishlist_products
+- has_many :products, through: :wishlist_products
 
 
 **_14. Provide your database schema design._**
 
+![alt text](app/assets/readme/ERD.jpeg "Database Schema Design")
 
 **_15. Provide User stories for your App._**
 
@@ -101,6 +207,8 @@ In the current build of the project, there are a total of 12 models that are in 
  
 **_16. Provide Wireframes for your App._**
 
+(Refer to wireframes provided earlier in the document)
+
 **_17. Describe the way tasks are allocated and tracked in your project._**
 
 Although we sometimes used our own notes to keep track of sub tasks when working on our own product goals, we implemented the use of Trello in order to keep an overall track of the projects completion. 
@@ -112,14 +220,11 @@ The specific tasks that the team needed to complete were kept track of in Trello
 Additional lists that we had lon our trello board were 'readme', 'MVP' and 'stretch'. These lists werent inherently crucial to our task management but enabled us to see our project plan and what we wanted to achieve for our minimum viable product and what we wanted to knock off down the line as a stretch goal.
 
 
-
-
 **_18. Discuss how Agile methodology is being implemented in your project._**
 
 Agile methodology was implemented in several ways through the lifetime of the project. At the beginning of our days we would discuss what everyone was working on at the time, whether any help was needed from other group members with that task, and ultimately, what it was that we wanted to achieve for the day.
 
 By having these discussions with the group we were able to gain  a grander picture of how our site was developing and how to better allocate our time to complete certain functionalities for the web app. In addition, in accordance to the agile methodology, we were also able to continuously view and interact with the product (app) that we were working on. Because we could so easily see the progress that we were making we were easily able to review the strengths and weakneses of the site as a team which allowed us to revise our plan when needed and review our current goals.
-
 
 
 **_19. Provide an overview and description of your Source control process._**
@@ -166,11 +271,6 @@ After the 'run-through' tests were completed for the normal user, we tested the 
 The ability for a user to complete the above actions further meant that the basic CRUD operations that were required for the relevant models and controllers were also in working order. In addition, the code for the third party payment system stripe was also working correctly.
 
 Finally, we wanted to test the accessibility that users had to certain areas of the site depending on their role and whether they were signed up or not. In order to check if pundit was working we entered url's that the users didnt have access to so we could see if they were directed to a page which handled these attempts at acessing parts of the site they weren't allowed in. In addition, the users were restrited to only browse products on the site and were successfully prompted to sign up if they tried to add a product to the cart.
-
-
-
-
-
 
 
 **_21. Discuss and analyse requirements related to information system security._**
