@@ -47,6 +47,7 @@ https://github.com/richardsando/rails-project
 
 
 
+
 **_1. What is the need (i.e. challenge) that you will be addressing in your project?_**
 
 We want to create an app that satisfies the need for pop culture enthusiasts to purchase all of their pop culture items in the one place, whether it be t-shirts, phone cases, stickers and art prints. The challenge of the website is to create a satisfactory experience for people looking to purchase items on the website, and provide an ease of access and simplicity in purchasing these items. Additionally, our website aims at completing the two way marketplace interaction by allowing users to become artists on the site themselves, and add their own products for sale on the marketplace.
@@ -64,6 +65,7 @@ The project our team is conducting is simply creating a web store named cultureP
 Our application is deployed through the Platform Heroku, a software that allows developers to push code directly from GitHub to deployment via Heroku's platform and network infrastructure. When our application is ready, we create a new app on Heroku and push the code in our GitHub repository directly to Heroku so that Heroku can prepare it for deployment. Heroku receives the code and initiates the build process. Heroku bundles together assets that are needed to run the application, to create a 'slug', Which describes the bundled file that’s ready for deployment. Heroku executes the slug in an isolated Unix container that provides an environment for the app to run in. In turn creating you web application. 
 
 **_5. Identify and describe the software to be used in your App._**
+
 
 In the process of developing Culture POP, we used many different Languages and software to build and deploy our Ruby on Rails application. For Starters Languages, we utilized HTML, ERB and CSS for the logic and styling. 
 
@@ -84,6 +86,7 @@ Forth is Active Record, Active Record is an Object Relational Mapping tool.  It 
 In Fifth place (not ranked on importance) is GitHub!! Arguably the most refreshingly helpful software in existence. GitHub is a Source Control software that allows you to work as a team on the same project without accidently destroying the work of your team mates and also a singular, which then gives you a display of progress and backup as you develop. Git is a tool that allows you to work on your local machine by yourself, or with remote teams together on a project using the Web Application connected to your local Command Line Interface. Most popular features are the ability to 'commit'/save a piece of code at a certain point in development, which can be returned to at a later date. Also using 'branches' off the project that are written independently to you own ‘master’ and ‘origin’ and doesn’t effect the core branch unless merged at a later time. 
 
 Now lastly Deployment! In development we used Heroku. Heroku is a popular platform that allows for deployment of web applications without owning your own database or server. Users can push code in many different languages directly from GitHub to the internet via Heroku where it handles building and deployment of the application. 
+s we use within Ruby on Rails are used to direct the user to certain pages and functions within the applictaion. Eg when a user clicks on a link in a view that link is sent from browser to the controller which then points to a function. These functions or actions as they are called in rails often manipulate data in the database. They also can result in a different view.
 
 **_6. Identify the database to be used in your App and provide a justification for your choice._**
 

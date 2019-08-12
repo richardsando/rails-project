@@ -21,7 +21,7 @@
 				<% if @cart.product_variants.empty? %>
 					<p>Your cart has zero items!</p>
 				<% else %>
-					<% @cart.product_variants.each do |product_variant| %>      <%# this seems to display them in order updated_at %>
+					<% @cart.product_variants.sort{ |a,b| a.created_at <=> b.created_at }.each do |product_variant| %>      <%# this seems to display them in order updated_at %>
 						<br>
 						<div class="showcart-entry">
 							<% base_product = product_variant.product %>

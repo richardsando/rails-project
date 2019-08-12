@@ -1,32 +1,30 @@
-
-	<% if notice == 'The item has been successfully added to your cart.' %>
-			<div class="message-wrap">
-				<%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
-				<p id="item-added-notice"><%= notice %></p>
-				<p> <%= link_to 'To cart.', "/profiles/#{current_user.profile.id}/showcart" %> </p>
-				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
-			</div>
-		<% elsif notice == 'Sorry, you need to sign in to add to cart.' %>
-			<div class="message-wrap">
-				<p id="qty-exceeded-notice"><%= notice %></p>
-				<%= link_to 'Sign in?', "/users/sign_in", class: 'exit-link' %>
-				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
-			</div>
-		<% elsif notice == 'Sorry, you need to sign in to add to wishlist.' %>
-			<div class="message-wrap">
-				<p id="qty-exceeded-notice"><%= notice %></p>
-				<%= link_to 'Sign in?', "/users/sign_in", class: 'exit-link' %>
-				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
-			</div>
-		<% elsif (notice != nil) && (notice.include? "out of stock") %>
-			<div class="message-wrap">
-				<p id="out-of-stock-notice"><%= notice %></p>
-				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
-			</div>
-		<% end %>
-		<div class="page-wrapper">
+<% if notice == 'The item has been successfully added to your cart.' %>
+	<div class="message-wrap">
+		<%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
+		<p id="item-added-notice"><%= notice %></p>
+		<p> <%= link_to 'To cart.', "/profiles/#{current_user.profile.id}/showcart" %> </p>
+		<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
+	</div>
+<% elsif notice == 'Sorry, you need to sign in to add to cart.' %>
+	<div class="message-wrap">
+		<p id="qty-exceeded-notice"><%= notice %></p>
+		<%= link_to 'Sign in?', "/users/sign_in", class: 'exit-link' %>
+		<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
+	</div>
+<% elsif notice == 'Sorry, you need to sign in to add to wishlist.' %>
+	<div class="message-wrap">
+		<p id="qty-exceeded-notice"><%= notice %></p>
+		<%= link_to 'Sign in?', "/users/sign_in", class: 'exit-link' %>
+		<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
+	</div>
+<% elsif (notice != nil) && (notice.include? "out of stock") %>
+	<div class="message-wrap">
+		<p id="out-of-stock-notice"><%= notice %></p>
+		<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
+	</div>
+<% end %>
+<div class="page-wrapper">
 	<div class="page">
-	
 		<div class="product">
 			<% if @product.uploaded_image.attached? %>
 				<%= image_tag @product.uploaded_image.service_url, class: 'image-size' %>
@@ -94,14 +92,16 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% @product.product_variants.each do |variant| %>
-								<tr>
-									<td><%= variant.size.sizing %>  </td>
-									<td><%= variant.stock_QTY %></td>
-									<td><%= variant.price  %></td>
-									<td><%= link_to 'Edit', "/products/#{params[:id]}/edit-variant/#{variant.id}" %></td>
-									<td><%= link_to 'Delete', "/products/#{params[:id]}/remove-variant/#{variant.id}" %></td>
-								</tr>
+							<% if @product.product_variants.length > 0 %>
+								<% @product.product_variants.each do |variant| %>
+									<tr>
+										<td><%= variant.size.sizing %>  </td>
+										<td><%= variant.stock_QTY %></td>
+										<td><%= variant.price  %></td>
+										<td><%= link_to 'Edit', "/products/#{params[:id]}/edit-variant/#{variant.id}" %></td>
+										<td><%= link_to 'Delete', "/products/#{params[:id]}/remove-variant/#{variant.id}" %></td>
+									</tr>
+								<% end %>
 							<% end %>
 						</tbody>
 					</table>
