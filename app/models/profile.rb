@@ -6,6 +6,7 @@ class Profile < ApplicationRecord
     has_one :wishlist, dependent: :destroy
     has_one_attached :avatar
     has_one_attached :cover_image
+    
 
     
 

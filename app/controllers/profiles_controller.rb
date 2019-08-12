@@ -57,8 +57,9 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     respond_to do |format|
       if @profile.save 
-        @cart = Cart.create(profile_id: @profile.id)       #create an active cart with the creation of the profile - check
-        @wishlist = Wishlist.create(profile_id: @profile.id) #create the one wishlist that the user always has 
+        # @cart = Cart.create(profile_id: @profile.id)       #create an active cart with the creation of the profile - check
+        # @wishlist = Wishlist.create(profile_id: @profile.id) #create the one wishlist that the user always has 
+        # raise
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
       else

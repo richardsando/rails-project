@@ -57,7 +57,21 @@
 				<div class="add-to">
 					<%= render "add_to_cart" %>
 					<div class="wishlist-container">
-						<div><%= render "wishlist_box" %></div>
+						<div class="wishlist-box">
+							<% if !user_signed_in? %>
+								<%= link_to inline_svg("love.svg", class: "wishlist-icon-inactive"), "/user_does_not_exist_wishlist?product_id=#{@product.id}&product_size=#{params[:product_size]}" %>
+							<% elsif user_signed_in? %>
+								<% if !owning_artist(@product) %>
+									<% if current_user.profile.wishlist.products.where("product_id = ?", @product.id).present? %>
+										<%= link_to inline_svg("love.svg", class: "wishlist-icon-active"), "/profiles/#{current_user.profile.id}/show-wishlist/remove-item?product_id=#{@product.id}" %>
+									<% else %>
+										<%= link_to inline_svg("love.svg", class: "wishlist-icon-inactive"), "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %>
+									<% end %>
+								<% elsif owning_artist(@product) %>
+									<%#show nada%>
+								<% end %>
+							<% end %>
+						</div>
 					</div>
 				</div>
 				<% if user_signed_in? && owning_artist(@product) %>

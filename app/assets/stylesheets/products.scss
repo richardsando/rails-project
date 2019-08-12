@@ -77,25 +77,25 @@
   width: 4rem;
   height: 4rem;
   fill: #646464;
-  stroke: #646464;
-  stroke-width: 1rem;
+  // stroke: #646464;
+  // stroke-width: 1rem;
 }
 .wishlist-container {
   display: flex;
   justify-content: center;
-  background-color: red;
+  // background-color: red;
   height: 100px;
   align-items: flex-end;
 }
 
 .wishlist-icon-inactive:hover {
-  // fill: #4287f5;
+  fill: #ff6a6a;
 }
 
 .wishlist-icon-active {
-  // width: 4rem;
-  // height: 4rem;
-  // fill: #4287f5;
+  width: 4rem;
+  height: 4rem;
+  fill: #ff6a6a;
 }
 
 #item-added-notice {
