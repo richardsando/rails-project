@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
 belongs_to :role
 after_initialize :set_default_role, :if => :new_record?
-after_create :create_initial_profile
+# after_create :create_initial_profile
 
 has_one :profile, dependent: :destroy   #if the user is deleted then the profile follows and is deleted with it
 
