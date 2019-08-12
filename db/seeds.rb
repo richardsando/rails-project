@@ -3826,8 +3826,23 @@
 # end
 
 
-@profiles = Profile.all
+# @profiles = Profile.all
 
-@profiles.each do |profile|
-    Wishlist.create!(profile_id: profile.id)
-end
+# @profiles.each do |profile|
+#     Wishlist.create!(profile_id: profile.id)
+# end
+
+
+# @profiles = Profile.all
+
+# @profiles.each do |profile|
+#     Cart.create!(profile_id: profile.id)
+# end
+
+# @users = User.all
+
+# @users.each do |user|
+#     if user.profile.products.length > 0
+#     user.update(role_id: 2)
+#     end
+# end
