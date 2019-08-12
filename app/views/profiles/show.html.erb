@@ -61,7 +61,9 @@
 			<% end %>
 		<% end %>
 		<h1 class="my-products-title">
-			Products made by me!
+			<% if @profile.products.length > 0 %>
+				Products made by me!
+			<% end %>
 		</h1>
 		<ul>
 			<% @profile.products.each do |product| %>

@@ -1,0 +1,24 @@
+<% if !user_signed_in? || (user_signed_in? && !owning_artist(@product)) %>
+						<% if !user_signed_in? %>
+							<% form_url_path = "/user_does_not_exist?product_id=#{@product.id}&product_size=#{params[:product_size]}" %>
+						<% elsif user_signed_in? && !owning_artist(@product) %>
+							<% form_url_path = "/profiles/#{current_user.profile.id}/addproducttocart?product_size=#{params[:product_size]}" %>
+						<% end %>
+						<%= form_with(url: form_url_path, local: true) do |form| %>
+							<div class="field" >
+								<%= form.label :size %>
+								<%= form.collection_select :size_id, Size.where(category: @product.category.category).where(id: possible_sizes(@product)), :id, :sizing, {
+                      :selected => params[:product_size] }, { :onchange => "window.location.replace('/products/#{@product.id}?product_size='+this.value);" } %>
+							</div>
+							<div class="field">
+								<%= form.hidden_field :qty, value: 1 %>
+							</div>
+							<div class="field">
+								<%= form.hidden_field :product_id, value: (@product.id) %>
+							</div>
+                            <br>
+							<div class="actions">
+								<%= form.submit "Add to cart", class: "add-product-btn"%>
+							</div>
+						<% end %>
+					<% end %>

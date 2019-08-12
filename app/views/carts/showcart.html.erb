@@ -1,56 +1,63 @@
-
-<div class="my-cart-page">
-
-     <% if notice == 'Item removed from cart.' %>
-          <div class="message-wrap">
-               <%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
-               <p id="item-added-notice"> <%= notice %> </p>  
-               <%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/profiles/#{params[:id]}/showcart", class: 'exit-link' %>
-          </div>
-     <% elsif (notice != nil) && (notice.include? "out of stock") %>
-          <div class="message-wrap">
-               <p id="out-of-stock-notice"> <%= notice %> </p>  
-               <%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/profiles/#{params[:id]}/showcart", class: 'exit-link' %>
-          </div>
-     <% end %>
-     <% notice = nil %>  <%# is this approrpiate? %>
-
-<div class="my-cart">
-          <h1>My Cart</h1>
-          <hr>
-          <% if @cart.product_variants.empty? %>
-               <p>Your cart has zero items!</p>
-          <% else %>
-               <% @cart.product_variants.each do |product_variant| %>      <%# this seems to display them in order updated_at %>
-                    <div class="showcart-entry">
-                         <% base_product = product_variant.product %>
-                         <% purchase_entry = ProductsPurchased.where(cart_id: @cart.id, product_variant_id: product_variant.id).first %>
-                         <p>
-                           <%= image_tag base_product.uploaded_image.service_url, class: "cart-image-size" %>
-                           <%= link_to base_product.name, "/products/#{base_product.id}" %> |
-                           <%= "  Size: #{product_variant.size.sizing}" %> |
-                           <% if purchase_entry.purchase_QTY == 1 %>
-                                <%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
-                           <% else %>
-                                <%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=decrement" %>
-                           <% end %>
-                           <%= "  QTY: #{purchase_entry.purchase_QTY}" %> 
-                           <%= link_to inline_svg("_ionicons_svg_md-add.svg", class: "increment-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=increment" %> |
-                           <%= link_to 'Remove Item', "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
-                         </p> 
-                    </div>               
-               <hr>
-               <% end %>
-          <% end %>
-
-          <% if !@cart.product_variants.empty? %>
-               <%= render "layouts/checkout_stripe_form" %>              
-          <% end %>
-
-          <%= link_to 'Back to profile', "/profiles/#{params[:id]}", :class => "some-shit" %>
-          <%= link_to 'home', '/', :class => "some-shit" %>
-     </div>
+<div class="page-wrapper">
+	<div class="page">
+		<div class="my-cart-page">
+			<% if notice == 'Item removed from cart.' %>
+				<div class="message-wrap">
+					<%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
+					<p id="item-added-notice"> <%= notice %> </p>
+					<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/profiles/#{params[:id]}/showcart", class: 'exit-link' %>
+				</div>
+			<% elsif (notice != nil) && (notice.include? "out of stock") %>
+				<div class="message-wrap">
+					<p id="out-of-stock-notice"> <%= notice %> </p>
+					<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/profiles/#{params[:id]}/showcart", class: 'exit-link' %>
+				</div>
+			<% end %>
+			<% notice = nil %>  <%# is this approrpiate? %>
+			<div class="my-cart">
+				<h1 class="my-cart-heading">
+					My Cart
+				</h1>
+				
+				<% if @cart.product_variants.empty? %>
+					<p>Your cart has zero items!</p>
+				<% else %>
+					<% @cart.product_variants.each do |product_variant| %>      <%# this seems to display them in order updated_at %>
+                         <br>
+						<div class="showcart-entry">
+							<% base_product = product_variant.product %>
+							<% purchase_entry = ProductsPurchased.where(cart_id: @cart.id, product_variant_id: product_variant.id).first %>
+						
+                                   <div class='product-a'>
+                                 
+                                   	<%= image_tag base_product.uploaded_image.service_url, class: "cart-image-size" %>
+                                 
+                                        <div>
+                                             <p><%= link_to base_product.name, "/products/#{base_product.id}" %></p>
+                                             <p> $ <%= product_variant.price %></p>
+                                             <p><%= "  Size: #{product_variant.size.sizing}" %></p>
+                                        </div>
+							</div>
+							<p class="qty"><% if purchase_entry.purchase_QTY == 1 %>
+								<%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
+							<% else %>
+								<%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=decrement" %>
+							<% end %>
+							<%= "  QTY: #{purchase_entry.purchase_QTY}" %>
+							<%= link_to inline_svg("_ionicons_svg_md-add.svg", class: "increment-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=increment" %> 
+                                   </p>
+							<%= link_to 'remove', "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
+						</div>
+						<br>
+						<hr>
+					<% end %>
+				<% end %>
+				<br>
+				<% if !@cart.product_variants.empty? %>
+                         <%= render "layouts/checkout_stripe_form" %>              
+                    <% end %>
+				<%= link_to 'Back to profile', "/profiles/#{params[:id]}", :class => "some-shit" %>
+			</div>
+		</div>
+	</div>
 </div>
-     
-  
-    

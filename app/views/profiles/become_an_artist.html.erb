@@ -1,8 +1,13 @@
 <div class= page-wrapper>
 	<div class="page">
-		<h1>Become an artist</h1>
-		<p>Pay a one time subscription fee below to become an artist and sell products on culturePOP! </p>
-		<%= render "layouts/registration_stripe_form" %>
-		<%= link_to 'Back to profile', "/profiles/#{current_user.profile.id}/" %>
+		<div class="border-form-div">
+			<h1>Become an artist</h1>
+			<br>
+			<p>Pay a one time subscription fee below to become an artist and sell products on culturePOP! </p>
+			<br>
+			<%= render "layouts/registration_stripe_form" %>
+			<br>
+			<%= link_to 'Back to profile', "/profiles/#{current_user.profile.id}/" %>
+		</div>
 	</div>
 </div>

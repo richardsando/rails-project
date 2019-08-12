@@ -1,10 +1,17 @@
 class CartsController < ApplicationController
+  before_action :set_profile, only: [:showcart]
 
     def showcart   
-        @cart = current_user.profile.carts.where("active_status = ?", true).first   #gets the current active cart
+       
+        if user_signed_in?
+          @cart = current_user.profile.carts.where("active_status = ?", true).first   #gets the current active cart
+        else 
+          redirect_to "/"
+        end
     end
 
     def add_product_to_cart
+   
         #accessible variables are: size_id, qty, and the id (profile) making the purchase
     
         @cart = active_cart(params[:id])   #get the active cart
@@ -39,6 +46,7 @@ class CartsController < ApplicationController
     end
 
     def change_item_qty
+
         purchase_entry = ProductsPurchased.find(params[:purchase_id])
         product_variant = ProductVariant.find(purchase_entry.product_variant_id)
     
@@ -59,7 +67,7 @@ class CartsController < ApplicationController
     end
 
     def remove_cart_item
-
+ 
         cart_id = active_cart(params[:id]).id   
         @product_purchased = ProductsPurchased.where("cart_id = ? AND product_variant_id = ?", cart_id, params[:product_variant_id]).first
         quantity = @product_purchased.purchase_QTY
@@ -78,6 +86,17 @@ class CartsController < ApplicationController
     end
 
     def previous_orders
+      if user_signed_in?
         @previous_orders = current_user.profile.carts.where("active_status = ?", false)
+      else
+        redirect_to "/"
+      end
     end
+
+    private
+
+    def set_profile
+      @profile = Profile.find(params[:id])
+    end
+
 end

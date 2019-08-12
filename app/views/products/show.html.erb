@@ -1,152 +1,97 @@
-<div class="product-page">
-
-    <% if notice == 'The item has been successfully added to your cart.' %>
-      <div class="message-wrap">
-        <%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
-        <p id="item-added-notice"><%= notice %></p>
-        <p> <%= link_to 'To cart.', "/profiles/#{current_user.profile.id}/showcart" %> </p>
-        <%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
-      </div>
-    <% elsif notice == 'Sorry, you need to sign in to add to cart.' %>
-      <div class="message-wrap">
-        <p id="qty-exceeded-notice"><%= notice %></p>
-        <%= link_to 'Sign in?', "/users/sign_in", class: 'exit-link' %> 
-        <%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
-      </div>
-    <% elsif notice == 'Sorry, you need to sign in to add to wishlist.' %>
-      <div class="message-wrap">
-        <p id="qty-exceeded-notice"><%= notice %></p>
-        <%= link_to 'Sign in?', "/users/sign_in", class: 'exit-link' %> 
-        <%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
-      </div>
-    <% elsif (notice != nil) && (notice.include? "out of stock") %>
-      <div class="message-wrap">
-        <p id="out-of-stock-notice"><%= notice %></p>
-        <%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
-      </div>
-    <% end %>
-    
-
-  <div class="product">
-    <% if @product.uploaded_image.attached? %>
-      <div id="artist-product-img">
-          <%= image_tag @product.uploaded_image.service_url, class: 'image-size' %>
-      </div>
-    <% else %>
-      <p>There were errors displaying the image</p>
-    <% end %>
-
-    <div class="product-info">
-        <h1>
-          <%= @product.name %>
-        </h1>
-
-        <p>
-          By <%= link_to @product.profile.username, @product.profile  %>
-        </p>
-
-        <p>
-          <%= @product.description %>
-        </p>
-
-        <p>
-          <%= link_to @product.category.category, "/#{@product.category}" %>
-        </p>
-
-        <p>
-          <%= @product.fandom.fandom %>
-        </p>
-
-        <p>
-          <%= "$#{price(params[:product_size], @product)}" %>
-        </p>
-        <% params[:product_size] = set_product_size(params[:product_size], @product) %>
-
-
-        <div class="add-to">
-          <% if !user_signed_in? || (user_signed_in? && !owning_artist(@product)) %>
-            <% if !user_signed_in? %>
-              <% form_url_path = "/user_does_not_exist?product_id=#{@product.id}&product_size=#{params[:product_size]}" %>
-            <% elsif user_signed_in? && !owning_artist(@product) %>
-              <% form_url_path = "/profiles/#{current_user.profile.id}/addproducttocart?product_size=#{params[:product_size]}" %>
-            <% end %>
-            
-            <%= form_with(url: form_url_path, local: true) do |form| %>
-              <div class="field" >
-                <%= form.label :size %>
-                <%= form.collection_select :size_id, Size.where(category: @product.category.category).where(id: possible_sizes(@product)), :id, :sizing, {
-                      :selected => params[:product_size] }, { :onchange => "window.location.replace('/products/#{@product.id}?product_size='+this.value);" } %>
-              </div>
-
-              <div class="field">
-                <%= form.hidden_field :qty, value: 1 %>
-              </div>
-              
-              <div class="field">
-                <%= form.hidden_field :product_id, value: (@product.id) %>
-              </div>
-              
-              <div class="actions">
-                <%= form.submit "Add to cart", class: "add-product-btn"%>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-
-    </div>
-
-    <div class="wishlist-box">
-      <% if !user_signed_in? %>
-        <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-inactive"), "/user_does_not_exist_wishlist?product_id=#{@product.id}&product_size=#{params[:product_size]}" %>
-      <% elsif user_signed_in? %>
-        <% if !owning_artist(@product) %>
-          <% if current_user.profile.wishlist.products.where("product_id = ?", @product.id).present? %>
-            <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-active"), "/profiles/#{current_user.profile.id}/show-wishlist/remove-item?product_id=#{@product.id}" %>
-          <% else %>
-            <%= link_to inline_svg("_ionicons_svg_md-star.svg", class: "wishlist-icon-inactive"), "/profiles/#{current_user.profile.id}/addtowishlist?product_id=#{@product.id}" %>
-          <% end %>
-        <% elsif owning_artist(@product) %>
-          <%#show nada%>
-        <% end %>
-      <% end %>    
-    </div>
-    
-    <% if user_signed_in? && owning_artist(@product) %>
-
-      <br><br><br>
-
-      <%= link_to "Add a #{@product.name} variant", "/products/#{params[:id]}/add-variant" %>
-      <br><br>
-
-        <h3>Current stock in your store </h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Size</th>
-                <th>SKU</th>
-                <th>Price ($AUD)</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @product.product_variants.each do |variant| %>
-                <tr>
-                  <td><%= variant.size.sizing %>  </td>
-                  <td><%= variant.stock_QTY %></td>
-                  <td><%= variant.price  %></td> 
-                  <td><%= link_to 'Edit', "/products/#{params[:id]}/edit-variant/#{variant.id}" %></td>
-                  <td><%= link_to 'Delete', "/products/#{params[:id]}/remove-variant/#{variant.id}" %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-    <% end %>
-  </div>
+<div class="page-wrapper">
+	<div class="page">
+		<% if notice == 'The item has been successfully added to your cart.' %>
+			<div class="message-wrap">
+				<%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
+				<p id="item-added-notice"><%= notice %></p>
+				<p> <%= link_to 'To cart.', "/profiles/#{current_user.profile.id}/showcart" %> </p>
+				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
+			</div>
+		<% elsif notice == 'Sorry, you need to sign in to add to cart.' %>
+			<div class="message-wrap">
+				<p id="qty-exceeded-notice"><%= notice %></p>
+				<%= link_to 'Sign in?', "/users/sign_in", class: 'exit-link' %>
+				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
+			</div>
+		<% elsif notice == 'Sorry, you need to sign in to add to wishlist.' %>
+			<div class="message-wrap">
+				<p id="qty-exceeded-notice"><%= notice %></p>
+				<%= link_to 'Sign in?', "/users/sign_in", class: 'exit-link' %>
+				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}", class: 'exit-link' %>
+			</div>
+		<% elsif (notice != nil) && (notice.include? "out of stock") %>
+			<div class="message-wrap">
+				<p id="out-of-stock-notice"><%= notice %></p>
+				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
+			</div>
+		<% end %>
+		<div class="product">
+			<% if @product.uploaded_image.attached? %>
+				<%= image_tag @product.uploaded_image.service_url, class: 'image-size' %>
+			<% else %>
+				<p>There were errors displaying the image</p>
+			<% end %>
+			<div class="product-info">
+				<h1 class="product-title">
+					<%= @product.name %>
+				</h1>
+				<p>
+					By <%= link_to @product.profile.username, @product.profile  %>
+				</p>
+				<br>
+				<p>
+					<%= @product.description %>
+				</p>
+				<br>
+				<p>
+					Tags:  <%= link_to @product.fandom.fandom, "/fandoms/#{@product.fandom.id}" %>
+					<%= link_to @product.category.category, "/#{@product.category}" %>
+				</p>
+				<br>
+				<p class="price">
+					<%= "$#{price(params[:product_size], @product)}" %>
+				</p>
+				<% params[:product_size] = set_product_size(params[:product_size], @product) %>
+				<br>
+				<br>
+				<div class="add-to">
+					<%= render "add_to_cart" %>
+					<div class="wishlist-container">
+						<div><%= render "wishlist_box" %></div>
+					</div>
+				</div>
+				<% if user_signed_in? && owning_artist(@product) %>
+					<br>
+					<br>
+					<br>
+					<%= link_to "Add a #{@product.name} variant", "/products/#{params[:id]}/add-variant" %>
+					<br>
+					<br>
+					<h3>Current stock in your store </h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Size</th>
+								<th>SKU</th>
+								<th>Price ($AUD)</th>
+								<th colspan="3"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @product.product_variants.each do |variant| %>
+								<tr>
+									<td><%= variant.size.sizing %>  </td>
+									<td><%= variant.stock_QTY %></td>
+									<td><%= variant.price  %></td>
+									<td><%= link_to 'Edit', "/products/#{params[:id]}/edit-variant/#{variant.id}" %></td>
+									<td><%= link_to 'Delete', "/products/#{params[:id]}/remove-variant/#{variant.id}" %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
-
-<footer>This is the footer</footer>
-
-
-
-   
+</div>

@@ -1,0 +1,12 @@
+<div class="page-wrapper">
+	<div class="page">
+		<div class="border-form-div">
+			<h2>Thanks, you paid <strong>$5.00</strong>!</h2>
+            <br>
+			<p>You can now upload products to sell on your profile page</p>
+            <br>
+            <br>
+			<%= link_to "back to my profile", {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
+		</div>
+	</div>
+</div>

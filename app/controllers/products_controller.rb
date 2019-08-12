@@ -1,16 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+
   # GET /products
   # GET /products.json
   def index
-    
     if params[:search]
       @products = Product.where('name ILIKE ?', "%#{params[:search]}%")
     else
       @products = Product.all
     end
-
   end
 
   # GET /products/1
@@ -21,14 +20,13 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    authorize(Product)
     @product = Product.new
   end
 
   def quantity
-
     # need to render a tabular form here that lets you select the sizes, pricings
     @product = Product.find(params[:id])
-
     # if @product.category.category == "T-shirts"
     #   @sizes = ["XS", "S", "M", "L", "XL"]
     # end
@@ -36,7 +34,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    authorize()
+    authorize(@product)
   end
 
   # POST /products
@@ -58,6 +56,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    authorize(@product)
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -72,6 +71,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    authorize(@product)
     @product.destroy
     respond_to do |format|
       format.html { redirect_to profile_url, notice: 'Product was successfully destroyed.' }
