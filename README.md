@@ -13,21 +13,38 @@ https://gentle-atoll-70711.herokuapp.com/
 Github repository:
 https://github.com/richardsando/rails-project
 
-Description of your project, including,
-- Problem definition / purpose
-- Functionality / features
-- Screenshots
-- Tech stack (e.g. html, css, deployment platform, etc)
-- Instructions on how to setup, configure and use your App.
-- Design documentation including,
-- Design process
-- User stories
-- A workflow diagram of the user journey/s.
-- Wireframes
-- Database Entity Relationship Diagrams
-- Details of planning process including,
-- Project plan & timeline
-- Screenshots of Trello board(s)
+
+## Figma screenshots
+![alt text](app/assets/images/DOCS/figma.png)
+
+### Homepage
+![alt text](app/assets/images/DOCS/figma02.png)
+
+### Design process
+![alt text](app/assets/images/DOCS/figma03.png)
+
+
+## Entity Relationship Diagram
+![alt text](app/assets/images/DOCS/ERD.png)
+
+## User flow
+![alt text](app/assets/images/DOCS/user_flow.png)
+
+## Trello
+![alt text](app/assets/images/DOCS/trello.png)
+
+## App screenshots
+#### Home
+![alt text](app/assets/images/DOCS/home.png)
+#### T shirts category 
+![alt text](app/assets/images/DOCS/tshirts.png)
+#### Profile page
+![alt text](app/assets/images/DOCS/profile.png)
+#### Cart page
+![alt text](app/assets/images/DOCS/my_cart.png)
+#### Wishlist page
+![alt text](app/assets/images/DOCS/wishlist.png)
+
 
 
 **_1. What is the need (i.e. challenge) that you will be addressing in your project?_**
