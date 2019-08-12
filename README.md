@@ -13,21 +13,8 @@ https://gentle-atoll-70711.herokuapp.com/
 Github repository:
 https://github.com/richardsando/rails-project
 
-Description of your project, including,
-- Problem definition / purpose
-- Functionality / features
-- Screenshots
-- Tech stack (e.g. html, css, deployment platform, etc)
-- Instructions on how to setup, configure and use your App.
-- Design documentation including,
-- Design process
-- User stories
-- A workflow diagram of the user journey/s.
-- Wireframes
-- Database Entity Relationship Diagrams
-- Details of planning process including,
-- Project plan & timeline
-- Screenshots of Trello board(s)
+
+![alt text](/assets/images/DOCS/)
 
 
 1. What is the need (i.e. challenge) that you will be addressing in your project?
@@ -59,7 +46,18 @@ Now lastly Deployment! In development we used Heroku. Heroku is a popular platfo
 6. Identify the database to be used in your App and provide a justification for your choice.
 7. Identify and describe the production database setup (i.e. postgres instance).
 8. Describe the architecture of your App.
-9. Explain the different high-level components (abstractions) in your App.
+
+## 9. Explain the different high-level components (abstractions) in your App.
+
+Culturepop is built using Ruby on Rails, which follows the MVC (model, views and controller) configuration. 
+
+The model is what queries the database we use and makes the data usable by Ruby. This is called Active Record within Ruby on Rails. 
+
+The views we use within this application are what are viewed on the front end in the browser. These are embebbed ruby files which are htmls with an extension that allows ruby code to be used in the front end. 
+
+The controllers we use within Ruby on Rails are used to direct the user to certain pages and functions within the applictaion. Eg when a user clicks on a link in a view that link is sent from browser to the controller which then points to a function. These functions or actions as they are called in rails often manipulate data in the database. They also can result in a different view.
+
+
 10. Detail any third party services that your App will use.
 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
 

@@ -7,6 +7,9 @@ module ProductsHelper
     end
 
     def price(product_size, product)
+        # if product.product_variants.empty?
+        #     return nil
+        # end
         if product_size.nil? 
             return product.product_variants.order(:size_id).first.price
         else
@@ -15,6 +18,9 @@ module ProductsHelper
     end
 
     def set_product_size(product_size, product)
+        # if product.product_variants.empty?
+        #     return nil
+        # end
         if product_size.nil?
             return product.product_variants.order(:size_id).first.size_id
         else

@@ -45,7 +45,7 @@
     position: absolute;
     bottom: 23%;
     right: 15%;
-    font-size: 5vw;
+    font-size: 3.5vw;
     padding: 10px;
     background: white;
     border: solid black 2px;
@@ -74,6 +74,10 @@
     color: black;
 }
 
+
+.amount * {
+    font-family: "Montserrat", sans-serif;
+}
 .user-actions {
     color: black;
     padding: 20px;
