@@ -2,7 +2,7 @@
 # CulturePop  
 #### A place to buy and sell fan made pop culture merchandise
 
-## Contributors
+### Contributors
 |<img src="https://avatars2.githubusercontent.com/u/47937400?s=400&v=4" alt="Richard Sando" width="100"/>|<img src="https://avatars2.githubusercontent.com/u/48897382?s=460&v=4" alt="Jovan Nikolic" width="100"/>|<img src="https://avatars1.githubusercontent.com/u/45807277?s=460&v=4" alt="Melissa McAdam" width="100"/>|
 |-----------|-----------|-----------|
 | <a href="https://github.com/richardsando">Richard Sando</a>| <a href="https://github.com/Jovnik">Jovan Nikolic</a> | <a href="https://github.com/Bot81892">Melissa McAdam</a> |
