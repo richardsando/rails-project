@@ -62,6 +62,11 @@ Now lastly Deployment! In development we used Heroku. Heroku is a popular platfo
 6. Identify the database to be used in your App and provide a justification for your choice.
 7. Identify and describe the production database setup (i.e. postgres instance).
 8. Describe the architecture of your App.
+
+The Client displays the web page in a web browser and handles User Interface and user interactions with the web page. The HTTP requests and directs to the Route asked for by the users prompt. A map of pathways defined by the application, define which functions are called in the controller depending on different requests from the server. What is to be accessed and shown to the user is defined in the controller. The controller checks if the user is allowed access to the prompted route and if not, the controller then shows an error. 
+
+In our application we have allowed users to see products, make an account, buy a product, become an artist (by subscription) and sell products. In that order. 
+
 9. Explain the different high-level components (abstractions) in your App.
 10. Detail any third party services that your App will use.
 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
