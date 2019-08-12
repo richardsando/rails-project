@@ -76,7 +76,7 @@ The database used in the application is PostgresSQL. The sole reason behind usin
 
 The postgres instance was set up by running 'rails new rails-project --database=postgresql' in our VS code command line when we created the app. After switching directory so that we were within the project directory we then ran 'rails db:create' to create the postgres instance.  
 
-8. Describe the architecture of your App.
+**_8. Describe the architecture of your App.
 
 The Client displays the web page in a web browser and handles User Interface and user interactions with the web page. The HTTP requests and directs to the Route asked for by the users prompt. A map of pathways defined by the application, define which functions are called in the controller depending on different requests from the server. What is to be accessed and shown to the user is defined in the controller. The controller checks if the user is allowed access to the prompted route and if not, the controller then shows an error. 
 
@@ -84,6 +84,13 @@ In our application we have allowed users to see products, make an account, buy a
 
 **_9. Explain the different high-level components (abstractions) in your App._**
 
+Culturepop is built using Ruby on Rails, which follows the MVC (model, views and controller) configuration. 
+
+The model is what queries the database we use and makes the data usable by Ruby. This is called Active Record within Ruby on Rails. 
+
+The views we use within this application are what are viewed on the front end in the browser. These are embebbed ruby files which are htmls with an extension that allows ruby code to be used in the front end. 
+
+The controllers we use within Ruby on Rails are used to direct the user to certain pages and functions within the applictaion. Eg when a user clicks on a link in a view that link is sent from browser to the controller which then points to a function. These functions or actions as they are called in rails often manipulate data in the database. They also can result in a different view.
 
 **_10. Detail any third party services that your App will use._**
 
