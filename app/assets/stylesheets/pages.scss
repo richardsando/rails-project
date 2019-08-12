@@ -73,6 +73,13 @@ a {
   height: 370px;
   opacity: 0.9;
 }
+
+.print-banner {
+  filter: brightness(120%) contrast(60%) grayscale(55%); 
+  // filter: brightness(150%);
+  height: 370px;
+  opacity: 0.9;
+}
 .fandom-banner-text {
   position: absolute;
   color: rgb(238, 220, 220);

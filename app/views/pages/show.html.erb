@@ -1,7 +1,11 @@
 <div class="page-wrapper">
 	<div class="page">
 		<div class="fandom-banner-wrapper">
+		<% if @category.category == "Prints" %>
+		  <%= image_tag "banners/#{params[:id]}.jpg", class: "print-banner" %>
+		<% else %>
 			<%= image_tag "banners/#{params[:id]}.jpg", class: "tshirt-banner" %>
+		<% end %>
 			<h2 class="banner-text">
 				<%= @category.category %>
 			</h2>
