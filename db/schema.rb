@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2019_08_10_081843) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "cart_products", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_products_on_cart_id"
+    t.index ["product_id"], name: "index_cart_products_on_product_id"
+  end
+
   create_table "carts", force: :cascade do |t|
     t.bigint "profile_id"
     t.datetime "created_at", null: false
@@ -156,6 +165,8 @@ ActiveRecord::Schema.define(version: 2019_08_10_081843) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cart_products", "carts"
+  add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "profiles"
   add_foreign_key "product_variants", "colors"
   add_foreign_key "product_variants", "products"
