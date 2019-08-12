@@ -13,21 +13,8 @@ https://gentle-atoll-70711.herokuapp.com/
 Github repository:
 https://github.com/richardsando/rails-project
 
-Description of your project, including,
-- Problem definition / purpose
-- Functionality / features
-- Screenshots
-- Tech stack (e.g. html, css, deployment platform, etc)
-- Instructions on how to setup, configure and use your App.
-- Design documentation including,
-- Design process
-- User stories
-- A workflow diagram of the user journey/s.
-- Wireframes
-- Database Entity Relationship Diagrams
-- Details of planning process including,
-- Project plan & timeline
-- Screenshots of Trello board(s)
+
+![alt text](/assets/images/DOCS/)
 
 
 **_1. What is the need (i.e. challenge) that you will be addressing in your project?_**
@@ -68,6 +55,8 @@ In Fifth place (not ranked on importance) is GitHub!! Arguably the most refreshi
 
 Now lastly Deployment! In development we used Heroku. Heroku is a popular platform that allows for deployment of web applications without owning your own database or server. Users can push code in many different languages directly from GitHub to the internet via Heroku where it handles building and deployment of the application. 
 
+<<terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+
 **_6. Identify the database to be used in your App and provide a justification for your choice._**
 
 The database used in the application is PostgresSQL. The sole reason behind using this as our database was so that we could successfully deploy the project to Heroku. 
@@ -89,6 +78,7 @@ Culturepop is built using Ruby on Rails, which follows the MVC (model, views and
 The model is what queries the database we use and makes the data usable by Ruby. This is called Active Record within Ruby on Rails. 
 
 The views we use within this application are what are viewed on the front end in the browser. These are embebbed ruby files which are htmls with an extension that allows ruby code to be used in the front end. 
+
 
 The controllers we use within Ruby on Rails are used to direct the user to certain pages and functions within the applictaion. Eg when a user clicks on a link in a view that link is sent from browser to the controller which then points to a function. These functions or actions as they are called in rails often manipulate data in the database. They also can result in a different view.
 
