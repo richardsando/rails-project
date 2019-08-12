@@ -392,9 +392,9 @@ fandoms.each do |fandom|
 end
 
 
-fandoms.each do |fandom|
-    Fandom.find_by(fandom: fandom[:fandom]).uploaded_image.purge
-end
+### fandoms.each do |fandom|
+###     Fandom.find_by(fandom: fandom[:fandom]).uploaded_image.purge
+### end
 
 
 
@@ -1775,10 +1775,10 @@ thewalkingdead_products = [
         fandom_id: 5 
     },
     {
-        name: "TWD b/w/r iphone Case",
-        description: "Durable phone case",
+        name: "TWD black and white fan poster",
+        description: "print/wall art",
         profile_id: User.find_by(email: "bubblegum24@gmail.com").profile.id,     ###----------iPhone-Case
-        category_id: 3,
+        category_id: 4,
         fandom_id: 5 
     },
     {
@@ -1823,7 +1823,7 @@ image_names = ["thewalkingdead-tee-8.jpeg", "thewalkingdead-tee-5.jpg", "thewalk
 
 
 product_names = ["Rick Grimes T", "Lucille TWD T-Shirt", "Rick Grimes Sticker", "The Sheriff Sticker", "TWD Sheriff iphone Case", "Swinging Peice of Bait poster", "TWD Sheriff inspired poster", "TWD Easy Street Print",###---bat
-"Rick Grimes 'Fight the Dead'", "'This isn't a Democracy' TWD T-Shirt", "The-Walking-Dead T-Shirt", "The-Walking-Dead 'Sticker'", "Team Daryl Sticker", "The Walking Dead, iPhone Case", "TWD b/w/r iphone Case", "TWD Inspired iphone Case", "The Walking Dead, fan inspired poster", "The Walking Dead inspired poster G/P", "The Walking Dead Inspired Poster B/P"####----bubble
+"Rick Grimes 'Fight the Dead'", "'This isn't a Democracy' TWD T-Shirt", "The-Walking-Dead T-Shirt", "The-Walking-Dead 'Sticker'", "Team Daryl Sticker", "The Walking Dead, iPhone Case", "TWD black and white fan poster", "TWD Inspired iphone Case", "The Walking Dead, fan inspired poster", "The Walking Dead inspired poster G/P", "The Walking Dead Inspired Poster B/P"####----bubble
 ]
 
 zip = image_names.zip(product_names)
@@ -3604,6 +3604,20 @@ image_names = ["GOT-tee-4.jpg", "GOT-iphone-1.jpg", "GOT-iphone-11.jpg", "GOT-pr
  "GOT-tee-3.jpg", "GOT-tee-6.jpg", "GOT-stickers-1.png", "GOT-stickers-4.png", "GOT-stickers-5.jpg", "GOT-iphone-5.jpg", "GOT-iphone-8.jpg", "GOT-iphone-9.jpg", "GOT-iphone-10.png", "GOT-iphone-12.jpg", "GOT-print-5.jpg", "GOT-print-6.jpg", "GOT-print-7.jpg"####-----raven
 ]
 
+product_names = ["King of the North", "Winter is Coming iPhone Case", "'I'm still Alive' iPhone Case", "GOT 7 kingdoms inspired print", "GOT inspired fan print", "GOT 'you hear them, boy?' inspired print",####----end of chibiplease
+"I am the watcher GOT", "GOT and Rick and Morty cross", "Winter is coming, GOT Sticker", "Crows before Hoes, GOT Sticker", "Mother of Dogs, GOT Sticker", "Five Kings One Throne iPhone Case", "Game of Thrones, iPhone Case", "Game of Thrones b/w iPhone Case", "'Winter is here' iPhone Case", "'Game of Thrones' Throne Case", "GOT Jon Snow inspired fan print", "'A song of Ice and Fire' print", "Game of Thrones inspired Fan Art Print"####----raven
+]
+
+zip = image_names.zip(product_names)
+
+zip.each do |img_name, product_name|
+    path = Rails.root.join("app", "assets", "images", img_name)
+    Product.find_by(name: product_name).uploaded_image.attach(io: File.open(path), filename: img_name)
+end
+
+
+
+
 
 sizes = [
     {
@@ -3611,7 +3625,29 @@ sizes = [
         sizing: "XS"
     },
     {
-        category: "T-shirts", p
+        category: "T-shirts",
+        sizing: "S"
+    },
+    {
+        category: "T-shirts",
+        sizing: "M"
+    },
+    {
+        category: "T-shirts",
+        sizing: "L"
+    },
+    {
+        category: "T-shirts",
+        sizing: "XL"
+    },
+    {
+        category: "T-shirts",
+        sizing: "XXL"
+    },
+    {
+        category: "Stickers",
+        sizing: "7.8 x 7.6 cm"
+    },
     {
         category: "Stickers",
         sizing: "14 x 13.6 cm"
