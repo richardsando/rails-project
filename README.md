@@ -34,6 +34,9 @@ Description of your project, including,
 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 3. Describe the project will you be conducting and how. your App will address the needs.
 4. Describe the network infrastructure the App may be based on.
+
+Our application is deployed through the Platform Heroku, a software that allows developers to push code directly from GitHub to deployment via Heroku's platform and network infrastructure. When our application is ready, we create a new app on Heroku and push the code in our GitHub repository directly to Heroku so that Heroku can prepare it for deployment. Heroku receives the code and initiates the build process. Heroku bundles together assets that are needed to run the application, to create a 'slug', Which describes the bundled file that’s ready for deployment. Heroku executes the slug in an isolated Unix container that provides an environment for the app to run in. In turn creating you web application. 
+
 5. Identify and describe the software to be used in your App.
 
 In the process of developing Culture POP, we used many different Languages and software to build and deploy our Ruby on Rails application. For Starters Languages, we utilized HTML, ERB and CSS for the logic and styling. 
