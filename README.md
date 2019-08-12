@@ -35,6 +35,27 @@ Description of your project, including,
 3. Describe the project will you be conducting and how. your App will address the needs.
 4. Describe the network infrastructure the App may be based on.
 5. Identify and describe the software to be used in your App.
+
+In the process of developing Culture POP, we used many different Languages and software to build and deploy our Ruby on Rails application. For Starters Languages, we utilized HTML, ERB and CSS for the logic and styling. 
+
+HTML aka Hypertext Markup language is a language used for certain webpages, it allows you to render text, links, pictures and even videos to the page, that is then viewed by the use. 
+
+ERB aka Embedded Ruby is ruby that can be embedded into HTML files, so you can use html and CSS styling together with ruby logic, this helps to separate the ‘backend’ to the views that the user interacts with.  
+
+CSS aka Cascading Style Sheets is a styling language used to style a web pages views in other words it makes everything look pretty, well from the user's perspective. 
+
+Ruby is another coding Language. It can’t be used to write front-end code, such as HTML or CSS, but is commonly used to write back-end logic in web applications. 
+
+Secondly we have Ruby on Rails. Ruby on Rails  is  a web application framework written in Ruby. It’s used to create web applications. It brings in the concept of MVC (Model, Controller, View), this framework is used to separate key parts of your code into, Models - add database records, find particular data you're looking for, update that data, or remove data. Controllers - coordinates between the user, the views, and the model and Views -  using ERB shares data with the controllers and the browser so basically the main interface for the user. 
+
+Third PostgreSQL Database. Postgres is a Database Management System based on the SQL Database Language.  Big words I know, so in really simple words Postgres collects information that is organized  in a way that can be easily accessed, managed and updated. 
+
+Forth is Active Record, Active Record is an Object Relational Mapping tool.  It abstracts SQL query language so that code can be written in another language, like Ruby. And is used to speak to the database to request and send information. 
+
+In Fifth place (not ranked on importance) is GitHub!! Arguably the most refreshingly helpful software in existence. GitHub is a Source Control software that allows you to work as a team on the same project without accidently destroying the work of your team mates and also a singular, which then gives you a display of progress and backup as you develop. Git is a tool that allows you to work on your local machine by yourself, or with remote teams together on a project using the Web Application connected to your local Command Line Interface. Most popular features are the ability to 'commit'/save a piece of code at a certain point in development, which can be returned to at a later date. Also using 'branches' off the project that are written independently to you own ‘master’ and ‘origin’ and doesn’t effect the core branch unless merged at a later time. 
+
+Now lastly Deployment! In development we used Heroku. Heroku is a popular platform that allows for deployment of web applications without owning your own database or server. Users can push code in many different languages directly from GitHub to the internet via Heroku where it handles building and deployment of the application. 
+
 6. Identify the database to be used in your App and provide a justification for your choice.
 7. Identify and describe the production database setup (i.e. postgres instance).
 8. Describe the architecture of your App.
