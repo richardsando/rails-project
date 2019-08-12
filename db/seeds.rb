@@ -3605,6 +3605,80 @@ image_names = ["GOT-tee-4.jpg", "GOT-iphone-1.jpg", "GOT-iphone-11.jpg", "GOT-pr
 ]
 
 
+zes = [
+    {
+        category: "T-shirts",
+        sizing: "XS"
+    },
+    {
+        category: "T-shirts",
+        sizing: "S"
+    },
+    {
+        category: "T-shirts",
+        sizing: "M"
+    },
+    {
+        category: "T-shirts",
+        sizing: "L"
+    },
+    {
+        category: "T-shirts",
+        sizing: "XL"
+    },
+    {
+        category: "T-shirts",
+        sizing: "XXL"
+    },
+    {
+        category: "Stickers",
+        sizing: "7.8 x 7.6 cm"
+    },
+    {
+        category: "Stickers",
+        sizing: "14 x 13.6 cm"
+    },
+    {
+        category: "Stickers",
+        sizing: "20.9 x 21.6 cm"
+    },
+    {
+        category: "iPhone cases",
+        sizing: "iPhone 6"
+    },
+    {
+        category: "iPhone cases",
+        sizing: "iPhone 7"
+    },
+    {
+        category: "iPhone cases",
+        sizing: "iPhone 8"
+    },
+    {
+        category: "iPhone cases",
+        sizing: "iPhone X"
+    },
+    {
+        category: "Prints",
+        sizing: "30.5 x 40.6 cm"
+    },
+    {
+        category: "Prints",
+        sizing: "40.6 x 50.8 cm"
+    },
+    {
+        category: "Prints",
+        sizing: "45.7 x 61 cm"
+    },
+    {
+        category: "Prints",
+        sizing: "61 x 81.3 cm"
+    }
+]
+
+sizes.each do |size|
+    Size.create!(size)
+end
 
 
 
