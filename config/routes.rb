@@ -37,7 +37,12 @@ Rails.application.routes.draw do
   #Fandom pages "oh what fun..."
   get '/fandoms/:id' => 'fandoms#fandom'
 
-  
-  get 'profiles/:id/become_artist' => 'profiles#become_an_artist'
+
+  #CHARGES
+  get '/profiles/:id/become_an_artist' => 'profiles#become_an_artist'
+  post '/charges/become_artist_success' => 'charges#become_artist'
+  post '/charges/checkout_cart_success' => 'charges#checkout_cart'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end

@@ -85,13 +85,6 @@ class CartsController < ApplicationController
     
     end
 
-    def checkout_cart
-      
-        @checked_out_cart = Cart.find(params[:cart_id])
-        @checked_out_cart.update_attribute(:active_status, false)   #make the old cart inactive
-        Cart.create(profile_id: params[:id])  #and then give a new cart to that profile
-    end
-
     def previous_orders
       if user_signed_in?
         @previous_orders = current_user.profile.carts.where("active_status = ?", false)

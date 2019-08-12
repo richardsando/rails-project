@@ -14,8 +14,11 @@ class ProfilesController < ApplicationController
   end
  
   def become_an_artist
-    authorize(@profile)
-    current_user.update(role_id: 2)
+      authorize(@profile)
+  end
+
+  def become_artist_success
+
   end
 
   # GET /profiles
