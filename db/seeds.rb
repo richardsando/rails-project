@@ -3605,35 +3605,13 @@ image_names = ["GOT-tee-4.jpg", "GOT-iphone-1.jpg", "GOT-iphone-11.jpg", "GOT-pr
 ]
 
 
-zes = [
+sizes = [
     {
         category: "T-shirts",
         sizing: "XS"
     },
     {
-        category: "T-shirts",
-        sizing: "S"
-    },
-    {
-        category: "T-shirts",
-        sizing: "M"
-    },
-    {
-        category: "T-shirts",
-        sizing: "L"
-    },
-    {
-        category: "T-shirts",
-        sizing: "XL"
-    },
-    {
-        category: "T-shirts",
-        sizing: "XXL"
-    },
-    {
-        category: "Stickers",
-        sizing: "7.8 x 7.6 cm"
-    },
+        category: "T-shirts", p
     {
         category: "Stickers",
         sizing: "14 x 13.6 cm"
