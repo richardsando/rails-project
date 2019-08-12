@@ -1,6 +1,5 @@
-<div class="page-wrapper">
-	<div class="page">
-		<% if notice == 'The item has been successfully added to your cart.' %>
+
+	<% if notice == 'The item has been successfully added to your cart.' %>
 			<div class="message-wrap">
 				<%= inline_svg("_ionicons_svg_md-checkmark-circle.svg", class: "check-icon") %>
 				<p id="item-added-notice"><%= notice %></p>
@@ -25,6 +24,9 @@
 				<%= link_to inline_svg("_ionicons_svg_md-close.svg", class: "exit-icon"), "/products/#{@product.id}?product_size=#{params[:product_size]}", class: 'exit-link' %>
 			</div>
 		<% end %>
+		<div class="page-wrapper">
+	<div class="page">
+	
 		<div class="product">
 			<% if @product.uploaded_image.attached? %>
 				<%= image_tag @product.uploaded_image.service_url, class: 'image-size' %>
