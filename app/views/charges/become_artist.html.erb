@@ -1,9 +1,13 @@
 <div class="page-wrapper">
-    <div class="page">
-        <h2>Congratulations, you have become an artist!</h2>
-
-        <p>You can now upload products to sell on your profile page</p>
-
-        <%= link_to "back to my profile", {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
-    </div>
+	<div class="page">
+		<div class="border-form-div">
+			<h2>Congratulations, you have become an artist!</h2>
+            <br>
+			<p>You can now upload products to sell on your profile page</p>
+            <br>
+			<%= link_to "back to my profile", {:controller => "profiles", :action => "show", :id => current_user.profile.id }%>
+            <br>
+            
+		</div>
+	</div>
 </div>
