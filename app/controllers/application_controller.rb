@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         if current_user.profile == nil
             new_profile_path
         else
-            "/profiles/#{current_user.profile.id}"
+            "/profiles/#{current_user.profile.id}/edit"
         end
     end
 

@@ -18,34 +18,30 @@
 				<h1 class="my-cart-heading">
 					My Cart
 				</h1>
-				
 				<% if @cart.product_variants.empty? %>
 					<p>Your cart has zero items!</p>
 				<% else %>
 					<% @cart.product_variants.each do |product_variant| %>      <%# this seems to display them in order updated_at %>
-                         <br>
+						<br>
 						<div class="showcart-entry">
 							<% base_product = product_variant.product %>
 							<% purchase_entry = ProductsPurchased.where(cart_id: @cart.id, product_variant_id: product_variant.id).first %>
-						
-                                   <div class='product-a'>
-                                 
-                                   	<%= image_tag base_product.uploaded_image.service_url, class: "cart-image-size" %>
-                                 
-                                        <div>
-                                             <p><%= link_to base_product.name, "/products/#{base_product.id}" %></p>
-                                             <p> $ <%= product_variant.price %></p>
-                                             <p><%= "  Size: #{product_variant.size.sizing}" %></p>
-                                        </div>
+							<div class='product-a'>
+								<%= image_tag base_product.uploaded_image.service_url, class: "cart-image-size" %>
+								<div>
+									<p><%= link_to base_product.name, "/products/#{base_product.id}" %></p>
+									<p> $ <%= product_variant.price %></p>
+									<p><%= "  Size: #{product_variant.size.sizing}" %></p>
+								</div>
 							</div>
 							<p class="qty"><% if purchase_entry.purchase_QTY == 1 %>
-								<%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
-							<% else %>
-								<%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=decrement" %>
-							<% end %>
-							<%= "  QTY: #{purchase_entry.purchase_QTY}" %>
-							<%= link_to inline_svg("_ionicons_svg_md-add.svg", class: "increment-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=increment" %> 
-                                   </p>
+									<%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
+								<% else %>
+									<%= link_to inline_svg("_ionicons_svg_md-remove.svg", class: "decrement-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=decrement" %>
+								<% end %>
+								<%= "  QTY: #{purchase_entry.purchase_QTY}" %>
+								<%= link_to inline_svg("_ionicons_svg_md-add.svg", class: "increment-icon"), "/profiles/#{params[:id]}/showcart/#{purchase_entry.id}/change-qty?function=increment" %>
+							</p>
 							<%= link_to 'remove', "/profiles/#{params[:id]}/showcart/remove-item?product_variant_id=#{product_variant.id}" %>
 						</div>
 						<br>
@@ -54,8 +50,8 @@
 				<% end %>
 				<br>
 				<% if !@cart.product_variants.empty? %>
-                         <%= render "layouts/checkout_stripe_form" %>              
-                    <% end %>
+					<%= render "layouts/checkout_stripe_form" %>
+				<% end %>
 				<%= link_to 'Back to profile', "/profiles/#{params[:id]}", :class => "some-shit" %>
 			</div>
 		</div>
